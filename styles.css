@@ -1,0 +1,967 @@
+@charset "utf-8";
+
+/* ==========================================================================
+   Be Enabled Advocacy Alliance — beenabled.org
+   Target: WCAG 2.2 Level AAA
+
+   Every colour pair in the token blocks below is verified by tools/contrast.mjs.
+   Do not add a colour without adding it to that script's PAIRS table.
+
+   Contents
+     1. Fonts
+     2. Design tokens + themes
+     3. Reset
+     4. Base typography          (SC 1.4.8, 1.4.12)
+     5. Focus system             (SC 2.4.7, 2.4.11, 2.4.12, 2.4.13)
+     6. Skip links               (SC 2.4.1)
+     7. Layout primitives
+     8. Header + navigation      (SC 2.5.5, 2.4.8)
+     9. Breadcrumbs              (SC 2.4.8)
+    10. Hero + page intro
+    11. Sections, cards, lists
+    12. Buttons + calls to action
+    13. Forms                    (SC 3.3.1-3.3.6)
+    14. Footer
+    15. Display settings panel   (SC 1.4.8)
+    16. Wheel motif + decoration
+    17. Utilities
+    18. Motion                   (SC 2.3.3)
+    19. Forced colours + print
+   ========================================================================== */
+
+/* 1. Fonts ---------------------------------------------------------------- */
+@import url("assets/fonts/fonts.css");
+
+/* 2. Design tokens + themes ----------------------------------------------- */
+:root {
+  /* -- Light theme. Ratios are against --surface unless noted. ------------ */
+  --surface:          #ffffff;
+  --surface-raised:   #f4f8f7;
+  --surface-sunken:   #e8f1ef;
+  --surface-invert:   #17322f;
+  --surface-footer:   #17322f;
+  --text-footer:      #f4f8f7;  /* 12.79:1 on --surface-footer */
+
+  --text:             #17322f;  /* 13.69:1 */
+  --text-muted:       #2a5556;  /*  8.29:1  | 7.21:1 on sunken */
+  --text-invert:      #f4f8f7;  /* 12.79:1 on --surface-invert */
+
+  --brand:            #2f5d5e;  /*  7.37:1 — safe on --surface only */
+  --brand-strong:     #234a4b;  /*  9.76:1  | 8.48:1 on sunken */
+  --brand-contrast:   #ffffff;  /*  7.37:1 on --brand */
+
+  --link:             #234a4b;  /*  9.76:1 */
+  --link-visited:     #4a3d63;  /*  9.15:1 */
+
+  --border:           #5f938c;  /*  3.48:1 — non-text (SC 1.4.11) */
+  --border-strong:    #2f5d5e;  /*  7.37:1 */
+  --border-subtle:    #cfe0dc;  /* decorative hairlines only */
+
+  --accent:           #f09901;  /* amber — LARGE text or non-text only */
+  --accent-text:      #17322f;  /*  6.04:1 on --accent — LARGE TEXT ONLY */
+  --accent-ui:        #a86800;  /*  4.52:1 — amber that may carry meaning */
+  --accent-warm:      #ef521d;  /* orange — non-text ONLY, never a text bg */
+  --accent-coral:     #f9845b;  /* coral — decorative only in light theme */
+  --sage:             #96bfba;  /* decorative fills + illustration only */
+
+  --focus-a:          #17322f;  /* 13.69:1 on --surface */
+  --focus-b:          #ffffff;  /* 13.69:1 on --focus-a */
+
+  /* -- Presentation controls (SC 1.4.8). Overridden by the settings panel. */
+  --ui-scale:   1;
+  --lh:         1.6;
+  --measure:    68ch;    /* well inside the 80-character ceiling */
+
+  /* -- Spacing scale ----------------------------------------------------- */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.5rem;
+  --space-6:  2rem;
+  --space-7:  3rem;
+  --space-8:  4rem;
+  --space-9:  6rem;
+
+  /* Paragraph spacing must be >= 1.5x line spacing (SC 1.4.8) */
+  --para-space: calc(var(--lh) * 1.5 * 1em);
+
+  /* -- Type ------------------------------------------------------------- */
+  --font-body: "Atkinson Hyperlegible", ui-sans-serif, system-ui, -apple-system,
+               "Segoe UI", Roboto, sans-serif;
+  --font-head: "Quicksand", var(--font-body);
+
+  --step--1: clamp(0.94rem, 0.92rem + 0.10vw, 1.00rem);
+  --step-0:  clamp(1.06rem, 1.02rem + 0.22vw, 1.19rem);
+  --step-1:  clamp(1.27rem, 1.19rem + 0.39vw, 1.50rem);
+  --step-2:  clamp(1.52rem, 1.38rem + 0.65vw, 1.90rem);
+  --step-3:  clamp(1.83rem, 1.61rem + 1.02vw, 2.40rem);
+  --step-4:  clamp(2.19rem, 1.86rem + 1.55vw, 3.03rem);
+  --step-5:  clamp(2.63rem, 2.14rem + 2.28vw, 3.82rem);
+
+  /* -- Shape ------------------------------------------------------------ */
+  --radius:      0.5rem;
+  --radius-lg:   1rem;
+  --radius-full: 9999px;
+  --ring:        0.1875rem;   /* 3px — SC 2.4.13 needs >= 2px */
+  --target:      2.75rem;     /* 44px — SC 2.5.5 Target Size (Enhanced) */
+
+  color-scheme: light;
+}
+
+/* -- Dark theme.  Surface is #0b1817 rather than a lighter navy because
+      coral only reaches 6.87:1 on #0f1f1e and must clear 7:1. ------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="contrast"]):not([data-theme="warm"]) {
+    --surface:        #0b1817;
+    --surface-raised: #142a28;
+    --surface-sunken: #102220;
+    --surface-invert: #e9f3f1;
+    --surface-footer: #142a28;
+    --text-footer:    #e9f3f1;
+
+    --text:           #e9f3f1;  /* 16.03:1 */
+    --text-muted:     #b9d2ce;  /* 11.05:1 */
+    --text-invert:    #0b1817;
+
+    --brand:          #96bfba;  /*  9.04:1  | 7.52:1 on raised */
+    --brand-strong:   #b3d3ce;  /* 11.05:1 */
+    --brand-contrast: #0b1817;  /*  9.04:1 on --brand */
+
+    --link:           #96bfba;
+    --link-visited:   #c9b8e6;  /* 10.32:1 */
+
+    --border:         #5f938c;  /*  5.22:1 */
+    --border-strong:  #96bfba;
+    --border-subtle:  #21403c;
+
+    --accent:         #f09901;  /*  8.00:1 — amber IS readable on dark */
+    --accent-text:    #17322f;
+    --accent-ui:        #f09901;
+    --accent-warm:    #f9845b;  /*  7.33:1 */
+    --accent-coral:   #f9845b;
+
+    --focus-a:          #ffffff;
+    --focus-b:          #0b1817;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --surface:        #0b1817;
+  --surface-raised: #142a28;
+  --surface-sunken: #102220;
+  --surface-invert: #e9f3f1;
+  --surface-footer: #142a28;
+  --text-footer:    #e9f3f1;
+  --text:           #e9f3f1;
+  --text-muted:     #b9d2ce;
+  --text-invert:    #0b1817;
+  --brand:          #96bfba;
+  --brand-strong:   #b3d3ce;
+  --brand-contrast: #0b1817;
+  --link:           #96bfba;
+  --link-visited:   #c9b8e6;
+  --border:         #5f938c;
+  --border-strong:  #96bfba;
+  --border-subtle:  #21403c;
+  --accent:         #f09901;
+  --accent-text:    #17322f;  /*  6.04:1 on --accent — LARGE TEXT ONLY */
+  --accent-ui:        #f09901;
+  --accent-warm:    #f9845b;
+  --accent-coral:   #f9845b;
+  --focus-a:          #ffffff;
+  --focus-b:          #0b1817;
+  color-scheme: dark;
+}
+
+/* -- High contrast. Pure black on white at 21:1. Amber and coral are
+      dropped entirely; nothing decorative is allowed to carry meaning. --- */
+:root[data-theme="contrast"] {
+  --surface:        #ffffff;
+  --surface-raised: #ffffff;
+  --surface-sunken: #ffffff;
+  --surface-invert: #000000;
+  --surface-footer: #000000;
+  --text-footer:    #ffffff;
+  --text:           #000000;  /* 21:1 */
+  --text-muted:     #000000;
+  --text-invert:    #ffffff;
+  --brand:          #000000;
+  --brand-strong:   #000000;
+  --brand-contrast: #ffffff;
+  --link:           #00006e;  /* 15.30:1 */
+  --link-visited:   #4b0072;  /* 13.11:1 */
+  --border:         #000000;
+  --border-strong:  #000000;
+  --border-subtle:  #000000;
+  --accent:         #000000;
+  --accent-text:    #ffffff;  /* 21:1 — amber collapses to black here */
+  --accent-ui:        #000000;
+  --accent-warm:    #000000;
+  --accent-coral:   #000000;
+  --sage:           #000000;
+  --focus-a:          #000000;
+  --focus-b:          #ffffff;
+  color-scheme: light;
+}
+
+/* -- Warm / low blue light. For light sensitivity and migraine. ---------- */
+:root[data-theme="warm"] {
+  --surface:        #fbf3e4;
+  --surface-raised: #f6ead6;
+  --surface-sunken: #f1e2c9;
+  --surface-invert: #2b2416;
+  --surface-footer: #2b2416;
+  --text-footer:    #fbf3e4;
+  --text:           #2b2416;  /* 13.31:1 */
+  --text-muted:     #4d4128;  /*  8.05:1 */
+  --text-invert:    #fbf3e4;
+  --brand:          #1f4142;
+  --brand-strong:   #1a3839;
+  --brand-contrast: #fbf3e4;
+  --link:           #234a4b;
+  --link-visited:   #4a3d63;
+  --border:         #8a7550;
+  --border-strong:  #4d4128;
+  --border-subtle:  #ded0b4;
+  --accent:         #a35d00;
+  --accent-text:    #fbf3e4;
+  --accent-ui:        #a35d00;
+  --accent-warm:    #a33b12;
+  --accent-coral:   #a35d00;
+  --sage:           #b9c9b4;
+  --focus-a:          #2b2416;
+  --focus-b:          #fbf3e4;
+  color-scheme: light;
+}
+
+/* -- Presentation control values (SC 1.4.8) ----------------------------- */
+:root[data-text-size="125"] { --ui-scale: 1.25; }
+:root[data-text-size="150"] { --ui-scale: 1.5;  }
+:root[data-text-size="200"] { --ui-scale: 2;    }
+
+:root[data-line-height="175"] { --lh: 1.75; }
+:root[data-line-height="200"] { --lh: 2;    }
+
+/* 3. Reset ---------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+:where(body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd, ul, ol) {
+  margin: 0;
+}
+
+/* Never remove list semantics from a list that carries meaning; these are the
+   navigational lists only, and they keep their role via the surrounding nav. */
+:where(ul, ol)[class] { list-style: none; padding: 0; }
+
+img, svg, video { max-width: 100%; height: auto; display: block; }
+svg { fill: currentColor; }
+
+input, button, textarea, select { font: inherit; color: inherit; }
+
+/* SC 1.4.12 Text Spacing — nothing that holds text may be height-capped or
+   clipped, so user spacing overrides can always expand it. */
+:where(p, li, dd, dt, h1, h2, h3, h4, blockquote, figcaption, label, td, th) {
+  overflow-wrap: break-word;
+}
+
+/* 4. Base typography ------------------------------------------------------ */
+html {
+  /* Percentage, never px, so the browser's own font-size setting is honoured. */
+  font-size: calc(100% * var(--ui-scale));
+  /* SC 2.4.12 — anchor jumps must never park a focused element under anything. */
+  scroll-padding-block-start: var(--space-6);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--surface);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: var(--lh);
+  /* SC 1.4.8 item 3 — text is never justified. */
+  text-align: left;
+  hyphens: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* SC 1.4.8 item 2 — every run of prose is capped well inside 80 characters. */
+:where(p, li, dd, blockquote, figcaption, .lede) { max-width: var(--measure); }
+
+/* SC 1.4.8 item 4 — paragraph spacing >= 1.5x the line spacing. */
+:where(p, ul, ol, dl, blockquote, figure, table, pre) + :where(p, ul, ol, dl, blockquote, figure, table, pre) {
+  margin-block-start: var(--para-space);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  /* Headings are not "blocks of text" under 1.4.8, so tighter leading is fine
+     and is easier to scan at large sizes. */
+  line-height: 1.15;
+  text-wrap: balance;
+  color: var(--brand);
+  max-width: 24ch;
+}
+
+h1 { font-size: var(--step-5); letter-spacing: -0.02em; }
+h2 { font-size: var(--step-3); margin-block-start: var(--space-8); }
+h3 { font-size: var(--step-2); margin-block-start: var(--space-6); max-width: 34ch; }
+h4 { font-size: var(--step-1); margin-block-start: var(--space-5); max-width: 40ch; }
+
+:where(h1, h2, h3, h4) + * { margin-block-start: var(--space-4); }
+
+.lede {
+  font-size: var(--step-1);
+  color: var(--text-muted);
+  max-width: 56ch;
+}
+
+strong, b { font-weight: 700; }
+
+blockquote {
+  border-inline-start: 0.25rem solid var(--border);
+  padding-inline-start: var(--space-5);
+  font-size: var(--step-1);
+}
+
+/* -- Links ---------------------------------------------------------------
+   The underline is not decoration. At AAA both body text and link text must
+   clear 7:1, which squeezes them into one narrow luminance band: our link is
+   only 1.40:1 against body text, far under the 3:1 that SC 1.4.1 demands when
+   colour is the sole differentiator. So links are ALWAYS underlined in prose.
+   Never write `text-decoration: none` on a prose link. ------------------- */
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+  text-decoration-skip-ink: auto;
+}
+a:visited { color: var(--link-visited); }
+a:hover   { text-decoration-thickness: 0.16em; }
+
+/* 5. Focus system --------------------------------------------------------
+   SC 2.4.13 Focus Appearance. Two-tone ring: the inner half always clears 3:1
+   against every page surface, and the outer half always clears 3:1 against the
+   inner half, so the ring stays visible on whatever it lands on — including on
+   top of a brand-filled button. Total perimeter is 6px, well over the 2px
+   minimum. Verified by tools/contrast.mjs. --------------------------------- */
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
+  outline: var(--ring) solid var(--focus-a);
+  outline-offset: 0;
+  box-shadow: 0 0 0 calc(var(--ring) * 2) var(--focus-b);
+  border-radius: 2px;
+}
+
+/* Older engines without :focus-visible still get a ring. */
+:where(a, button, summary, input, select, textarea, [tabindex]):focus {
+  outline: var(--ring) solid var(--focus-a);
+}
+:where(a, button, summary, input, select, textarea, [tabindex]):focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* SC 2.4.12 — a focused element scrolled into view must never sit under
+   anything. The header is deliberately NOT sticky, and this is the backstop. */
+:where(a, button, summary, input, select, textarea, [tabindex], h1, h2, h3, h4) {
+  scroll-margin-block-start: var(--space-6);
+}
+
+/* main is focusable as a skip-link target but must not show a ring on click. */
+main:focus { outline: none; }
+main:focus-visible { outline: var(--ring) solid var(--focus-a); }
+
+/* 6. Skip links ----------------------------------------------------------- */
+.skip-links { position: absolute; top: 0; left: 0; z-index: 100; }
+
+.skip-links a {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-4);
+  /* Moved off-screen rather than display:none, so it stays focusable. */
+  transform: translateY(-200%);
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--surface);
+  color: var(--link);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius);
+  text-decoration: underline;
+  white-space: nowrap;
+}
+.skip-links a:focus { transform: translateY(0); }
+
+/* Visually hidden, but still announced. Never use display:none for this. */
+.visually-hidden:not(:focus):not(:active) {
+  clip-path: inset(50%);
+  height: 1px; width: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* 7. Layout primitives ---------------------------------------------------- */
+.wrap {
+  width: min(100% - (2 * var(--space-5)), 72rem);
+  margin-inline: auto;
+}
+.wrap--narrow { width: min(100% - (2 * var(--space-5)), 48rem); }
+
+.stack > * + * { margin-block-start: var(--space-5); }
+
+.section { padding-block: var(--space-8); }
+.section--tint { background-color: var(--surface-sunken); }
+.section--raised { background-color: var(--surface-raised); }
+
+.section > .wrap > h2:first-child { margin-block-start: 0; }
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+
+/* 8. Header + navigation --------------------------------------------------
+   The header is deliberately NOT sticky. SC 2.4.12 (Focus Not Obscured,
+   Enhanced) requires that NO part of a focused element is ever covered, and a
+   sticky header cannot guarantee that across every engine and zoom level.
+   scroll-padding gets you the AA version of this criterion, not the AAA one. */
+.site-header {
+  border-block-end: 1px solid var(--border-subtle);
+  padding-block: var(--space-4);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--target);
+  color: var(--brand);
+  text-decoration: none;
+  font-family: var(--font-head);
+  font-weight: 700;
+  line-height: 1.1;
+}
+.brand:visited { color: var(--brand); }
+.brand:hover .brand__name { text-decoration: underline; }
+.brand__mark { width: 2.75rem; height: 2.75rem; flex: none; }
+.brand__name { font-size: var(--step-0); max-width: 16ch; }
+/* Each line is its own element. A bare text node sitting next to a
+   display:block sibling is ambiguous markup, and contrast tools sample it
+   unreliably. */
+.brand__name b { display: block; font-size: var(--step-1); }
+.brand__name span { display: block; }
+
+/* -- Primary nav.  SC 2.5.5 caps how dense this can get: at a 44px minimum
+      target with real padding, 5-6 items is the honest ceiling. Secondary
+      destinations live in the footer, not here. --------------------------- */
+.nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  /* SC 2.5.5 Target Size (Enhanced) — 44x44 CSS px, no exceptions here. */
+  min-height: var(--target);
+  min-width: var(--target);
+  padding-inline: var(--space-4);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--font-head);
+  font-weight: 600;
+}
+.nav__link:visited { color: var(--text); }
+.nav__link:hover { background-color: var(--surface-sunken); text-decoration: underline; }
+
+/* SC 2.4.8 Location — the current page is marked in the markup, and the
+   underline means it is not signalled by colour alone (SC 1.4.1). */
+.nav__link[aria-current="page"] {
+  color: var(--brand-strong);
+  background-color: var(--surface-sunken);
+  text-decoration: underline;
+  text-decoration-thickness: 0.19em;
+  text-underline-offset: 0.22em;
+}
+
+/* -- Mobile disclosure. Built on <details>/<summary> so it opens and closes
+      with zero JavaScript; app.js only adds Escape-to-close and the
+      resize-cleanup that <details> lacks. ------------------------------- */
+.nav-toggle { display: none; }
+.nav-toggle > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--target);
+  padding-inline: var(--space-4);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font-head);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.nav-toggle > summary::-webkit-details-marker { display: none; }
+.nav-toggle > summary::marker { content: ""; }
+.nav-toggle__icon { width: 1.5rem; height: 1.5rem; flex: none; }
+/* Closed shows the hamburger; open shows the X. */
+.nav-toggle[open] .nav-toggle__icon--menu,
+.nav-toggle:not([open]) .nav-toggle__icon--close { display: none; }
+
+@media (max-width: 56rem) {
+  .nav-toggle { display: block; }
+  .site-nav { flex-basis: 100%; }
+  .nav-toggle:not([open]) + .site-nav .nav__list { display: none; }
+  .nav__list { flex-direction: column; align-items: stretch; }
+  .nav__link { justify-content: flex-start; }
+}
+
+/* 9. Breadcrumbs ----------------------------------------------------------
+   SC 2.4.8 Location. Links get a 44px box (SC 2.5.5) and the row gets enough
+   leading that those boxes can never overlap when the trail wraps. */
+.breadcrumb { padding-block: var(--space-4); }
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--step--1);
+}
+.breadcrumb__list li { display: flex; align-items: center; gap: var(--space-2); }
+.breadcrumb__list li + li::before {
+  content: "";
+  width: 0.5rem; height: 0.5rem;
+  border-block-start: 2px solid var(--border);
+  border-inline-end: 2px solid var(--border);
+  transform: rotate(45deg);
+  flex: none;
+}
+.breadcrumb__list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  padding-inline: var(--space-2);
+}
+.breadcrumb__list [aria-current="page"] {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  padding-inline: var(--space-2);
+  color: var(--text-muted);
+}
+
+/* 10. Hero + page intro --------------------------------------------------- */
+.hero {
+  padding-block: var(--space-8) var(--space-8);
+  background-color: var(--surface-sunken);
+  border-block-end: 0.375rem solid var(--brand);
+  position: relative;
+  overflow: hidden;
+}
+.hero__inner {
+  display: grid;
+  gap: var(--space-7);
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+@media (min-width: 60rem) {
+  .hero__inner { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
+}
+.hero h1 { color: var(--brand-strong); max-width: 18ch; }
+.hero .lede { font-size: var(--step-2); color: var(--text); max-width: 46ch; }
+.hero__art { justify-self: center; width: min(100%, 24rem); }
+
+/* -- "In short" summary. This is the conforming supplemental version that
+      SC 3.1.5 permits where accurate content cannot reach lower-secondary
+      reading level on its own. Every page carries one. ------------------- */
+.in-short {
+  border: 2px solid var(--border);
+  border-inline-start-width: 0.5rem;
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  background-color: var(--surface-raised);
+}
+.in-short > h2 {
+  margin-block-start: 0;
+  font-size: var(--step-0);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.in-short p { font-size: var(--step-1); }
+.in-short > * + * { margin-block-start: var(--space-3); }
+
+/* 11. Sections, cards, lists ---------------------------------------------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background-color: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.section--tint .card { background-color: var(--surface); }
+.card > h3 { margin-block-start: 0; color: var(--brand-strong); }
+.card p { max-width: none; }
+/* The card title is the link. SC 2.4.9 forbids a trailing bare "Learn more",
+   and a whole-card link with nested text fails link-purpose too. */
+.card__link { text-decoration: underline; }
+.card__meta { font-size: var(--step--1); color: var(--text-muted); }
+
+/* Domain cards carry a colour band. The band is decoration; the heading text
+   and an icon always repeat the meaning, so nothing depends on colour alone
+   (SC 1.4.1). */
+.card--domain { border-block-start-width: 0.5rem; }
+.card--housing        { border-block-start-color: var(--brand); }
+.card--healthcare     { border-block-start-color: var(--accent); }
+.card--education      { border-block-start-color: var(--accent-warm); }
+.card--transportation { border-block-start-color: var(--border); }
+.card--money          { border-block-start-color: var(--brand-strong); }
+
+.card__icon { width: 2.5rem; height: 2.5rem; color: var(--brand); flex: none; }
+
+/* Definition lists — the correct structure for the domains and the glossary. */
+.def-list { display: grid; gap: var(--space-5); }
+.def-list dt {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--step-1);
+  color: var(--brand-strong);
+}
+.def-list dd { margin-inline-start: 0; margin-block-start: var(--space-2); }
+
+.tick-list { list-style: none; padding: 0; display: grid; gap: var(--space-4); }
+/* The marker is positioned, NOT laid out with grid. A grid container turns
+   every element child into its own grid item, which tears an inline <a> out of
+   its sentence and drops it into the marker column. Positioning keeps the item
+   as ordinary inline flow, so links stay inside the text where they belong. */
+.tick-list li {
+  position: relative;
+  padding-inline-start: 2rem;
+  max-width: var(--measure);
+}
+/* Add .tick-list--nav when the list items are bare links: those are navigation
+   targets and need the full 44px box (SC 2.5.5). Plain .tick-list items, where
+   a link sits inside a sentence, keep the inline exception and must NOT be
+   padded — enlarging inline links makes their hit areas overlap across wrapped
+   lines.
+   Note: an :only-child selector CANNOT be used here. CSS ignores text nodes
+   when deciding :only-child, so <li>text <a>x</a> text</li> would match it. */
+.tick-list--nav li > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+}
+
+.tick-list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.32em;
+  width: 1.25rem; height: 1.25rem;
+  border-radius: var(--radius-full);
+  border: 0.3125rem solid var(--brand);
+}
+
+/* 12. Buttons -------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  /* SC 2.5.5 — 44px floor, before padding. */
+  min-height: var(--target);
+  min-width: var(--target);
+  padding: var(--space-3) var(--space-6);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--step-0);
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:visited { color: inherit; }
+.btn:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+
+.btn--primary {
+  background-color: var(--brand);
+  color: var(--brand-contrast);
+  border-color: var(--brand);
+}
+.btn--primary:visited { color: var(--brand-contrast); }
+
+.btn--secondary {
+  background-color: transparent;
+  color: var(--link);
+  border-color: var(--border-strong);
+}
+.btn--secondary:visited { color: var(--link); }
+.btn--secondary:hover { background-color: var(--surface-sunken); }
+
+/* Amber only reaches 6.04:1 with its darkest legal label, which clears the
+   4.5:1 large-text bar but NOT the 7:1 body-text bar. So this variant is
+   locked to large text and must never be used at body size. (SC 1.4.6) */
+.btn--accent {
+  background-color: var(--accent);
+  color: var(--accent-text);
+  border-color: var(--accent);
+  font-size: var(--step-1);   /* >= 24px effective — required, not stylistic */
+  font-weight: 700;
+}
+.btn--accent:visited { color: var(--accent-text); }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+
+/* 13. Forms ---------------------------------------------------------------- */
+.field { display: grid; gap: var(--space-2); max-width: 36rem; }
+.field + .field { margin-block-start: var(--space-6); }
+
+.field > label {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--step-0);
+}
+.field__req { color: var(--text-muted); font-weight: 400; }
+
+/* SC 3.3.5 Help — hint text is always visible and never a placeholder, because
+   placeholder text disappears the moment a user starts typing and is invisible
+   to anyone who needs it most. */
+.field__hint { font-size: var(--step--1); color: var(--text-muted); max-width: none; }
+
+.field input, .field textarea, .field select {
+  min-height: var(--target);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--surface);
+  color: var(--text);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius);
+  width: 100%;
+}
+.field textarea { min-height: 9rem; resize: vertical; }
+
+.field--invalid input, .field--invalid textarea, .field--invalid select {
+  border-color: var(--accent-warm);
+  border-width: 0.1875rem;
+}
+/* The error is announced in text and marked with an icon; the red border is
+   reinforcement, never the sole signal. (SC 1.4.1, 3.3.1) */
+.field__error {
+  display: flex;
+  gap: var(--space-2);
+  font-weight: 700;
+  color: var(--link);
+  font-size: var(--step--1);
+}
+.field__error:empty { display: none; }
+
+.form-status { margin-block-start: var(--space-5); }
+.form-status:empty { display: none; }
+
+fieldset { border: 2px solid var(--border); border-radius: var(--radius); padding: var(--space-5); }
+legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--space-2); }
+
+.radio-row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.radio-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--target);
+  padding: var(--space-2) var(--space-4);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.radio-row input { width: 1.25rem; height: 1.25rem; min-height: 0; accent-color: var(--brand); }
+.radio-row label:has(input:checked) {
+  border-color: var(--brand-strong);
+  border-width: 0.1875rem;
+  background-color: var(--surface-sunken);
+}
+
+/* 14. Footer ---------------------------------------------------------------
+   Footers get tall at AAA: every link needs a 44px row (SC 2.5.5). That is a
+   deliberate trade, not an oversight. */
+.site-footer {
+  margin-block-start: var(--space-9);
+  background-color: var(--surface-footer);
+  color: var(--text-footer);
+  padding-block: var(--space-8) var(--space-6);
+  border-block-start: 1px solid var(--border);
+}
+.site-footer a { color: var(--text-footer); }
+.site-footer a:visited { color: var(--text-footer); }
+.site-footer h2, .site-footer h3 { color: var(--text-footer); }
+
+.footer__grid {
+  display: grid;
+  gap: var(--space-7);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+.footer__grid h3 {
+  margin-block-start: 0;
+  font-size: var(--step-0);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.footer__list { list-style: none; padding: 0; margin-block-start: var(--space-3); }
+.footer__list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  padding-block: var(--space-1);
+}
+.footer__legal {
+  margin-block-start: var(--space-7);
+  padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--border);
+  font-size: var(--step--1);
+}
+
+/* 15. Display settings panel ----------------------------------------------
+   This is the mechanism for SC 1.4.8 item 1 (user-selectable foreground and
+   background colours). Built from <details> + radio inputs so it needs no
+   JavaScript to open, and no dragging (SC 2.5.7 — never an <input type=range>).
+   With JS off the panel is hidden and a <noscript> note points to the
+   equivalent browser and OS settings, which satisfy the same criterion by
+   technique G156. */
+.settings { margin-inline-start: auto; }
+.settings > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--target);
+  padding-inline: var(--space-4);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius);
+  font-family: var(--font-head);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.settings > summary::-webkit-details-marker { display: none; }
+.settings > summary::marker { content: ""; }
+.settings__icon { width: 1.5rem; height: 1.5rem; flex: none; }
+
+.settings__panel {
+  margin-block-start: var(--space-4);
+  padding: var(--space-5);
+  background-color: var(--surface-raised);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: grid;
+  gap: var(--space-6);
+}
+@media (min-width: 48rem) {
+  .settings__panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.settings__panel fieldset { border: 0; padding: 0; margin: 0; }
+.settings__panel legend {
+  padding: 0;
+  font-size: var(--step-0);
+  margin-block-end: var(--space-3);
+}
+
+/* 16. Wheel motif + decoration --------------------------------------------
+   The brand mark is a wheel in motion: half modern tire, half wagon wheel.
+   It is drawn as inline SVG rather than an image file so it inherits
+   currentColor, stays sharp at 400% zoom, survives forced-colors mode, and
+   never becomes an image of text (SC 1.4.9). */
+.wheel { color: var(--brand); }
+.wheel__tire { fill: none; stroke: currentColor; }
+.wheel__spoke { stroke: currentColor; }
+.wheel__hub { fill: currentColor; }
+.wheel__arc { fill: none; stroke: var(--accent); }
+
+.rule {
+  border: 0;
+  block-size: 0.25rem;
+  background-color: var(--border);
+  margin-block: var(--space-7);
+  max-width: 6rem;
+}
+
+/* 17. Utilities ------------------------------------------------------------ */
+.text-muted { color: var(--text-muted); }
+.center { text-align: left; }  /* guard: never introduce justify */
+.flow > * + * { margin-block-start: var(--space-4); }
+.no-bullet { list-style: none; padding: 0; }
+
+/* External links are marked in text, not by an icon alone, and never open a
+   new window — SC 3.2.5 forbids unrequested context changes. */
+.ext__icon { width: 0.85em; height: 0.85em; display: inline; vertical-align: baseline; }
+
+/* 18. Motion ---------------------------------------------------------------
+   SC 2.3.3 Animation from Interactions. There is no motion in the default
+   build. This is the standing guard for anything added later: it must clear
+   BOTH the OS preference and the in-page override. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root[data-motion="reduce"] *,
+:root[data-motion="reduce"] *::before,
+:root[data-motion="reduce"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* 19. Forced colours + print ----------------------------------------------- */
+@media (forced-colors: active) {
+  .btn, .card, .field input, .field textarea, .field select, .in-short {
+    border: 2px solid ButtonBorder;
+  }
+  .nav__link[aria-current="page"] { forced-color-adjust: none; }
+  :where(a, button, summary, input, [tabindex]):focus-visible {
+    outline: 3px solid Highlight;
+    box-shadow: none;
+  }
+  .wheel { color: CanvasText; }
+  .wheel__arc { stroke: CanvasText; }
+}
+
+@media print {
+  .site-header, .site-footer, .settings, .skip-links, .nav-toggle { display: none; }
+  body { background: #fff; color: #000; font-size: 12pt; }
+  a { color: #000; }
+  /* Link destinations are lost on paper, so print them. */
+  main a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
+  .card, .in-short { border: 1pt solid #000; }
+  h2, h3 { break-after: avoid; }
+  p, li { orphans: 3; widows: 3; }
+}

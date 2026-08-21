@@ -1,0 +1,11 @@
+node_modules/
+.DS_Store
+*.log
+lighthouse-*.json
+
+# Brand source documents. GitHub Pages serves EVERY committed file, so
+# committing these would publish them at beenabled.org/Beenabled.png and
+# .../Beenabled_BEAA%20Branding%20(1).pdf. The PDF contains internal strategy
+# notes, so they stay untracked. Remove these lines if you want them public.
+Beenabled.png
+Beenabled_BEAA Branding (1).pdf

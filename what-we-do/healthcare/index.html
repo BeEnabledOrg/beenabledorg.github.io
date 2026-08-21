@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- No maximum-scale and no user-scalable=no: those break SC 1.4.4 Resize Text. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Healthcare | Be Enabled Advocacy Alliance</title>
+  <meta name="description" content="Care that reaches disabled people, equipment that fits real life, and clinics you can actually get into. We work on access, coverage, and being believed.">
+  <link rel="canonical" href="https://beenabled.org/what-we-do/healthcare/">
+
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1817" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Be Enabled Advocacy Alliance">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Healthcare | Be Enabled Advocacy Alliance">
+  <meta property="og:description" content="Care that reaches disabled people, equipment that fits real life, and clinics you can actually get into. We work on access, coverage, and being believed.">
+  <meta property="og:url" content="https://beenabled.org/what-we-do/healthcare/">
+  <meta property="og:image" content="https://beenabled.org/assets/img/og-default.png">
+  <meta property="og:image:alt" content="Be Enabled Advocacy Alliance. Accessibility for all.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Healthcare | Be Enabled Advocacy Alliance">
+  <meta name="twitter:description" content="Care that reaches disabled people, equipment that fits real life, and clinics you can actually get into. We work on access, coverage, and being believed.">
+  <meta name="twitter:image" content="https://beenabled.org/assets/img/og-default.png">
+  <meta name="twitter:image:alt" content="Be Enabled Advocacy Alliance. Accessibility for all.">
+
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/atkinson-hyperlegible-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Applies saved display settings before first paint. This has to be inline
+       and synchronous: without it the page flashes the default theme, which for
+       a light-sensitive or migraine-affected reader is a real harm, not a
+       cosmetic one. Fails silently where storage is blocked. -->
+  <script>
+    (function () {
+      try {
+        var d = document.documentElement, s = localStorage;
+        var t = s.getItem("beaa-theme");
+        if (t && t !== "auto") d.setAttribute("data-theme", t);
+        var z = s.getItem("beaa-text-size");
+        if (z && z !== "100") d.setAttribute("data-text-size", z);
+        var l = s.getItem("beaa-line-height");
+        if (l && l !== "160") d.setAttribute("data-line-height", l);
+        var m = s.getItem("beaa-motion");
+        if (m && m !== "auto") d.setAttribute("data-motion", m);
+      } catch (e) {}
+    })();
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://beenabled.org/what-we-do/healthcare/#page",
+          "url": "https://beenabled.org/what-we-do/healthcare/",
+          "name": "Healthcare | Be Enabled Advocacy Alliance",
+          "description": "Care that reaches disabled people, equipment that fits real life, and clinics you can actually get into. We work on access, coverage, and being believed.",
+          "isPartOf": {
+            "@id": "https://beenabled.org/#website"
+          },
+          "about": {
+            "@id": "https://beenabled.org/#org"
+          },
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://beenabled.org/what-we-do/healthcare/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://beenabled.org/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "What we do",
+              "item": "https://beenabled.org/what-we-do/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Healthcare",
+              "item": "https://beenabled.org/what-we-do/healthcare/"
+            }
+          ]
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <!-- @partial:header — managed by tools/sync-partials.mjs. Do not hand-edit. -->
+  <div class="skip-links">
+    <a href="#main">Skip to main content</a>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="/">
+        <svg class="wheel brand__mark" viewBox="0 0 64 64" role="img" aria-label="Be Enabled Advocacy Alliance">
+          <title>Be Enabled Advocacy Alliance</title>
+          <!-- Wheel in motion: the left half is a wagon wheel, the right half a modern
+               tire. Where we came from and where we are going, on one axle. -->
+          <circle class="wheel__tire" cx="32" cy="32" r="26" stroke-width="4"/>
+          <g class="wheel__spoke" stroke-width="2.5" stroke-linecap="round">
+            <line x1="32" y1="32" x2="32" y2="8"/>
+            <line x1="32" y1="32" x2="15" y2="15"/>
+            <line x1="32" y1="32" x2="8"  y2="32"/>
+            <line x1="32" y1="32" x2="15" y2="49"/>
+            <line x1="32" y1="32" x2="32" y2="56"/>
+          </g>
+          <path class="wheel__arc" d="M32 6 a26 26 0 0 1 0 52" stroke-width="7" stroke-linecap="round"/>
+          <circle class="wheel__hub" cx="32" cy="32" r="6"/>
+        </svg>
+        <span class="brand__name"><b>Be Enabled</b><span>Advocacy Alliance</span></span>
+      </a>
+
+      <details class="nav-toggle">
+        <summary aria-label="Menu">
+          <svg class="nav-toggle__icon nav-toggle__icon--menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <svg class="nav-toggle__icon nav-toggle__icon--close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span>Menu</span>
+        </summary>
+      </details>
+
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="/about/">About</a></li>
+          <li><a class="nav__link" href="/what-we-do/" aria-current="page">What we do</a></li>
+          <li><a class="nav__link" href="/get-involved/">Get involved</a></li>
+          <li><a class="nav__link" href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+
+      <details class="settings" id="display-settings">
+        <summary>
+          <svg class="settings__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 7h10M18 7h2M4 17h6M14 17h6M16 4v6M10 14v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span>Display settings</span>
+        </summary>
+
+        <div class="settings__panel">
+          <fieldset>
+            <legend>Colour theme</legend>
+            <div class="radio-row" role="none">
+              <label><input type="radio" name="theme" value="auto" checked> Match my device</label>
+              <label><input type="radio" name="theme" value="light"> Light</label>
+              <label><input type="radio" name="theme" value="dark"> Dark</label>
+              <label><input type="radio" name="theme" value="contrast"> High contrast</label>
+              <label><input type="radio" name="theme" value="warm"> Warm (less blue light)</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Text size</legend>
+            <div class="radio-row">
+              <label><input type="radio" name="text-size" value="100" checked> Normal</label>
+              <label><input type="radio" name="text-size" value="125"> Large</label>
+              <label><input type="radio" name="text-size" value="150"> Larger</label>
+              <label><input type="radio" name="text-size" value="200"> Largest</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Space between lines</legend>
+            <div class="radio-row">
+              <label><input type="radio" name="line-height" value="160" checked> Normal</label>
+              <label><input type="radio" name="line-height" value="175"> Roomy</label>
+              <label><input type="radio" name="line-height" value="200"> Roomiest</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Movement</legend>
+            <div class="radio-row">
+              <label><input type="radio" name="motion" value="auto" checked> Match my device</label>
+              <label><input type="radio" name="motion" value="reduce"> Reduce movement</label>
+            </div>
+          </fieldset>
+
+          <div>
+            <button type="button" class="btn btn--secondary" data-settings-reset>Reset display settings</button>
+            <p class="field__hint" id="settings-help">Your choices are saved in this browser only. We never send them anywhere.</p>
+            <p class="form-status" role="status" data-settings-status></p>
+          </div>
+
+          <noscript>
+            <p class="field__hint">These controls need JavaScript. Your browser and
+            operating system offer the same options: use your browser zoom for text
+            size, and your system appearance settings for light, dark, or
+            high-contrast colours. This site follows all of them.</p>
+          </noscript>
+        </div>
+      </details>
+    </div>
+  </header>
+  <!-- /@partial:header -->
+
+    <nav class="wrap breadcrumb" aria-label="Breadcrumb">
+      <ol class="breadcrumb__list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/what-we-do/">What we do</a></li>
+          <li><span aria-current="page">Healthcare</span></li>
+        </ol>
+    </nav>
+  <main id="main" tabindex="-1">
+
+    <section class="section">
+      <div class="wrap wrap--narrow stack">
+        <h1>Healthcare</h1>
+        <p class="lede">Care that reaches you, and equipment that actually fits your life.</p>
+
+        <div class="in-short">
+          <h2>In short</h2>
+          <p>Many clinics cannot examine a patient who cannot stand or move to the table.</p>
+          <p>Getting a wheelchair or other equipment approved can take months.</p>
+          <p>Disabled people are often not believed when they describe their own symptoms.</p>
+          <p>We work for care that is reachable, equipment that arrives on time, and staff who listen.</p>
+        </div>
+
+        <h2>What is happening now</h2>
+        <p>A clinic can have a ramp at the door and still be unusable. If the exam
+           table does not lower, the scale cannot take a wheelchair, and no one is
+           trained to transfer a patient safely, the visit does not really happen.</p>
+        <p>Equipment is its own maze. A wheelchair, a lift, or a communication device
+           can take months to be approved, and is often approved in a cheaper form
+           than the one that was actually prescribed.</p>
+        <p>There is also the part that does not show up in any policy document. Many
+           disabled people are talked past, talked over, or told a symptom is just
+           part of their condition. Being disbelieved delays diagnosis, and delay
+           does real harm.</p>
+
+        <h2>What we do about it</h2>
+        <ul class="tick-list">
+          <li>We help people appeal when equipment or care is refused, and we track
+              the refusals that keep repeating.</li>
+          <li>We work with clinics on the things that actually decide access:
+              height-adjustable tables, wheelchair scales, longer appointment slots,
+              and staff training.</li>
+          <li>We push for Home and Community-Based Services
+              (<a href="/glossary/#hcbs">HCBS</a>) so support arrives where people
+              live, not only where a facility can bill for it.</li>
+          <li>We work on making health information plain, so people can act on it
+              without needing an interpreter for their own care.</li>
+        </ul>
+
+        <h2>How this connects to the rest</h2>
+        <p>Care depends on getting there. It depends on a stable address for post and
+           follow-up. It depends on money, because a co-payment can be the reason an
+           appointment is skipped.</p>
+        <p>It runs the other way too. Untreated pain costs people jobs and school
+           terms, which costs income, which costs housing.</p>
+        <p><a href="/what-we-do/transportation/">Read about our transportation work</a>
+           and <a href="/what-we-do/financial-security/">read about our work on money and benefits</a>.</p>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap">
+        <h2>Work with us</h2>
+        <p>We are a small organisation. Every hand and every dollar changes what we can take on.</p>
+        <p class="btn-row">
+          <a class="btn btn--accent" href="/get-involved/">Find a way to get involved</a>
+          <a class="btn btn--secondary" href="/contact/">Contact Be Enabled Advocacy Alliance</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- @partial:footer — managed by tools/sync-partials.mjs. Do not hand-edit. -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <h2 class="visually-hidden">Site footer</h2>
+      <div class="footer__grid">
+        <div>
+          <h3>Be Enabled Advocacy Alliance</h3>
+          <p>A disability-led non-profit working for housing, healthcare,
+             education, transportation, and money security.</p>
+        </div>
+
+        <nav aria-label="Footer: what we do">
+          <h3>What we do</h3>
+          <ul class="footer__list">
+            <li><a href="/what-we-do/housing/">Housing</a></li>
+            <li><a href="/what-we-do/healthcare/">Healthcare</a></li>
+            <li><a href="/what-we-do/education/">Education</a></li>
+            <li><a href="/what-we-do/transportation/">Transportation</a></li>
+            <li><a href="/what-we-do/financial-security/">Money and benefits</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Footer: about this organisation">
+          <h3>About us</h3>
+          <ul class="footer__list">
+            <li><a href="/about/">About Be Enabled Advocacy Alliance</a></li>
+            <li><a href="/get-involved/">Get involved</a></li>
+            <li><a href="/contact/">Contact us</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Footer: help and site information">
+          <h3>Help</h3>
+          <ul class="footer__list">
+            <li><a href="/accessibility/">Accessibility statement</a></li>
+            <li><a href="/glossary/">Word list</a></li>
+            <li><a href="/privacy/">Privacy</a></li>
+            <li><a href="/sitemap/">All pages on this site</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer__legal">
+        <p>Be Enabled Advocacy Alliance is a non-profit organisation under
+           section 501(c)(3) of the United States tax code.
+           <!-- TODO(content): EIN, mailing address, and year founded. See CONTENT-TODO.md -->
+        </p>
+        <p>Something on this site hard to use? <a href="/accessibility/#report">Tell us about an access barrier</a> and we will reply within five working days.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- /@partial:footer -->
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

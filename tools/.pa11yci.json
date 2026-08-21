@@ -1,0 +1,35 @@
+{
+  "defaults": {
+    "standard": "WCAG2AAA",
+    "runners": [
+      "htmlcs",
+      "axe"
+    ],
+    "timeout": 30000,
+    "chromeLaunchConfig": {
+      "args": [
+        "--no-sandbox",
+        "--disable-dev-shm-usage"
+      ]
+    },
+    "hideElements": "",
+    "ignore": []
+  },
+  "urls": [
+    "http://localhost:8080/",
+    "http://localhost:8080/about/",
+    "http://localhost:8080/what-we-do/",
+    "http://localhost:8080/what-we-do/housing/",
+    "http://localhost:8080/what-we-do/healthcare/",
+    "http://localhost:8080/what-we-do/education/",
+    "http://localhost:8080/what-we-do/transportation/",
+    "http://localhost:8080/what-we-do/financial-security/",
+    "http://localhost:8080/get-involved/",
+    "http://localhost:8080/contact/",
+    "http://localhost:8080/accessibility/",
+    "http://localhost:8080/glossary/",
+    "http://localhost:8080/privacy/",
+    "http://localhost:8080/sitemap/",
+    "http://localhost:8080/404.html"
+  ]
+}

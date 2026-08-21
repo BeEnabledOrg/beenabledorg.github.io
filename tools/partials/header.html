@@ -1,0 +1,95 @@
+  <div class="skip-links">
+    <a href="#main">Skip to main content</a>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="/">
+        __WHEEL__
+        <span class="brand__name"><b>Be Enabled</b><span>Advocacy Alliance</span></span>
+      </a>
+
+      <details class="nav-toggle">
+        <summary aria-label="Menu">
+          <svg class="nav-toggle__icon nav-toggle__icon--menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <svg class="nav-toggle__icon nav-toggle__icon--menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span>Menu</span>
+        </summary>
+      </details>
+
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="/about/"__CUR_ABOUT__>About</a></li>
+          <li><a class="nav__link" href="/what-we-do/"__CUR_WHAT__>What we do</a></li>
+          <li><a class="nav__link" href="/get-involved/"__CUR_GET__>Get involved</a></li>
+          <li><a class="nav__link" href="/contact/"__CUR_CONTACT__>Contact</a></li>
+        </ul>
+      </nav>
+
+      <details class="settings" id="display-settings">
+        <summary>
+          <svg class="settings__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 7h10M18 7h2M4 17h6M14 17h6M16 4v6M10 14v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span>Display settings</span>
+        </summary>
+
+        <div class="settings__panel">
+          <fieldset>
+            <legend>Colour theme</legend>
+            <div class="radio-row" role="none">
+              <label><input type="radio" name="theme" value="auto" checked> Match my device</label>
+              <label><input type="radio" name="theme" value="light"> Light</label>
+              <label><input type="radio" name="theme" value="dark"> Dark</label>
+              <label><input type="radio" name="theme" value="contrast"> High contrast</label>
+              <label><input type="radio" name="theme" value="warm"> Warm (less blue light)</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Text size</legend>
+            <div class="radio-row">
+              <label><input type="radio" name="text-size" value="100" checked> Normal</label>
+              <label><input type="radio" name="text-size" value="125"> Large</label>
+              <label><input type="radio" name="text-size" value="150"> Larger</label>
+              <label><input type="radio" name="text-size" value="200"> Largest</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Space between lines</legend>
+            <div class="radio-row">
+              <label><input type="radio" name="line-height" value="160" checked> Normal</label>
+              <label><input type="radio" name="line-height" value="175"> Roomy</label>
+              <label><input type="radio" name="line-height" value="200"> Roomiest</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Movement</legend>
+            <div class="radio-row">
+              <label><input type="radio" name="motion" value="auto" checked> Match my device</label>
+              <label><input type="radio" name="motion" value="reduce"> Reduce movement</label>
+            </div>
+          </fieldset>
+
+          <div>
+            <button type="button" class="btn btn--secondary" data-settings-reset>Reset display settings</button>
+            <p class="field__hint" id="settings-help">Your choices are saved in this browser only. We never send them anywhere.</p>
+            <p class="form-status" role="status" data-settings-status></p>
+          </div>
+
+          <noscript>
+            <p class="field__hint">These controls need JavaScript. Your browser and
+            operating system offer the same options: use your browser zoom for text
+            size, and your system appearance settings for light, dark, or
+            high-contrast colours. This site follows all of them.</p>
+          </noscript>
+        </div>
+      </details>
+    </div>
+  </header>

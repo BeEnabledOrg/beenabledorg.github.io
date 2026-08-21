@@ -1,0 +1,29 @@
+{
+  "name": "beenabledorg-website",
+  "private": true,
+  "description": "Be Enabled Advocacy Alliance website. Static HTML/CSS/JS, WCAG 2.2 Level AAA.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "serve": "python3 -m http.server 8080",
+    "sitemap": "node tools/sitemap.mjs",
+    "check": "npm run check:contrast && npm run check:partials && npm run check:read && npm run check:links && npm run check:seo && npm run check:sitemap && npm run check:html",
+    "check:contrast": "node tools/contrast.mjs",
+    "check:partials": "node tools/sync-partials.mjs",
+    "check:read": "node tools/readability.mjs",
+    "check:links": "node tools/link-text.mjs",
+    "check:seo": "node tools/seo-check.mjs",
+    "check:sitemap": "node tools/sitemap.mjs --check",
+    "check:html": "html-validate \"**/*.html\"",
+    "check:a11y": "pa11y-ci --config tools/.pa11yci.json",
+    "check:all": "npm run check && npm run check:a11y && npm run check:themes && npm run check:targets && npm run check:interaction",
+    "check:targets": "node tools/target-size.mjs",
+    "check:interaction": "node tools/interaction-test.mjs",
+    "check:themes": "node tools/theme-scan.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/cli": "^4.10.0",
+    "html-validate": "^8.24.0",
+    "pa11y-ci": "^3.1.0"
+  }
+}
