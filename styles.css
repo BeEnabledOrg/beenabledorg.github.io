@@ -4,8 +4,8 @@
    Be Enabled Advocacy Alliance — beenabled.org
    Target: WCAG 2.2 Level AAA
 
-   Every colour pair in the token blocks below is verified by tools/contrast.mjs.
-   Do not add a colour without adding it to that script's PAIRS table.
+   Every color pair in the token blocks below is verified by tools/contrast.mjs.
+   Do not add a color without adding it to that script's PAIRS table.
 
    Contents
      1. Fonts
@@ -26,7 +26,7 @@
     16. Wheel motif + decoration
     17. Utilities
     18. Motion                   (SC 2.3.3)
-    19. Forced colours + print
+    19. Forced colors + print
    ========================================================================== */
 
 /* 1. Fonts ---------------------------------------------------------------- */
@@ -269,7 +269,7 @@ input, button, textarea, select { font: inherit; color: inherit; }
 
 /* 4. Base typography ------------------------------------------------------ */
 html {
-  /* Percentage, never px, so the browser's own font-size setting is honoured. */
+  /* Percentage, never px, so the browser's own font-size setting is honored. */
   font-size: calc(100% * var(--ui-scale));
   /* SC 2.4.12 — anchor jumps must never park a focused element under anything. */
   scroll-padding-block-start: var(--space-6);
@@ -333,7 +333,7 @@ blockquote {
    The underline is not decoration. At AAA both body text and link text must
    clear 7:1, which squeezes them into one narrow luminance band: our link is
    only 1.40:1 against body text, far under the 3:1 that SC 1.4.1 demands when
-   colour is the sole differentiator. So links are ALWAYS underlined in prose.
+   color is the sole differentiator. So links are ALWAYS underlined in prose.
    Never write `text-decoration: none` on a prose link. ------------------- */
 a {
   color: var(--link);
@@ -497,7 +497,7 @@ main:focus-visible { outline: var(--ring) solid var(--focus-a); }
 .nav__link:hover { background-color: var(--surface-sunken); text-decoration: underline; }
 
 /* SC 2.4.8 Location — the current page is marked in the markup, and the
-   underline means it is not signalled by colour alone (SC 1.4.1). */
+   underline means it is not signaled by color alone (SC 1.4.1). */
 .nav__link[aria-current="page"] {
   color: var(--brand-strong);
   background-color: var(--surface-sunken);
@@ -635,8 +635,8 @@ main:focus-visible { outline: var(--ring) solid var(--focus-a); }
 .card__link { text-decoration: underline; }
 .card__meta { font-size: var(--step--1); color: var(--text-muted); }
 
-/* Domain cards carry a colour band. The band is decoration; the heading text
-   and an icon always repeat the meaning, so nothing depends on colour alone
+/* Domain cards carry a color band. The band is decoration; the heading text
+   and an icon always repeat the meaning, so nothing depends on color alone
    (SC 1.4.1). */
 .card--domain { border-block-start-width: 0.5rem; }
 .card--housing        { border-block-start-color: var(--brand); }
@@ -849,7 +849,7 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
 
 /* 15. Display settings panel ----------------------------------------------
    This is the mechanism for SC 1.4.8 item 1 (user-selectable foreground and
-   background colours). Built from <details> + radio inputs so it needs no
+   background colors). Built from <details> + radio inputs so it needs no
    JavaScript to open, and no dragging (SC 2.5.7 — never an <input type=range>).
    With JS off the panel is hidden and a <noscript> note points to the
    equivalent browser and OS settings, which satisfy the same criterion by
@@ -941,7 +941,7 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
   scroll-behavior: auto !important;
 }
 
-/* 19. Forced colours + print ----------------------------------------------- */
+/* 19. Forced colors + print ----------------------------------------------- */
 @media (forced-colors: active) {
   .btn, .card, .field input, .field textarea, .field select, .in-short {
     border: 2px solid ButtonBorder;

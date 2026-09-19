@@ -39,7 +39,7 @@ those reliably fail Level AAA and cannot be fixed from the outside.
 Both are `href="#"` right now. Keep them as outbound links rather than embedding
 the provider's form on the page.
 
-## Programme detail
+## Program detail
 
 | What | Where it goes |
 |---|---|
