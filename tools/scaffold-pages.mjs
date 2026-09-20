@@ -35,6 +35,7 @@ const headerFor = (page) => {
   for (const [token, prefix] of [
     ["__CUR_ABOUT__", "/about/"],
     ["__CUR_WHAT__", "/what-we-do/"],
+    ["__CUR_RESOURCES__", "/resources/"],
     ["__CUR_GET__", "/get-involved/"],
     ["__CUR_CONTACT__", "/contact/"],
   ]) {
@@ -51,9 +52,11 @@ const breadcrumb = (page) => {
     ...items.map((i) => `          <li><a href="${i.url}">${i.name}</a></li>`),
     `          <li><span aria-current="page">${page.crumb ?? page.h1}</span></li>`,
   ].join("\n");
+  /* No heading here: aria-label="Breadcrumb" already names the landmark, and
+     a second, visually-hidden <h2> made this the page's first heading,
+     ahead of its own <h1> (SC 1.3.1 — the document must start at h1). */
   return `
     <nav class="wrap breadcrumb" aria-label="Breadcrumb">
-      <h2 class="visually-hidden">Where you are</h2>
       <ol class="breadcrumb__list">
 ${lis}
         </ol>

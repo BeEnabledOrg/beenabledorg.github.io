@@ -78,6 +78,75 @@ const domainCards = DOMAINS.map(
           </li>`
 ).join("\n");
 
+/* ---------------------------------------------------------- Resource Hub --
+   Shared reference data for the Resource Hub & Calendar and its submission
+   form. All 88 Ohio counties are listed from day one, whether or not a
+   county has an approved listing yet — see tools/content.mjs's own note
+   below and CONTENT-TODO.md. */
+const OHIO_COUNTIES = [
+  "Adams", "Allen", "Ashland", "Ashtabula", "Athens", "Auglaize", "Belmont",
+  "Brown", "Butler", "Carroll", "Champaign", "Clark", "Clermont", "Clinton",
+  "Columbiana", "Coshocton", "Crawford", "Cuyahoga", "Darke", "Defiance",
+  "Delaware", "Erie", "Fairfield", "Fayette", "Franklin", "Fulton", "Gallia",
+  "Geauga", "Greene", "Guernsey", "Hamilton", "Hancock", "Hardin", "Harrison",
+  "Henry", "Highland", "Hocking", "Holmes", "Huron", "Jackson", "Jefferson",
+  "Knox", "Lake", "Lawrence", "Licking", "Logan", "Lorain", "Lucas",
+  "Madison", "Mahoning", "Marion", "Medina", "Meigs", "Mercer", "Miami",
+  "Monroe", "Montgomery", "Morgan", "Morrow", "Muskingum", "Noble", "Ottawa",
+  "Paulding", "Perry", "Pickaway", "Pike", "Portage", "Preble", "Putnam",
+  "Richland", "Ross", "Sandusky", "Scioto", "Seneca", "Shelby", "Stark",
+  "Summit", "Trumbull", "Tuscarawas", "Union", "Van Wert", "Vinton", "Warren",
+  "Washington", "Wayne", "Williams", "Wood", "Wyandot",
+];
+
+const HUB_CATEGORIES = [
+  "Housing", "Employment", "Transportation", "Social and Recreation", "Health",
+  "Peer Support", "Respite",
+];
+
+const HUB_AGENCY_TYPES = [
+  "County board of developmental disabilities",
+  "Nonprofit provider",
+  "State agency",
+  "Self-advocacy group",
+];
+
+const HUB_DISABILITY_TYPES = [
+  "Developmental disability", "Autism", "Physical disability", "Sensory disability",
+];
+
+const countyOptions = ['          <option value="">All counties</option>']
+  .concat(OHIO_COUNTIES.map((c) => `          <option value="${c}">${c}</option>`))
+  .join("\n");
+
+const countyOptionsRequired = ['          <option value="" disabled selected>Choose a county</option>']
+  .concat(OHIO_COUNTIES.map((c) => `          <option value="${c}">${c}</option>`))
+  .join("\n");
+
+const agencyOptions = ['          <option value="">All agency types</option>']
+  .concat(HUB_AGENCY_TYPES.map((a) => `          <option value="${a}">${a}</option>`))
+  .join("\n");
+
+const agencyOptionsRequired = ['          <option value="" disabled selected>Choose one</option>']
+  .concat(HUB_AGENCY_TYPES.map((a) => `          <option value="${a}">${a}</option>`))
+  .join("\n");
+
+const disabilityOptions = ['          <option value="">All disability types</option>']
+  .concat(HUB_DISABILITY_TYPES.map((d) => `          <option value="${d}">${d}</option>`))
+  .join("\n");
+
+const disabilityOptionsRequired = ['          <option value="" disabled selected>Choose one</option>']
+  .concat(HUB_DISABILITY_TYPES.map((d) => `          <option value="${d}">${d}</option>`))
+  .join("\n");
+
+const topicChips = HUB_CATEGORIES.map(
+  (c) => `          <button type="button" class="chip" data-topic="${c}" aria-pressed="false">${c}</button>`
+).join("\n");
+
+const categoryCheckboxes = HUB_CATEGORIES.map(
+  (c) => `            <label><input type="checkbox" name="category[]" value="${c}"> ${c}</label>`
+).join("\n");
+
 export const PAGES = [
   /* ---------------------------------------------------------------- Home */
   {
@@ -159,6 +228,16 @@ ${domainCards}
            is not really support.</p>
         <p>Access is the thread that runs through all of it. We work on the whole
            thread, and on the power communities need to defend it.</p>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap wrap--narrow stack">
+        <h2>Finding help near you</h2>
+        <p>Our <a href="/resources/">Resource Hub &amp; Calendar</a> brings
+           disability programs, services, and events from Ohio counties and
+           agencies into one searchable place.</p>
+        <p><a class="btn btn--primary" href="/resources/">Browse the Resource Hub</a></p>
       </div>
     </section>
 ${CTA}`,
@@ -575,6 +654,298 @@ const DOMAIN_PAGES = [
 
 PAGES.push(...DOMAIN_PAGES);
 
+/* --------------------------------------------------------- Resource Hub -- */
+PAGES.push(
+  {
+    file: "resources/index.html",
+    url: "/resources/",
+    title: "Resource Hub and Calendar | Be Enabled Advocacy Alliance",
+    description:
+      "Disability programs, services, and events from counties and agencies across Ohio, searchable by county, topic, and disability type.",
+    h1: "Resource Hub and Calendar",
+    crumb: "Resource Hub and Calendar",
+    trail: [],
+    body: `
+    <section class="section">
+      <div class="wrap wrap--narrow stack">
+        <h1>Resource Hub &amp; Calendar</h1>
+        <p class="lede">Disability programs, services, and events from across
+           Ohio, in one place you can search.</p>
+
+        <div class="in-short">
+          <h2>In short</h2>
+          <p>This page lists disability programs, services, and events from Ohio counties and agencies.</p>
+          <p>You can search by county, topic, and disability type.</p>
+          <p>An agency tells us about a program using our form, and our team checks it before it appears here.</p>
+          <p>This page is new, so nothing is listed here yet.</p>
+        </div>
+
+        <h2>What this is</h2>
+        <p>Finding disability services in Ohio usually means checking one
+           county at a time, or one agency at a time. The Resource Hub brings
+           that information into one searchable place instead.</p>
+        <p>It covers ongoing programs, such as a weekly peer support group, and
+           one-time events, such as a benefits workshop. Each one is tagged
+           with its county, its topic, and the kind of disability it serves,
+           so you can search by whichever of those matters to you.</p>
+        <p>We are building this out gradually, starting with a small number of
+           counties and growing from there. Every one of Ohio's 88 counties is
+           already in the search below, even the ones without a listing yet.</p>
+
+        <h2>How a program gets listed here</h2>
+        <p>Agencies and counties do not post directly to this page.</p>
+        <ol class="tick-list">
+          <li>An agency tells us about their program using the
+              <a href="/resources/submit/">submission form</a>.</li>
+          <li>Our team checks it for accuracy and plain language.</li>
+          <li>Once we approve it, it appears here for everyone to find. If we
+              need a change first, we send it back to the agency with a note.</li>
+        </ol>
+        <p>Know a program that should be here?
+           <a href="/resources/submit/">Submit a program</a>, whether or not
+           you run it yourself.</p>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap stack">
+        <h2>Browse programs and events</h2>
+
+        <h3>Browse by topic</h3>
+        <p>Pick a topic to jump straight to programs about it.</p>
+        <div class="chip-group" role="group" aria-label="Browse by topic" id="hubTopics">
+${topicChips}
+        </div>
+
+        <h3>Filter and search</h3>
+        <div class="hub-filters">
+          <div class="field">
+            <label for="hubCounty">County</label>
+            <select id="hubCounty">
+${countyOptions}
+            </select>
+          </div>
+          <div class="field">
+            <label for="hubAgencyType">Agency type</label>
+            <select id="hubAgencyType">
+${agencyOptions}
+            </select>
+          </div>
+          <div class="field">
+            <label for="hubDisability">Disability type</label>
+            <select id="hubDisability">
+${disabilityOptions}
+            </select>
+          </div>
+          <div class="field">
+            <label for="hubSearch">Search by name or description</label>
+            <input type="search" id="hubSearch" autocomplete="off" aria-describedby="hubFilterHint">
+          </div>
+        </div>
+        <p class="field__hint" id="hubFilterHint">Filters apply together. Choose "All" again to clear one.</p>
+
+        <noscript>
+          <p class="field__hint">These filters need JavaScript to work.
+             Without it, this page shows every approved program below. Use
+             your browser's own find function (often Ctrl+F, or Cmd+F on a
+             Mac) to search this page for a county or topic.</p>
+        </noscript>
+
+        <h3>View</h3>
+        <div class="view-toggle" role="group" aria-label="View">
+          <button type="button" data-view="list" aria-pressed="true">List</button>
+          <button type="button" data-view="day" aria-pressed="false">Day</button>
+          <button type="button" data-view="month" aria-pressed="false">Month</button>
+        </div>
+
+        <div id="hubListPanel">
+          <p class="hub-empty" id="hubEmpty">No programs are listed here yet.
+             <a href="/resources/submit/">Submit a program</a> to help us
+             start filling this in.</p>
+          <ul class="listing-list" id="hubList">
+            <!-- TODO(content): each approved program or event is one
+                 <li class="listing-card"> here. See CONTENT-TODO.md for the
+                 exact markup a listing needs — the Day and Month views below
+                 read it straight off this markup, so nothing else needs to
+                 change when a listing is added. -->
+          </ul>
+        </div>
+
+        <div id="hubDayPanel" hidden>
+          <div class="day-nav">
+            <button type="button" class="btn btn--secondary" id="hubDayPrev">Previous day</button>
+            <h4 id="hubDayLabel" tabindex="-1">Today</h4>
+            <button type="button" class="btn btn--secondary" id="hubDayNext">Next day</button>
+          </div>
+          <div id="hubDayAgenda" class="flow"></div>
+        </div>
+
+        <div id="hubMonthPanel" hidden>
+          <div class="day-nav">
+            <button type="button" class="btn btn--secondary" id="hubMonthPrev">Previous month</button>
+            <h4 id="hubMonthLabel" tabindex="-1">This month</h4>
+            <button type="button" class="btn btn--secondary" id="hubMonthNext">Next month</button>
+          </div>
+          <div id="hubMonthAgenda" class="flow"></div>
+        </div>
+      </div>
+    </section>
+${CTA}`,
+  },
+
+  /* -------------------------------------------------- Submit a program -- */
+  {
+    file: "resources/submit/index.html",
+    url: "/resources/submit/",
+    title: "Submit a Program | Be Enabled Advocacy Alliance",
+    description:
+      "Tell us about a disability program, service, or event so our team can review it and add it to the Ohio Resource Hub and Calendar.",
+    h1: "Submit a program",
+    crumb: "Submit a program",
+    trail: [{ name: "Resource Hub and Calendar", url: "/resources/" }],
+    body: `
+    <section class="section">
+      <div class="wrap wrap--narrow stack">
+        <h1>Submit a program</h1>
+        <p class="lede">Tell us about a disability program, service, or event
+           for the <a href="/resources/">Resource Hub &amp; Calendar</a>.</p>
+
+        <div class="in-short">
+          <h2>In short</h2>
+          <p>Use this form to tell us about a program, service, or event.</p>
+          <p>Our team checks every submission before it goes on the public Hub.</p>
+          <p>If we need a change first, we will get back to you using the contact details you give us.</p>
+        </div>
+
+        <h2>Before you start</h2>
+        <p>Anyone can use this form: the agency that runs a program, or
+           someone who just knows about one. It does not post live right
+           away. Our small team reviews it, may follow up with the agency for
+           anything unclear, and only then adds it to the public Hub.</p>
+        <p>Have several programs to add, or a lot of detail to share? Use the
+           <a href="/contact/">contact form</a> instead and we will work out
+           the best way to get it all in.</p>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap wrap--narrow stack">
+        <h2>Tell us about the program</h2>
+
+        <!-- SC 3.3.6 Error Prevention (All): app.js adds the same
+             review-and-confirm step used on the contact form.
+             TODO(content): set action to the real form endpoint, same as
+             the contact form. See CONTENT-TODO.md -->
+        <form class="contact-form" id="sp" method="post" action="#" data-confirm-before-send novalidate>
+          <div class="field">
+            <label for="sp-title">Program or event name <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-title-hint">What is it called?</p>
+            <input type="text" id="sp-title" name="title" required data-required-message="Please give the program or event a name." aria-describedby="sp-title-hint">
+            <p class="field__error" id="sp-title-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-description">Description <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-description-hint">Describe it in plain language, as you would to someone who has never heard of it.</p>
+            <textarea id="sp-description" name="description" required data-required-message="Please add a short description." aria-describedby="sp-description-hint"></textarea>
+            <p class="field__error" id="sp-description-error"></p>
+          </div>
+
+          <fieldset>
+            <legend>Category <span class="field__req">(choose all that apply)</span></legend>
+            <div class="radio-row">
+${categoryCheckboxes}
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="sp-county">County <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-county-hint">Which county is this based in?</p>
+            <select id="sp-county" name="county" required data-required-message="Please choose the county this is based in." aria-describedby="sp-county-hint">
+${countyOptionsRequired}
+            </select>
+            <p class="field__error" id="sp-county-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-other-counties">Other counties or regions this also serves <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="sp-other-counties-hint">Leave this blank if it only serves the county above.</p>
+            <input type="text" id="sp-other-counties" name="otherCounties" aria-describedby="sp-other-counties-hint">
+          </div>
+
+          <div class="field">
+            <label for="sp-disability">Disability type <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-disability-hint">Choose the closest match. Choose "Developmental disability" if it is open to everyone.</p>
+            <select id="sp-disability" name="disabilityType" required data-required-message="Please choose the disability type this program is for." aria-describedby="sp-disability-hint">
+${disabilityOptionsRequired}
+            </select>
+            <p class="field__error" id="sp-disability-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-datetime">Date and time <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="sp-datetime-hint">Leave this blank for an ongoing program. Fill it in for a one-time event.</p>
+            <input type="datetime-local" id="sp-datetime" name="dateTime" aria-describedby="sp-datetime-hint">
+          </div>
+
+          <div class="field">
+            <label for="sp-location">Location <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-location-hint">A street address, or "Virtual" if there is no physical location.</p>
+            <input type="text" id="sp-location" name="location" required data-required-message="Please add a location, or write &quot;Virtual&quot;." aria-describedby="sp-location-hint">
+            <p class="field__error" id="sp-location-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-access">Accessibility notes <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="sp-access-hint">For example: wheelchair accessible, ASL interpretation, sensory-friendly hours.</p>
+            <textarea id="sp-access" name="accessibilityNotes" aria-describedby="sp-access-hint"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="sp-agency-name">Agency name <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-agency-name-hint">The organisation running this program.</p>
+            <input type="text" id="sp-agency-name" name="agencyName" required data-required-message="Please add the name of the organisation running this." aria-describedby="sp-agency-name-hint">
+            <p class="field__error" id="sp-agency-name-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-agency-type">Agency type <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-agency-type-hint">The kind of organisation running this program.</p>
+            <select id="sp-agency-type" name="agencyType" required data-required-message="Please choose the kind of organisation this is." aria-describedby="sp-agency-type-hint">
+${agencyOptionsRequired}
+            </select>
+            <p class="field__error" id="sp-agency-type-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-contact-name">Your name <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="sp-contact-name-hint">Who should we contact if we have a question about this submission?</p>
+            <input type="text" id="sp-contact-name" name="contactName" autocomplete="name" aria-describedby="sp-contact-name-hint">
+          </div>
+
+          <div class="field">
+            <label for="sp-contact-email">Your email address <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-contact-email-hint">So we can reach you about this submission or send it back if we need a change.</p>
+            <input type="email" id="sp-contact-email" name="contactEmail" required data-required-message="Please add an email address so we can reach you about this submission." autocomplete="email" aria-describedby="sp-contact-email-hint">
+            <p class="field__error" id="sp-contact-email-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-contact-phone">Your phone number <span class="field__req">(optional)</span></label>
+            <input type="tel" id="sp-contact-phone" name="contactPhone" autocomplete="tel">
+          </div>
+
+          <p class="btn-row" style="margin-block-start: var(--space-6)">
+            <button type="submit" class="btn btn--primary">Send this submission</button>
+          </p>
+
+          <div class="form-status" role="status" data-form-status></div>
+        </form>
+      </div>
+    </section>`,
+  },
+);
+
 /* ----------------------------------------------------------- Glossary --
    Required by SC 3.1.3 Unusual Words and SC 3.1.4 Abbreviations. An
    <abbr title> alone does not satisfy AAA, because the title attribute cannot
@@ -746,7 +1117,7 @@ PAGES.push(
              confirmed. With JavaScript off this posts directly and the browser's
              own required-field checks apply.
              TODO(content): set action to the real form endpoint. -->
-        <form class="contact-form" method="post" action="#" data-confirm-before-send novalidate>
+        <form class="contact-form" id="cf" method="post" action="#" data-confirm-before-send novalidate>
           <div class="field">
             <label for="cf-name">Your name <span class="field__req">(optional)</span></label>
             <p class="field__hint" id="cf-name-hint">What should we call you? You can leave this blank.</p>
@@ -777,7 +1148,7 @@ PAGES.push(
           <div class="field">
             <label for="cf-message">Your message <span class="field__req">(required)</span></label>
             <p class="field__hint" id="cf-message-hint">Tell us what is going on. There is no wrong way to write it, and you do not need to use official words.</p>
-            <textarea id="cf-message" name="message" required aria-describedby="cf-message-hint"></textarea>
+            <textarea id="cf-message" name="message" required data-required-message="Please write your message before sending. This is the only box we need." aria-describedby="cf-message-hint"></textarea>
             <p class="field__error" id="cf-message-error"></p>
           </div>
 
@@ -1023,6 +1394,12 @@ ${glossaryBody}
           <li><a href="/what-we-do/">What we do</a></li>
           <li><a href="/get-involved/">Get involved</a></li>
           <li><a href="/contact/">Contact us</a></li>
+        </ul>
+
+        <h2>Projects</h2>
+        <ul class="tick-list tick-list--nav">
+          <li><a href="/resources/">Resource Hub &amp; Calendar</a></li>
+          <li><a href="/resources/submit/">Submit a program</a></li>
         </ul>
 
         <h2>The five areas we work on</h2>

@@ -25,6 +25,7 @@ index.html                  Home
 about/                      About BEAA
 what-we-do/                 Hub for the five areas
   housing/ healthcare/ education/ transportation/ financial-security/
+resources/                  Resource Hub & Calendar (EnableMe) and its submission form
 get-involved/  contact/     Calls to action
 accessibility/              Conformance claim and documented exceptions
 glossary/  privacy/  sitemap/

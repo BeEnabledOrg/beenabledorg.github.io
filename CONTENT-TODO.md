@@ -44,7 +44,48 @@ the provider's form on the page.
 | What | Where it goes |
 |---|---|
 | What the Blue Envelope Project actually is, in two or three plain sentences | `glossary/index.html` (`#blue-envelope-project`) |
-| Whether EnableMe and other projects should get their own pages | new `projects/` section |
+
+## Resource Hub & Calendar (EnableMe) — blocking before it's useful
+
+`resources/index.html` is live, filterable, and works with JavaScript off, but
+it ships with zero listings on purpose: this site does not fill a real
+organisation's pages with invented placeholder data, and BEAA has not
+approved any programs yet.
+
+| What | Where it goes |
+|---|---|
+| Real, approved program and event listings | `resources/index.html`, inside `<ul id="hubList">` |
+| Form endpoint for the submission form `action` | `resources/submit/index.html` — same unresolved question as the contact form above |
+
+Once a program is approved, add it as one more `<li class="listing-card">`
+inside `#hubList`. Each one needs, as `data-*` attributes read by `app.js`'s
+Hub filtering and its Day/Month views — nothing else needs to change when a
+listing is added:
+
+```html
+<li class="listing-card"
+    data-title="Program or event name"
+    data-county="Franklin"
+    data-category="Housing,Peer Support"
+    data-agency-type="Nonprofit provider"
+    data-disability-type="Developmental disability"
+    data-date="2026-11-04"
+    data-ongoing="false">
+  <div class="listing-card__tags">
+    <span class="tag">Housing</span>
+    <span class="tag">Peer Support</span>
+  </div>
+  <h3>Program or event name</h3>
+  <p class="listing-card__meta">Franklin County · Nonprofit provider · Developmental disability · November 4, 2026, 10:00 am</p>
+  <p>Plain-language description of the program.</p>
+  <p><strong>Location:</strong> Street address, or "Virtual".</p>
+  <p><strong>Accessibility:</strong> Whatever the agency told us — wheelchair accessible, ASL interpretation, and so on.</p>
+</li>
+```
+
+For an ongoing program with no fixed date, drop `data-date` and set
+`data-ongoing="true"` instead; leave `data-category` as a comma-separated
+list when a program covers more than one topic.
 
 ## Accessibility statement
 

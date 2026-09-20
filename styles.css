@@ -26,7 +26,8 @@
     16. Wheel motif + decoration
     17. Utilities
     18. Motion                   (SC 2.3.3)
-    19. Forced colours + print
+    19. Resource hub
+    20. Forced colours + print
    ========================================================================== */
 
 /* 1. Fonts ---------------------------------------------------------------- */
@@ -941,7 +942,84 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
   scroll-behavior: auto !important;
 }
 
-/* 19. Forced colours + print ----------------------------------------------- */
+/* 19. Resource hub ---------------------------------------------------------
+   Filters, topic chips, the List/Day/Month toggle, and listing cards for
+   /resources/. Every colour used here is one already proven in section 2's
+   PAIRS table — nothing new to add to tools/contrast.mjs. */
+.hub-filters {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+}
+
+.chip-group, .view-toggle { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+.chip, .view-toggle button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--target);
+  min-width: var(--target);
+  padding-inline: var(--space-5);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-full);
+  background-color: var(--surface);
+  color: var(--text);
+  font-family: var(--font-head);
+  font-weight: 700;
+  cursor: pointer;
+}
+.view-toggle button { border-radius: var(--radius); }
+
+.chip[aria-pressed="true"], .view-toggle button[aria-pressed="true"] {
+  background-color: var(--brand);
+  color: var(--brand-contrast);
+  border-color: var(--brand);
+}
+
+.day-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.day-nav h4 { margin: 0; }
+
+.listing-list { display: grid; gap: var(--space-5); }
+
+.listing-card {
+  padding: var(--space-5);
+  background-color: var(--surface);
+  border: 2px solid var(--border);
+  border-inline-start-width: 0.5rem;
+  border-inline-start-color: var(--brand);
+  border-radius: var(--radius-lg);
+}
+.listing-card > * + * { margin-block-start: var(--space-3); }
+.listing-card > h3 { margin-block-start: 0; color: var(--brand-strong); }
+
+.listing-card__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--step--1);
+  font-weight: 700;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background-color: var(--surface-sunken);
+  color: var(--text);
+}
+.listing-card__meta { color: var(--text-muted); font-size: var(--step--1); }
+
+.hub-empty {
+  padding: var(--space-5);
+  background-color: var(--surface-raised);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+}
+
+/* 20. Forced colours + print ----------------------------------------------- */
 @media (forced-colors: active) {
   .btn, .card, .field input, .field textarea, .field select, .in-short {
     border: 2px solid ButtonBorder;
