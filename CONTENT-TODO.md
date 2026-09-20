@@ -45,21 +45,37 @@ the provider's form on the page.
 |---|---|
 | What the Blue Envelope Project actually is, in two or three plain sentences | `glossary/index.html` (`#blue-envelope-project`) |
 
-## Resource Hub & Calendar (EnableMe) — blocking before it's useful
+## Resource Hub & Calendar (EnableMe)
 
-`resources/index.html` is live, filterable, and works with JavaScript off, but
-it ships with zero listings on purpose: this site does not fill a real
-organisation's pages with invented placeholder data, and BEAA has not
-approved any programs yet.
+`resources/index.html` is live, filterable, and works with JavaScript off. It
+now carries 45 real listings (in `tools/content.mjs`, the `HUB_LISTINGS`
+array), sourced from Jen's own Content Source Inventory workbook — every one
+checked against the organization's own site, with a link back to that site on
+the card. None of these came through the agency submission form; they were
+compiled directly by the team, which is why the page copy on `/resources/`
+says so plainly rather than implying they were all agency-submitted.
+
+Still blocking before this is fully useful:
 
 | What | Where it goes |
 |---|---|
-| Real, approved program and event listings | `resources/index.html`, inside `<ul id="hubList">` |
+| More listings, especially from counties with none yet | `tools/content.mjs`, the `HUB_LISTINGS` array |
 | Form endpoint for the submission form `action` | `resources/submit/index.html` — same unresolved question as the contact form above |
+| A pass to re-check the workbook's still-parked tabs (Day Programs & Providers, County Boards, Libraries, and the rest) once resources reopen beyond Calendar-only scope | see the workbook's Read Me sheet |
 
-Once a program is approved, add it as one more `<li class="listing-card">`
-inside `#hubList`. Each one needs, as `data-*` attributes read by `app.js`'s
-Hub filtering and its Day/Month views — nothing else needs to change when a
+The workbook flags several real, dated finds that could not be promoted this
+round for reasons worth revisiting rather than re-deciding from scratch:
+past-cycle events waiting on next year's date (e.g. DD Awareness & Advocacy
+Day, the Franklin and Lucas County provider fairs, the Clark DD Rockin' Ball),
+recurring series whose current schedule needs a fresh pull close to drafting
+time (e.g. Autism Society Mahoning Valley and Dayton's family calendars), and
+a couple of good finds outside Ohio or aimed at an employer audience rather
+than individuals and families (the Arc's National Convention, OOD's employer
+webinar series). None of those are in `HUB_LISTINGS` yet.
+
+New listings, whether promoted from the workbook or added by hand, follow the
+same format. Each one needs these `data-*` attributes, read by `app.js`'s Hub
+filtering and its Day/Month views — nothing else needs to change when a
 listing is added:
 
 ```html
