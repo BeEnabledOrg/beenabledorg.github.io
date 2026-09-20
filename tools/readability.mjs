@@ -23,6 +23,7 @@ const GRADE_LIMIT = 9;   // lower secondary
 /* Names and fixed titles the criterion excludes from the measurement. */
 const PROPER = [
   "Be Enabled Advocacy Alliance", "Be Enabled", "BEAA", "Blue Envelope Project",
+  "EnableMe",
   "Supplemental Security Income", "Social Security Disability Insurance",
   "Home and Community-Based Services", "Individualized Education Program",
   "Americans with Disabilities Act", "Fair Labor Standards Act",

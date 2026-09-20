@@ -34,7 +34,8 @@ const headerFor = (page) => {
   // SC 2.4.8 Location — mark the current top-level section.
   for (const [token, prefix] of [
     ["__CUR_ABOUT__", "/about/"],
-    ["__CUR_WHAT__", "/what-we-do/"],
+    ["__CUR_ENABLEME__", "/enableme/"],
+    ["__CUR_BLUE__", "/blue-envelope/"],
     ["__CUR_GET__", "/get-involved/"],
     ["__CUR_CONTACT__", "/contact/"],
   ]) {
@@ -60,7 +61,7 @@ ${lis}
     </nav>`;
 };
 
-/* JSON-LD. The organisation is emitted once with a stable @id and referenced
+/* JSON-LD. The organization is emitted once with a stable @id and referenced
    by @id everywhere else, so the graph stays consistent across pages. */
 const jsonld = (page) => {
   const graph = [];

@@ -2,58 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://beenabled.org/about/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/accessibility/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
+  </url>
+  <url>
+    <loc>https://beenabled.org/blue-envelope/</loc>
+    <lastmod>2026-09-20</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/contact/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
+  </url>
+  <url>
+    <loc>https://beenabled.org/enableme/</loc>
+    <lastmod>2026-09-20</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/get-involved/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/glossary/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/privacy/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/sitemap/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/what-we-do/education/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/what-we-do/financial-security/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/what-we-do/healthcare/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/what-we-do/housing/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/what-we-do/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
   <url>
     <loc>https://beenabled.org/what-we-do/transportation/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
   </url>
 </urlset>

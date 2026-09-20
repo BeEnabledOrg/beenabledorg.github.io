@@ -41,10 +41,26 @@ the provider's form on the page.
 
 ## Program detail
 
+`enableme/index.html` and `blue-envelope/index.html` now exist and are linked
+from the main nav and footer, replacing `what-we-do/` in both (see below).
+Both pages are honest about being pre-launch: no interactive calendar or
+directory yet, because those need more detail before they get built.
+
 | What | Where it goes |
 |---|---|
-| What the Blue Envelope Project actually is, in two or three plain sentences | `glossary/index.html` (`#blue-envelope-project`) |
-| Whether EnableMe and other projects should get their own pages | new `projects/` section |
+| Whether Be Enabled Advocacy Alliance issues Blue Envelope envelopes directly, or only directs people to existing state/local programs | `blue-envelope/index.html` |
+| Calendar feature details (data source, filters, submission process) | `enableme/index.html`, once specified |
+| Directory feature details (what a listing looks like, how programs get added/verified) | `blue-envelope/index.html`, once specified |
+
+## What we do (unlinked)
+
+The five `what-we-do/` subpages (education, financial-security, healthcare,
+housing, transportation) describe work Be Enabled Advocacy Alliance cannot
+yet deliver on. They have been removed from the main nav and footer, but the
+files are kept on disk rather than deleted, in case the content gets reused
+later. `tools/content.mjs` still generates them; `tools/sitemap.mjs` still
+lists them since they exist as files. Don't re-link them without checking
+whether the content is actually deliverable yet.
 
 ## Accessibility statement
 
