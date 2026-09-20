@@ -16,6 +16,7 @@
  *   SC 1.4.9  No text baked into images. Diagrams use inline SVG <text>.
  *   SC 3.2.5  No target="_blank" anywhere.
  */
+import { blueEnvelopePage } from "./content-blue-envelope.mjs";
 
 export const SITE = {
   origin: "https://beenabled.org",
@@ -589,7 +590,7 @@ const TERMS = [
   ["assistive-technology", "Assistive technology", `Any tool that helps a disabled person do something. It covers everything from a walking stick to screen reading software.`],
   ["autonomy", "Autonomy", `Running your own life. Making your own choices about where you live, who supports you, and what you do.`],
   ["benefit-cliff", "Benefit cliff", `The point where earning slightly more money causes benefits to stop suddenly instead of reducing gradually. It can leave someone worse off after a pay rise.`],
-  ["blue-envelope-project", "Blue Envelope Project", `A Be Enabled Advocacy Alliance programme. <!-- TODO(content): describe the programme in two or three plain sentences. See CONTENT-TODO.md -->`],
+  ["blue-envelope-project", "Blue Envelope Project", `A Be Enabled Advocacy Alliance programme. A blue envelope holds a driver's license, registration, and insurance, plus short notes for the driver and for the officer, so a traffic stop can go more smoothly for someone who communicates differently. Using one is always voluntary. See the <a href="/blue-envelope/">Blue Envelope Project page</a> to find a programme near you.`],
   ["direct-support-technology", "Direct support technology", `The everyday tools disabled people use to get through the day. Booking apps, communication devices, and the systems care agencies use to schedule support.`],
   ["disability-led", "Disability-led", `An organisation where disabled people set the agenda and make the decisions, rather than only being asked for their views.`],
   ["dme", "DME (durable medical equipment)", `Equipment prescribed for use over a long period, such as a wheelchair, a hoist, or a hospital bed.`],
@@ -613,6 +614,9 @@ const glossaryBody = TERMS.map(
 ).join("\n");
 
 PAGES.push(
+  /* ------------------------------------------------------ Blue Envelope */
+  blueEnvelopePage,
+
   /* -------------------------------------------------------- Get involved */
   {
     file: "get-involved/index.html",

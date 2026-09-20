@@ -11,6 +11,8 @@
  *                           adds only Escape-to-close and resize cleanup.
  *   3. Contact form       — inline validation plus the review-and-confirm step
  *                           required by SC 3.3.6 Error Prevention (All).
+ *   4. Blue Envelope search — every state is already in the page; this only
+ *                           hides the ones that do not match.
  *
  * Deliberately absent: carousels, modals, scroll animation, smooth scrolling,
  * tooltips, analytics, and cookie banners. Each of those breaks a Level AAA
@@ -263,6 +265,42 @@
       if (!confirmed && statusBox) {
         event.preventDefault();
         review();
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------ 4 --
+     Blue Envelope directory search. Every state is already rendered in the
+     page; this only hides the ones that do not match the search box, and
+     nothing depends on it — with JavaScript off, the full list stays
+     visible and browsable.                                              */
+  var beSearch = document.getElementById("be-search");
+  if (beSearch) {
+    var beCards = Array.prototype.slice.call(
+      document.querySelectorAll("#be-state-list .state-card")
+    );
+    var beCount = document.getElementById("be-result-count");
+    var beHint = document.querySelector("[data-be-hint]");
+    if (beHint) {
+      beHint.textContent = "Type to filter the list below by state, city, county, or agency.";
+    }
+
+    beSearch.addEventListener("input", function () {
+      var q = beSearch.value.trim().toLowerCase();
+      var shown = 0;
+      beCards.forEach(function (card) {
+        var match = !q || (card.dataset.search || "").indexOf(q) !== -1;
+        card.hidden = !match;
+        if (match) shown++;
+      });
+      if (beCount) {
+        if (q) {
+          beCount.hidden = false;
+          beCount.textContent = "Showing " + shown + " of " + beCards.length + " states.";
+        } else {
+          beCount.hidden = true;
+          beCount.textContent = "";
+        }
       }
     });
   }

@@ -35,6 +35,7 @@ const headerFor = (page) => {
   for (const [token, prefix] of [
     ["__CUR_ABOUT__", "/about/"],
     ["__CUR_WHAT__", "/what-we-do/"],
+    ["__CUR_BLUE__", "/blue-envelope/"],
     ["__CUR_GET__", "/get-involved/"],
     ["__CUR_CONTACT__", "/contact/"],
   ]) {

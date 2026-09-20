@@ -43,8 +43,16 @@ the provider's form on the page.
 
 | What | Where it goes |
 |---|---|
-| What the Blue Envelope Project actually is, in two or three plain sentences | `glossary/index.html` (`#blue-envelope-project`) |
 | Whether EnableMe and other projects should get their own pages | new `projects/` section |
+
+The Blue Envelope Project now has its own page at `/blue-envelope/`, with a
+directory of state and local programmes. That directory was compiled through
+research (state agency pages, legislature and bill-tracking sites, and news
+coverage, including research assisted by AI tools) rather than confirmed by
+phone with every programme — see the callout and "Where this directory comes
+from" section on that page. Treat it as a living document: correct it as
+programmes launch, change, or close. `glossary/index.html`
+(`#blue-envelope-project`) now has real copy too.
 
 ## Accessibility statement
 
