@@ -454,21 +454,40 @@ export const blueEnvelopePage = {
           </p>
           <p class="field__hint">Free directory of programs across the United States.</p>
         </div>
+        <div class="hero__art cover" aria-hidden="true">
+          <div>
+            <p class="cover__title">The Blue Envelope Project</p>
+            <p class="cover__sub">Calmer stops. Clearer communication.</p>
+          </div>
+          <svg class="cover__art" viewBox="0 0 240 170" focusable="false">
+            <rect class="cover__art-paper" x="44" y="6" width="152" height="100" rx="5"/>
+            <path class="cover__art-lines" d="M62 30h90M62 46h116M62 62h70" stroke-width="5" stroke-linecap="round"/>
+            <rect class="cover__art-envelope" x="10" y="40" width="220" height="124" rx="10"/>
+            <path class="cover__art-flap" d="M10 48L120 116L230 48" fill="none" stroke-width="4" stroke-linejoin="round"/>
+            <circle class="cover__art-seal" cx="120" cy="116" r="15"/>
+            <circle class="cover__art-seal-hole" cx="120" cy="116" r="6"/>
+          </svg>
+          <p class="cover__brand">
+            <svg class="wheel" viewBox="0 0 64 64" focusable="false">
+              <circle class="wheel__tire" cx="32" cy="32" r="26" stroke-width="4"/>
+              <g class="wheel__spoke" stroke-width="2.5" stroke-linecap="round">
+                <line x1="32" y1="32" x2="32" y2="8"/>
+                <line x1="32" y1="32" x2="15" y2="15"/>
+                <line x1="32" y1="32" x2="8"  y2="32"/>
+                <line x1="32" y1="32" x2="15" y2="49"/>
+                <line x1="32" y1="32" x2="32" y2="56"/>
+              </g>
+              <path class="wheel__arc" d="M32 6 a26 26 0 0 1 0 52" stroke-width="7" stroke-linecap="round"/>
+              <circle class="wheel__hub" cx="32" cy="32" r="6"/>
+            </svg>
+            BEAA
+          </p>
+        </div>
       </div>
     </section>
 
     <section class="section">
       <div class="wrap wrap--narrow stack">
-        <div class="in-short">
-          <h2>In short</h2>
-          <p>A blue envelope holds your license, registration, and insurance,
-             plus short tips for you and for the officer.</p>
-          <p>Handing it over says: you may need more time, and you communicate
-             differently. It is always voluntary.</p>
-          <p>Programs exist in some states and cities, not all. Search the
-             directory below to find one near you.</p>
-        </div>
-
         <h2 class="accent-line">What it is</h2>
         <p>A blue envelope holds your license, registration, and insurance. It
            also carries short tips for you and for the officer.</p>
@@ -511,6 +530,14 @@ export const blueEnvelopePage = {
       <div class="wrap">
         <h2 class="accent-line">Find a Blue Envelope program</h2>
         <p class="lede">Search by state, city, county, or agency.</p>
+
+        <div class="in-short">
+          <h2>In short</h2>
+          <p>This directory lists Blue Envelope programmes by state, and by
+             city or county where one is known. Some are required by state
+             law, some are run by a state agency, and some exist only in
+             specific places. Some states have none found yet.</p>
+        </div>
 
         <div class="callout" role="note">
           <svg class="callout__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M12 9v4M12 16.5h.01M10.29 3.86l-8.5 14.72A1.5 1.5 0 0 0 3.06 21h17.88a1.5 1.5 0 0 0 1.27-2.42l-8.5-14.72a1.5 1.5 0 0 0-2.42 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
