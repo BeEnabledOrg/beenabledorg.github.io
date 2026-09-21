@@ -275,13 +275,18 @@ ${CTA}`,
 ${CTA}`,
   },
 
-  /* ------------------------------------------------------------ EnableMe */
+  /* ------------------------------------------------------------ EnableMe
+     enableme/index.html now also embeds an interactive example-data preview
+     (enableme/data.js, enableme/hub.js — List/Day/Month views, county/topic/
+     agency/disability filters) that is NOT reproduced in this body string.
+     If you ever regenerate this page with --force, re-add that preview
+     section by hand from the live file rather than losing it. */
   {
     file: "enableme/index.html",
     url: "/enableme/",
     title: "EnableMe | Be Enabled Advocacy Alliance",
     description:
-      "EnableMe is the coming calendar of disability programs, services, and events from Be Enabled Advocacy Alliance. Here is what it will do and where things stand.",
+      "EnableMe is a coming Ohio calendar and resource hub for disability programs, services, and events. Try an example preview and see what it will do.",
     h1: "EnableMe",
     body: `
     <section class="section">
@@ -292,11 +297,12 @@ ${CTA}`,
 
         <div class="in-short">
           <h2>In short</h2>
-          <p>EnableMe will be a calendar of programs, services, and events for
-             disabled people.</p>
+          <p>EnableMe will be a calendar and resource hub for Ohio disability
+             programs, services, and events.</p>
           <p>It will gather listings from counties, agencies, and other groups
              into one place.</p>
-          <p>It is not open yet. This page explains what it will do.</p>
+          <p>The real version is not open yet, but you can try an example
+             preview below.</p>
         </div>
 
         <h2>The problem we are solving</h2>
@@ -309,17 +315,26 @@ ${CTA}`,
 
         <h2>What EnableMe will do</h2>
         <ul class="tick-list">
-          <li>Bring together programs, services, and events from counties,
-              agencies, and disability organizations.</li>
-          <li>Let you filter by location, topic, and disability type, so you
-              only see what applies to you.</li>
-          <li>List only real, confirmed programs. We will not publish invented
-              or unverified listings.</li>
+          <li>Bring together programs, services, and events from Ohio counties,
+              agencies, and disability organizations, starting with a few pilot
+              counties and expanding from there toward all 88.</li>
+          <li>Let you filter by county, topic, agency type, and disability type,
+              so you only see what applies to you.</li>
+          <li>Let you browse by List, Day, or Month view, or start from a topic
+              if you are not sure what to search for.</li>
+          <li>List only real, confirmed programs, reviewed before they appear.
+              We will not publish invented or unverified listings.</li>
         </ul>
-
+      </div>
+    </section>
+    <!-- See the note above the PAGES entry: the interactive preview section
+         that lives here in the real file is intentionally not duplicated. -->
+    <section class="section">
+      <div class="wrap wrap--narrow stack">
         <h2>Where we are now</h2>
-        <p>The calendar and directory are still being built. Nothing is live
-           yet.</p>
+        <p>The preview above is example data with no real backend behind it.
+           The real calendar and directory — with real listings, agency
+           submissions, and review — are still being built.</p>
         <p>If you run a program that should be listed once EnableMe opens, or
            you want to know when it does,
            <a href="/contact/">contact Be Enabled Advocacy Alliance about EnableMe</a>.</p>

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>EnableMe | Be Enabled Advocacy Alliance</title>
-  <meta name="description" content="EnableMe is the coming calendar of disability programs, services, and events from Be Enabled Advocacy Alliance. Here is what it will do and where things stand.">
+  <meta name="description" content="EnableMe is a coming Ohio calendar and resource hub for disability programs, services, and events. Try an example preview and see what it will do.">
   <link rel="canonical" href="https://beenabled.org/enableme/">
 
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
@@ -16,13 +16,13 @@
   <meta property="og:site_name" content="Be Enabled Advocacy Alliance">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="EnableMe | Be Enabled Advocacy Alliance">
-  <meta property="og:description" content="EnableMe is the coming calendar of disability programs, services, and events from Be Enabled Advocacy Alliance. Here is what it will do and where things stand.">
+  <meta property="og:description" content="EnableMe is a coming Ohio calendar and resource hub for disability programs, services, and events. Try an example preview and see what it will do.">
   <meta property="og:url" content="https://beenabled.org/enableme/">
   <meta property="og:image" content="https://beenabled.org/assets/img/og-default.png">
   <meta property="og:image:alt" content="Be Enabled Advocacy Alliance. Accessibility for all.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="EnableMe | Be Enabled Advocacy Alliance">
-  <meta name="twitter:description" content="EnableMe is the coming calendar of disability programs, services, and events from Be Enabled Advocacy Alliance. Here is what it will do and where things stand.">
+  <meta name="twitter:description" content="EnableMe is a coming Ohio calendar and resource hub for disability programs, services, and events. Try an example preview and see what it will do.">
   <meta name="twitter:image" content="https://beenabled.org/assets/img/og-default.png">
   <meta name="twitter:image:alt" content="Be Enabled Advocacy Alliance. Accessibility for all.">
 
@@ -59,7 +59,7 @@
           "@id": "https://beenabled.org/enableme/#page",
           "url": "https://beenabled.org/enableme/",
           "name": "EnableMe | Be Enabled Advocacy Alliance",
-          "description": "EnableMe is the coming calendar of disability programs, services, and events from Be Enabled Advocacy Alliance. Here is what it will do and where things stand.",
+          "description": "EnableMe is a coming Ohio calendar and resource hub for disability programs, services, and events. Try an example preview and see what it will do.",
           "isPartOf": {
             "@id": "https://beenabled.org/#website"
           },
@@ -196,11 +196,12 @@
 
         <div class="in-short">
           <h2>In short</h2>
-          <p>EnableMe will be a calendar of programs, services, and events for
-             disabled people.</p>
+          <p>EnableMe will be a calendar and resource hub for Ohio disability
+             programs, services, and events.</p>
           <p>It will gather listings from counties, agencies, and other groups
              into one place.</p>
-          <p>It is not open yet. This page explains what it will do.</p>
+          <p>The real version is not open yet, but you can try an example
+             preview below.</p>
         </div>
 
         <h2>The problem we are solving</h2>
@@ -213,17 +214,89 @@
 
         <h2>What EnableMe will do</h2>
         <ul class="tick-list">
-          <li>Bring together programs, services, and events from counties,
-              agencies, and disability organizations.</li>
-          <li>Let you filter by location, topic, and disability type, so you
-              only see what applies to you.</li>
-          <li>List only real, confirmed programs. We will not publish invented
-              or unverified listings.</li>
+          <li>Bring together programs, services, and events from Ohio counties,
+              agencies, and disability organizations, starting with a few pilot
+              counties and expanding from there toward all 88.</li>
+          <li>Let you filter by county, topic, agency type, and disability type,
+              so you only see what applies to you.</li>
+          <li>Let you browse by List, Day, or Month view, or start from a topic
+              if you are not sure what to search for.</li>
+          <li>List only real, confirmed programs, reviewed before they appear.
+              We will not publish invented or unverified listings.</li>
         </ul>
+      </div>
+    </section>
 
+    <section class="section section--raised">
+      <div class="wrap stack">
+        <h2>Try a preview of the Resource Hub</h2>
+        <p>This is an early, working preview of how EnableMe will look and
+           feel. <strong>Every listing below is an example we made up to show
+           how the filters and views work — none of it is a real program.</strong></p>
+
+        <div class="hub-preview" id="hub-preview">
+          <noscript>
+            <p class="field__hint">This preview needs JavaScript to filter and
+               browse. <a href="/contact/">Contact us</a> if you need another
+               way to see it.</p>
+          </noscript>
+
+          <div class="hub-topics" id="hub-topics" role="group" aria-label="Browse by topic"></div>
+
+          <fieldset class="hub-filters" id="hub-filters">
+            <legend class="visually-hidden">Filter the example listings</legend>
+            <div class="field">
+              <label for="hub-county">County</label>
+              <select id="hub-county"></select>
+            </div>
+            <div class="field">
+              <label for="hub-category">Category</label>
+              <select id="hub-category"></select>
+            </div>
+            <div class="field">
+              <label for="hub-agency-type">Agency type</label>
+              <select id="hub-agency-type"></select>
+            </div>
+            <div class="field">
+              <label for="hub-disability">Disability type</label>
+              <select id="hub-disability"></select>
+            </div>
+            <div class="field">
+              <label for="hub-date">Date on or after</label>
+              <input type="date" id="hub-date">
+            </div>
+            <div class="field">
+              <label for="hub-search">Search</label>
+              <input type="search" id="hub-search" placeholder="Search example listings">
+            </div>
+            <button type="button" class="btn btn--secondary hub-filters__clear" id="hub-clear">Clear filters</button>
+          </fieldset>
+
+          <fieldset class="hub-view-toggle">
+            <legend>View</legend>
+            <div class="radio-row" role="none">
+              <label><input type="radio" name="hub-view" value="list" checked> List</label>
+              <label><input type="radio" name="hub-view" value="day"> Day</label>
+              <label><input type="radio" name="hub-view" value="month"> Month</label>
+            </div>
+          </fieldset>
+
+          <p class="hub-count" id="hub-count" role="status" aria-live="polite"></p>
+
+          <div id="hub-list"></div>
+          <div id="hub-day" hidden></div>
+          <div id="hub-month" hidden></div>
+          <p class="text-muted" id="hub-empty" hidden>No example listings match these filters. Try clearing a filter above.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap wrap--narrow stack">
         <h2>Where we are now</h2>
-        <p>The calendar and directory are still being built. Nothing is live
-           yet.</p>
+        <p>The preview above is example data with no real backend behind it.
+           The real calendar and directory — with real listings, agency
+           submissions, and review — are still being built.</p>
         <p>If you run a program that should be listed once EnableMe opens, or
            you want to know when it does,
            <a href="/contact/">contact Be Enabled Advocacy Alliance about EnableMe</a>.</p>
@@ -293,5 +366,7 @@
   <!-- /@partial:footer -->
 
   <script src="/app.js" defer></script>
+  <script src="/enableme/data.js" defer></script>
+  <script src="/enableme/hub.js" defer></script>
 </body>
 </html>

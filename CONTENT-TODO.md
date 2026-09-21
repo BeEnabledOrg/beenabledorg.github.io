@@ -43,13 +43,22 @@ the provider's form on the page.
 
 `enableme/index.html` and `blue-envelope/index.html` now exist and are linked
 from the main nav and footer, replacing `what-we-do/` in both (see below).
-Both pages are honest about being pre-launch: no interactive calendar or
-directory yet, because those need more detail before they get built.
+
+EnableMe now has a real project brief (Ohio DODD Innovative Technology
+Solutions Grant proposal, staged county rollout, a moderation workflow, and a
+data model — see the project's technical handoff materials) and an
+interactive **preview** on the page itself: `enableme/data.js` +
+`enableme/hub.js` implement the public Hub's List/Day/Month/topic browsing
+and filters, client-side only, against clearly-labeled example data (every
+example agency name is prefixed "Example" on purpose — see data.js). There
+is no real backend, submission form, agency dashboard, or review queue on
+this site; those are internal/agency-facing tools that belong in the real
+build a developer creates separately, not on the public marketing site.
 
 | What | Where it goes |
 |---|---|
 | Whether Be Enabled Advocacy Alliance issues Blue Envelope envelopes directly, or only directs people to existing state/local programs | `blue-envelope/index.html` |
-| Calendar feature details (data source, filters, submission process) | `enableme/index.html`, once specified |
+| Real EnableMe listings, once the actual backend/build exists | `enableme/data.js` is example data only — do not add real programs here without also removing the "example" framing and building real submission/moderation |
 | Directory feature details (what a listing looks like, how programs get added/verified) | `blue-envelope/index.html`, once specified |
 
 ## What we do (unlinked)
