@@ -5,7 +5,7 @@
  * content, navigation, or state that the page needs in order to function; it
  * only improves things that already work.
  *
- *   1. Display settings   — the mechanism for SC 1.4.8 (user-selectable colours,
+ *   1. Display settings   — the mechanism for SC 1.4.8 (user-selectable colors,
  *                           text size, line spacing) and SC 2.3.3 (motion).
  *   2. Nav disclosure     — <details> already opens and closes natively; this
  *                           adds only Escape-to-close and resize cleanup.
@@ -41,7 +41,7 @@
      SC 2.5.7 forbids requiring a drag, and SC 3.2.5 forbids a control that
      changes context the moment it is touched.                             */
   var SETTINGS = [
-    { name: "theme",       key: "beaa-theme",       attr: "data-theme",       fallback: "auto", label: "Colour theme" },
+    { name: "theme",       key: "beaa-theme",       attr: "data-theme",       fallback: "auto", label: "Color theme" },
     { name: "text-size",   key: "beaa-text-size",   attr: "data-text-size",   fallback: "100",  label: "Text size" },
     { name: "line-height", key: "beaa-line-height", attr: "data-line-height", fallback: "160",  label: "Line spacing" },
     { name: "motion",      key: "beaa-motion",      attr: "data-motion",      fallback: "auto", label: "Movement" },
@@ -105,7 +105,7 @@
 
   /* ------------------------------------------------------------------ 2 --
      Nav disclosure. <details>/<summary> is already a keyboard-accessible,
-     no-JS disclosure with correct semantics. These are the two behaviours it
+     no-JS disclosure with correct semantics. These are the two behaviors it
      does not give us.                                                     */
   var navToggle = document.querySelector(".nav-toggle");
 

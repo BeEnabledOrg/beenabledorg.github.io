@@ -7,7 +7,7 @@
  * criteria that are otherwise pure discipline and always eventually break.
  *
  * The only per-page variation allowed inside a managed block is
- * aria-current="page", which is normalised away before comparing.
+ * aria-current="page", which is normalized away before comparing.
  *
  * Usage:
  *   node tools/sync-partials.mjs            check for drift (exit 1 if found)
@@ -31,7 +31,7 @@ const blockOf = (html, name) => {
 };
 
 /* aria-current marks the current page and is legitimately per-page. */
-const normalise = (s) => s.replace(/ aria-current="page"/g, "").replace(/\s+/g, " ").trim();
+const normalize = (s) => s.replace(/ aria-current="page"/g, "").replace(/\s+/g, " ").trim();
 
 const files = htmlFiles(ROOT);
 let failures = 0;
@@ -48,7 +48,7 @@ for (const name of NAMES) {
     continue;
   }
 
-  const want = normalise(reference.b.inner);
+  const want = normalize(reference.b.inner);
 
   for (const file of files) {
     const html = read(file);
@@ -60,7 +60,7 @@ for (const name of NAMES) {
       failures++;
       continue;
     }
-    if (normalise(block.inner) === want) continue;
+    if (normalize(block.inner) === want) continue;
 
     if (fix) {
       /* Preserve this page's own aria-current placement by re-deriving it from

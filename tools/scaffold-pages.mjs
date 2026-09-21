@@ -61,7 +61,7 @@ ${lis}
     </nav>`;
 };
 
-/* JSON-LD. The organisation is emitted once with a stable @id and referenced
+/* JSON-LD. The organization is emitted once with a stable @id and referenced
    by @id everywhere else, so the graph stays consistent across pages. */
 const jsonld = (page) => {
   const graph = [];
