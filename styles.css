@@ -945,8 +945,40 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
 
 /* 19. Resource hub ---------------------------------------------------------
    Filters, topic chips, the List/Day/Month toggle, and listing cards for
-   /resources/. Every color used here is one already proven in section 2's
-   PAIRS table — nothing new to add to tools/contrast.mjs. */
+   /resources/ and /resources/submit/. Everything below the palette block
+   reuses the token names other components already read (--text, --brand,
+   --surface, etc.), so overriding the tokens once re-themes every existing
+   component — cards, chips, buttons, focus rings — with no changes to their
+   own CSS. Same technique as .blue-envelope (§21).
+
+   Deliberately its own identity: gold, cream, and warm brown, rather than
+   the site's teal/amber brand — this page is a calendar, not an extension
+   of the main site chrome. Scoped to .hub and only in the base light theme;
+   switching to dark, high contrast, or warm falls back to the site's normal
+   tokens, same as every other page. Every pairing below is registered in
+   tools/contrast.mjs's themes list and checked at the ratio AAA requires for
+   its role — see the numbers in the comment on each line. */
+:root:not([data-theme="dark"]):not([data-theme="contrast"]):not([data-theme="warm"]) .hub {
+  --text:           #2B2013;  /* 15.92:1 on white */
+  --text-muted:     #4A3A20;  /* 10.95:1 on white · 8.59:1 on --surface-sunken */
+  --link:           #6E3410;  /*  9.71:1 on white · 7.62:1 on --surface-sunken */
+  --link-visited:   #5C3A4A;  /*  9.73:1 on white · 7.62:1 on --surface-sunken */
+  --brand:          #7D4B00;  /*  7.30:1 on white, and white reaches 7.30:1 on it */
+  --brand-strong:   #5C3700;  /* 10.49:1 on white */
+  --brand-contrast: #ffffff;
+  --surface:        #ffffff;
+  --surface-raised: #FBF3E4;
+  --surface-sunken: #F1E2C9;
+  --border:         #8A6633;  /*  5.21:1 on white — non-text, needs 3:1 */
+  --border-strong:  #7D4B00;  /* same as --brand */
+  --border-subtle:  #E4CFA0;  /* decorative hairlines only, like the site default */
+  --accent-ui:      #7D4B00;  /* amber that may carry meaning — same as --brand here */
+  --accent-warm:    #A33B12;  /*  6.58:1 on white — non-text ornament ONLY, never a text background */
+  --focus-a:        #2B2013;
+  --focus-b:        #ffffff;
+  color: var(--text);
+}
+
 .hub-filters {
   display: grid;
   gap: var(--space-5);
