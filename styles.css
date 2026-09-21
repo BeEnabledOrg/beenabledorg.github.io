@@ -969,9 +969,90 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
 }
 
 /* 20. Blue Envelope directory ----------------------------------------------
-   Components for /blue-envelope/. Every colour here is an existing token in
-   an existing, already-verified pairing (see tools/contrast.mjs) — nothing
-   below needs a new entry in that script's PAIRS table. */
+   Components for /blue-envelope/. Everything below the palette block reuses
+   the token names other components already read (--text, --brand, --surface,
+   etc.), so overriding the tokens once re-themes every existing component —
+   cards, badges, buttons, focus rings — with no changes to their own CSS.
+
+   Deliberately its own identity: blue, sky, white, and ochre, with a serif
+   display face, rather than the site's teal/amber brand. Scoped to
+   .blue-envelope and only in the base light theme — switching to dark, high
+   contrast, or warm falls back to the site's normal tokens, same as every
+   other page. Every pairing below is verified at the ratio AAA requires for
+   its role; see the numbers in the comment on each line. */
+:root:not([data-theme="dark"]):not([data-theme="contrast"]):not([data-theme="warm"]) .blue-envelope {
+  --text:           #0C2038;  /* 16.41:1 on white */
+  --text-muted:     #2A3E58;  /* 10.89:1 on white · 8.70:1 on --surface-sunken · 9.84:1 on --surface-raised */
+  --link:           #123D6E;  /* 10.95:1 on white */
+  --link-visited:   #4B3562;  /* 10.58:1 on white · 8.46:1 on --surface-sunken */
+  --brand:          #1D4E89;  /*  8.39:1 on white, and white reaches 8.39:1 on it */
+  --brand-strong:   #123D6E;  /* same as --link: 10.95:1 on white */
+  --brand-contrast: #ffffff;
+  --surface:        #ffffff;
+  --surface-raised: #EEF4FB;
+  --surface-sunken: #DBE7F7;
+  --surface-invert: #0C2038;
+  --text-invert:    #ffffff;  /* 16.41:1 on --surface-invert */
+  --border:         #4A6A94;  /*  5.55:1 on white — non-text, needs 3:1 */
+  --border-strong:  #1D4E89;  /* same as --brand */
+  --border-subtle:  #B7CBE6;  /* decorative hairlines only, like the site default */
+  --accent-warm:    #D0812F;  /*  3.06:1 on white — non-text ornament ONLY, never a text background */
+  --focus-a:        #0C2038;
+  --focus-b:        #ffffff;
+  --font-head: "Newsreader", Georgia, "Times New Roman", serif;
+  color: var(--text);
+}
+
+.blue-envelope .kicker {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  border-inline-start: 0.375rem solid var(--accent-warm);
+  padding-inline-start: var(--space-3);
+}
+.blue-envelope h2.accent-line::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 0.375rem;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-warm);
+  margin-block-start: var(--space-3);
+}
+
+/* -- Numbered steps ("How it works") ------------------------------------ */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
+.steps li {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: var(--space-4);
+  align-items: start;
+  background-color: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+.steps li > p { margin: 0; max-width: none; }
+.steps__num {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--brand);
+  color: var(--brand-contrast);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--step-1);
+  box-shadow: 0 0 0 4px var(--surface), 0 0 0 7px var(--accent-warm);
+}
+
 .callout {
   display: flex;
   gap: var(--space-4);

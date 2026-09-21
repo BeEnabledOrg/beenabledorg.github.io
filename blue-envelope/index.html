@@ -28,6 +28,7 @@
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/fonts/atkinson-hyperlegible-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/newsreader-var-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
 
   <!-- Applies saved display settings before first paint. This has to be inline
@@ -188,9 +189,11 @@
 
   <main id="main" tabindex="-1">
 
+    <div class="blue-envelope">
     <section class="hero">
       <div class="wrap hero__inner">
         <div class="stack">
+          <p class="kicker">A project of Be Enabled Advocacy Alliance</p>
           <h1>The Blue Envelope Project</h1>
           <p class="lede">A blue envelope holds a driver's license, registration, and
              insurance, plus short notes for the driver and for the officer, so a
@@ -218,7 +221,7 @@
              below to find one near you.</p>
         </div>
 
-        <h2>What a Blue Envelope is</h2>
+        <h2 class="accent-line">What a Blue Envelope is</h2>
         <p>A Blue Envelope Project envelope holds a driver's license, vehicle
            registration, and proof of insurance in one place, so a driver does not
            have to search for documents during a stop. It also carries short,
@@ -230,25 +233,34 @@
            requirement to show a license, registration, or insurance on request.
            Not having a blue envelope never means a person has no support needs.</p>
 
-        <h2>How it works</h2>
-        <ol>
-          <li><strong>Get an envelope.</strong> Pick one up from a participating
-              police department, sheriff's office, motor vehicle agency, or
-              disability organisation. See the directory below for a programme
-              near you.</li>
-          <li><strong>Keep your documents inside.</strong> Add your license,
-              registration, and insurance, along with any emergency contacts you
-              want included.</li>
-          <li><strong>Hand it over at a stop.</strong> The officer reads the notes
-              on the outside and can adjust how they communicate, based on what
-              the envelope says.</li>
+        <h2 class="accent-line">How it works</h2>
+        <ol class="steps">
+          <li>
+            <span class="steps__num" aria-hidden="true">1</span>
+            <p><strong>Get an envelope.</strong> Pick one up from a participating
+               police department, sheriff's office, motor vehicle agency, or
+               disability organisation. See the directory below for a programme
+               near you.</p>
+          </li>
+          <li>
+            <span class="steps__num" aria-hidden="true">2</span>
+            <p><strong>Keep your documents inside.</strong> Add your license,
+               registration, and insurance, along with any emergency contacts you
+               want included.</p>
+          </li>
+          <li>
+            <span class="steps__num" aria-hidden="true">3</span>
+            <p><strong>Hand it over at a stop.</strong> The officer reads the notes
+               on the outside and can adjust how they communicate, based on what
+               the envelope says.</p>
+          </li>
         </ol>
       </div>
     </section>
 
     <section class="section section--tint" id="directory">
       <div class="wrap">
-        <h2>Find a Blue Envelope program</h2>
+        <h2 class="accent-line">Find a Blue Envelope program</h2>
         <p class="lede">As of September 2026, this directory lists a program in
            37 states — required by state law, run by a state agency, or
            active in specific cities and counties — plus 63 local and
@@ -1679,7 +1691,7 @@
 
     <section class="section">
       <div class="wrap">
-        <h2>Federal and national efforts</h2>
+        <h2 class="accent-line">Federal and national efforts</h2>
         <p>Two related bills are moving through Congress, and several
            organisations coordinate programmes above the state level.</p>
         <ul class="grid no-bullet">
@@ -1755,7 +1767,7 @@
 
     <section class="section section--tint">
       <div class="wrap wrap--narrow stack">
-        <h2>Where this directory comes from</h2>
+        <h2 class="accent-line">Where this directory comes from</h2>
         <p>This directory was put together by researching state agency websites,
            legislature and bill-tracking sites, and news coverage, including
            research assisted by AI tools. It has not been confirmed by phone with
@@ -1774,17 +1786,18 @@
 
     <section class="section section--tint">
       <div class="wrap">
-        <h2>Bring the Blue Envelope Project to your area</h2>
+        <h2 class="accent-line">Bring the Blue Envelope Project to your area</h2>
         <p>Police departments, motor vehicle agencies, and community groups can
            start a Blue Envelope programme. If you want to bring one to your city
            or county, or you already run one and want to be listed here, contact
            us.</p>
         <p class="btn-row">
-          <a class="btn btn--accent" href="/contact/">Contact Be Enabled Advocacy Alliance</a>
+          <a class="btn btn--primary" href="/contact/">Contact Be Enabled Advocacy Alliance</a>
           <a class="btn btn--secondary" href="/get-involved/">Find other ways to get involved</a>
         </p>
       </div>
     </section>
+    </div>
   </main>
 
   <!-- @partial:footer — managed by tools/sync-partials.mjs. Do not hand-edit. -->

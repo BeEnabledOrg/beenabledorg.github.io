@@ -62,6 +62,9 @@ const themes = {
   "dark (chosen)": { ...light, ...tokensIn(blockAfter(':root[data-theme="dark"]')) },
   "high contrast": { ...light, ...tokensIn(blockAfter(':root[data-theme="contrast"]')) },
   "warm / low blue": { ...light, ...tokensIn(blockAfter(':root[data-theme="warm"]')) },
+  // .blue-envelope only overrides the base light theme (see styles.css §20) —
+  // dark, high contrast, and warm all fall back to the tokens above.
+  "blue envelope (light)": { ...light, ...tokensIn(blockAfter(".blue-envelope {")) },
 };
 
 /* -- The contract. Every pairing the design is allowed to render. --------
