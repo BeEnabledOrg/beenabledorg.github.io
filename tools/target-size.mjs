@@ -6,7 +6,7 @@
  * People assume this one is manual. It is not — it is measurable, so it is a
  * gate here rather than a hope.
  *
- * The criterion's exceptions are honoured: a target is exempt when it sits
+ * The criterion's exceptions are honored: a target is exempt when it sits
  * INLINE inside a sentence or block of text. Those are detected and skipped —
  * and padding them would be actively wrong, because enlarged inline links
  * overlap each other across wrapped lines.

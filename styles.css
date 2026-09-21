@@ -271,7 +271,7 @@ input, button, textarea, select { font: inherit; color: inherit; }
 
 /* 4. Base typography ------------------------------------------------------ */
 html {
-  /* Percentage, never px, so the browser's own font-size setting is honoured. */
+  /* Percentage, never px, so the browser's own font-size setting is honored. */
   font-size: calc(100% * var(--ui-scale));
   /* SC 2.4.12 — anchor jumps must never park a focused element under anything. */
   scroll-padding-block-start: var(--space-6);

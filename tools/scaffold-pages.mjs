@@ -135,7 +135,7 @@ const render = (page) => {
   <title>${page.title}</title>
   <meta name="description" content="${page.description}">
   <link rel="canonical" href="${canonical}">
-
+${page.noindex ? '  <meta name="robots" content="noindex">\n' : ""}
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b1817" media="(prefers-color-scheme: dark)">
 
