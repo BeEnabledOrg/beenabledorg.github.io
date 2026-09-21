@@ -5,7 +5,7 @@
  * content, navigation, or state that the page needs in order to function; it
  * only improves things that already work.
  *
- *   1. Display settings   — the mechanism for SC 1.4.8 (user-selectable colours,
+ *   1. Display settings   — the mechanism for SC 1.4.8 (user-selectable colors,
  *                           text size, line spacing) and SC 2.3.3 (motion).
  *   2. Nav disclosure     — <details> already opens and closes natively; this
  *                           adds only Escape-to-close and resize cleanup.
@@ -17,6 +17,11 @@
  *                           <li class="listing-card"> markup that is already
  *                           in the page; nothing here can be read only with
  *                           JavaScript on.
+ *   5. Blue Envelope search — every state is already in the page; this only
+ *                           hides the ones that do not match.
+ *   6. Blue Envelope waitlist — the form has no real endpoint yet (see the
+ *                           TODO(content) note beside it), so this explains
+ *                           that honestly instead of pretending to submit.
  *
  * Deliberately absent: carousels, modals, scroll animation, smooth scrolling,
  * tooltips, analytics, and cookie banners. Each of those breaks a Level AAA
@@ -42,7 +47,7 @@
      SC 2.5.7 forbids requiring a drag, and SC 3.2.5 forbids a control that
      changes context the moment it is touched.                             */
   var SETTINGS = [
-    { name: "theme",       key: "beaa-theme",       attr: "data-theme",       fallback: "auto", label: "Colour theme" },
+    { name: "theme",       key: "beaa-theme",       attr: "data-theme",       fallback: "auto", label: "Color theme" },
     { name: "text-size",   key: "beaa-text-size",   attr: "data-text-size",   fallback: "100",  label: "Text size" },
     { name: "line-height", key: "beaa-line-height", attr: "data-line-height", fallback: "160",  label: "Line spacing" },
     { name: "motion",      key: "beaa-motion",      attr: "data-motion",      fallback: "auto", label: "Movement" },
@@ -106,7 +111,7 @@
 
   /* ------------------------------------------------------------------ 2 --
      Nav disclosure. <details>/<summary> is already a keyboard-accessible,
-     no-JS disclosure with correct semantics. These are the two behaviours it
+     no-JS disclosure with correct semantics. These are the two behaviors it
      does not give us.                                                     */
   var navToggle = document.querySelector(".nav-toggle");
 
@@ -477,5 +482,58 @@
     if (monthNext) monthNext.addEventListener("click", function () { currentMonth.setMonth(currentMonth.getMonth() + 1); renderMonth(); });
 
     rerender();
+  }
+
+  /* ------------------------------------------------------------------ 5 --
+     Blue Envelope directory search. Every state is already rendered in the
+     page; this only hides the ones that do not match the search box, and
+     nothing depends on it — with JavaScript off, the full list stays
+     visible and browsable.                                              */
+  var beSearch = document.getElementById("be-search");
+  if (beSearch) {
+    var beCards = Array.prototype.slice.call(
+      document.querySelectorAll("#be-state-list .state-card")
+    );
+    var beCount = document.getElementById("be-result-count");
+    var beHint = document.querySelector("[data-be-hint]");
+    if (beHint) {
+      beHint.textContent = "Type to filter the list below by state, city, county, or agency.";
+    }
+
+    beSearch.addEventListener("input", function () {
+      var q = beSearch.value.trim().toLowerCase();
+      var shown = 0;
+      beCards.forEach(function (card) {
+        var match = !q || (card.dataset.search || "").indexOf(q) !== -1;
+        card.hidden = !match;
+        if (match) shown++;
+      });
+      if (beCount) {
+        if (q) {
+          beCount.hidden = false;
+          beCount.textContent = "Showing " + shown + " of " + beCards.length + " states.";
+        } else {
+          beCount.hidden = true;
+          beCount.textContent = "";
+        }
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------ 6 --
+     Blue Envelope waitlist. The form has no real endpoint yet. Rather than
+     let a plain submit silently reload the page with the email address
+     sitting in the URL, this intercepts it and says so honestly. Remove
+     this block once a real mailing-list service is wired up (see the
+     TODO(content) note next to the form in blue-envelope/index.html).    */
+  var wlForm = document.querySelector('[data-form="waitlist"]');
+  if (wlForm) {
+    wlForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var status = wlForm.querySelector("[data-wl-status]");
+      if (status) {
+        status.innerHTML = 'This mailing list is not connected yet. <a href="/contact/">Contact us</a> and we will add you by hand.';
+      }
+    });
   }
 })();

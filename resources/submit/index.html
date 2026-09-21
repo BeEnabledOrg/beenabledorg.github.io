@@ -139,6 +139,7 @@
         <ul class="nav__list">
           <li><a class="nav__link" href="/about/">About</a></li>
           <li><a class="nav__link" href="/what-we-do/">What we do</a></li>
+          <li><a class="nav__link" href="/blue-envelope/">Blue Envelope Project</a></li>
           <li><a class="nav__link" href="/resources/" aria-current="page">Resource Hub</a></li>
           <li><a class="nav__link" href="/get-involved/">Get involved</a></li>
           <li><a class="nav__link" href="/contact/">Contact</a></li>
@@ -155,7 +156,7 @@
 
         <div class="settings__panel">
           <fieldset>
-            <legend>Colour theme</legend>
+            <legend>Color theme</legend>
             <div class="radio-row" role="none">
               <label><input type="radio" name="theme" value="auto" checked> Match my device</label>
               <label><input type="radio" name="theme" value="light"> Light</label>
@@ -202,7 +203,7 @@
             <p class="field__hint">These controls need JavaScript. Your browser and
             operating system offer the same options: use your browser zoom for text
             size, and your system appearance settings for light, dark, or
-            high-contrast colours. This site follows all of them.</p>
+            high-contrast colors. This site follows all of them.</p>
           </noscript>
         </div>
       </details>
@@ -416,15 +417,15 @@
 
           <div class="field">
             <label for="sp-agency-name">Agency name <span class="field__req">(required)</span></label>
-            <p class="field__hint" id="sp-agency-name-hint">The organisation running this program.</p>
-            <input type="text" id="sp-agency-name" name="agencyName" required data-required-message="Please add the name of the organisation running this." aria-describedby="sp-agency-name-hint">
+            <p class="field__hint" id="sp-agency-name-hint">The organization running this program.</p>
+            <input type="text" id="sp-agency-name" name="agencyName" required data-required-message="Please add the name of the organization running this." aria-describedby="sp-agency-name-hint">
             <p class="field__error" id="sp-agency-name-error"></p>
           </div>
 
           <div class="field">
             <label for="sp-agency-type">Agency type <span class="field__req">(required)</span></label>
-            <p class="field__hint" id="sp-agency-type-hint">The kind of organisation running this program.</p>
-            <select id="sp-agency-type" name="agencyType" required data-required-message="Please choose the kind of organisation this is." aria-describedby="sp-agency-type-hint">
+            <p class="field__hint" id="sp-agency-type-hint">The kind of organization running this program.</p>
+            <select id="sp-agency-type" name="agencyType" required data-required-message="Please choose the kind of organization this is." aria-describedby="sp-agency-type-hint">
           <option value="" disabled selected>Choose one</option>
           <option value="County board of developmental disabilities">County board of developmental disabilities</option>
           <option value="Nonprofit provider">Nonprofit provider</option>
@@ -487,12 +488,13 @@
         <nav aria-label="Footer: projects">
           <h3>Projects</h3>
           <ul class="footer__list">
+            <li><a href="/blue-envelope/">The Blue Envelope Project</a></li>
             <li><a href="/resources/">Resource Hub &amp; Calendar</a></li>
             <li><a href="/resources/submit/">Submit a program</a></li>
           </ul>
         </nav>
 
-        <nav aria-label="Footer: about this organisation">
+        <nav aria-label="Footer: about this organization">
           <h3>About us</h3>
           <ul class="footer__list">
             <li><a href="/about/">About Be Enabled Advocacy Alliance</a></li>
@@ -513,7 +515,7 @@
       </div>
 
       <div class="footer__legal">
-        <p>Be Enabled Advocacy Alliance is a non-profit organisation under
+        <p>Be Enabled Advocacy Alliance is a non-profit organization under
            section 501(c)(3) of the United States tax code.
            <!-- TODO(content): EIN, mailing address, and year founded. See CONTENT-TODO.md -->
         </p>

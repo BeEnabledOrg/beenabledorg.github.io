@@ -6,7 +6,7 @@ a real 501(c)(3) invented specifics are a liability rather than a placeholder.
 
 Search the repository for `TODO(content)` to find each spot in context.
 
-## Legal and organisational — blocking
+## Legal and organizational — blocking
 
 | What | Where it goes |
 |---|---|
@@ -38,12 +38,6 @@ those reliably fail Level AAA and cannot be fixed from the outside.
 
 Both are `href="#"` right now. Keep them as outbound links rather than embedding
 the provider's form on the page.
-
-## Programme detail
-
-| What | Where it goes |
-|---|---|
-| What the Blue Envelope Project actually is, in two or three plain sentences | `glossary/index.html` (`#blue-envelope-project`) |
 
 ## Resource Hub & Calendar (EnableMe)
 
@@ -102,6 +96,17 @@ listing is added:
 For an ongoing program with no fixed date, drop `data-date` and set
 `data-ongoing="true"` instead; leave `data-category` as a comma-separated
 list when a program covers more than one topic.
+
+## Blue Envelope Project
+
+The Blue Envelope Project now has its own page at `/blue-envelope/`, with a
+directory of state and local programs. That directory was compiled through
+research (state agency pages, legislature and bill-tracking sites, and news
+coverage, including research assisted by AI tools) rather than confirmed by
+phone with every program — see the callout and "Where this directory comes
+from" section on that page. Treat it as a living document: correct it as
+programs launch, change, or close. `glossary/index.html`
+(`#blue-envelope-project`) now has real copy too.
 
 ## Accessibility statement
 

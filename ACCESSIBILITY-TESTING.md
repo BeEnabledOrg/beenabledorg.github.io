@@ -65,14 +65,14 @@ While testing, confirm:
       (SC 1.4.8). The automated test measures this, but confirm it by eye at a
       few widths.
 
-## Colour and contrast
+## Color and contrast
 
 `npm run check:contrast` proves every declared token pair. What it cannot see:
 
 - [ ] Text over the wheel graphics or any gradient.
 - [ ] Text inside inline SVG.
 - [ ] Grey out or disabled states, if any get added.
-- [ ] Grayscale the whole page: is any information carried by colour alone
+- [ ] Grayscale the whole page: is any information carried by color alone
       (SC 1.4.1)? Links must still be identifiable — they are underlined.
 - [ ] Windows **High Contrast / forced-colors** mode: borders, focus rings, and
       the wheel remain visible.
@@ -87,7 +87,7 @@ Formulas are proxies. A person has to read it.
 - [ ] Is the glossary complete? Any jargon on the site that is not in it?
 - [ ] Does each "In short" block genuinely read as plain language?
 - [ ] **Have disabled community members, including people with cognitive
-      disabilities, read the copy?** For a disability-led organisation this
+      disabilities, read the copy?** For a disability-led organization this
       should be a formal step, not a courtesy. It is the single most valuable
       test on this page.
 

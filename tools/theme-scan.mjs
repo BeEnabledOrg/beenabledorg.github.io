@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Runs the WCAG2AAA scan again in every colour theme.
+ * Runs the WCAG2AAA scan again in every color theme.
  *
  * The default pa11y pass only ever sees the light theme. A wrong token in the
  * dark or high-contrast theme is completely invisible to it, so each theme is a
