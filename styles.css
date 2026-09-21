@@ -1038,7 +1038,8 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
   border-radius: var(--radius-lg);
   padding: var(--space-5);
 }
-.steps li > p { margin: 0; max-width: none; }
+.steps li > div > strong { display: block; font-family: var(--font-head); font-size: var(--step-0); margin-block-end: var(--space-1); }
+.steps li > div > p { margin: 0; max-width: none; color: var(--text-muted); }
 .steps__num {
   display: grid;
   place-items: center;
