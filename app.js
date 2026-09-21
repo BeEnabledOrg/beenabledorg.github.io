@@ -22,6 +22,8 @@
  *   6. Blue Envelope waitlist — the form has no real endpoint yet (see the
  *                           TODO(content) note beside it), so this explains
  *                           that honestly instead of pretending to submit.
+ *   7. Scroll buttons     — opt-in on-screen Up/Down buttons for anyone who
+ *                           finds a scroll gesture hard to control precisely.
  *
  * Deliberately absent: carousels, modals, scroll animation, smooth scrolling,
  * tooltips, analytics, and cookie banners. Each of those breaks a Level AAA
@@ -534,6 +536,62 @@
       if (status) {
         status.innerHTML = 'This mailing list is not connected yet. <a href="/contact/">Contact us</a> and we will add you by hand.';
       }
+    });
+  }
+
+  /* ------------------------------------------------------------------ 7 --
+     On-screen scroll buttons. Opt-in from Display settings, for anyone who
+     finds a scroll gesture (wheel, trackpad, touch drag) hard to control
+     precisely — a tap or click steps the page a fixed amount instead. No
+     scroll animation, same as the rest of the site (see the file header).
+     The buttons are only ever created when the setting is on, not hidden
+     with CSS, so nothing extra sits in the page for anyone who leaves this
+     off — which is everyone, until they turn it on. */
+  var scrollToggle = document.getElementById("scroll-buttons-toggle");
+  var SCROLL_KEY = "beaa-scroll-buttons";
+  var scrollNav = null;
+
+  function stepPage(direction) {
+    window.scrollBy(0, window.innerHeight * 0.85 * direction);
+  }
+
+  function buildScrollNav() {
+    var nav = document.createElement("div");
+    nav.className = "scroll-nav";
+    nav.innerHTML =
+      '<button type="button" class="scroll-nav__btn" data-dir="-1" aria-label="Scroll up">' +
+        '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>' +
+      "</button>" +
+      '<button type="button" class="scroll-nav__btn" data-dir="1" aria-label="Scroll down">' +
+        '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>' +
+      "</button>";
+    Array.prototype.forEach.call(nav.querySelectorAll("button"), function (btn) {
+      btn.addEventListener("click", function () {
+        stepPage(Number(btn.getAttribute("data-dir")));
+      });
+    });
+    return nav;
+  }
+
+  function setScrollButtons(on) {
+    if (on && !scrollNav) {
+      scrollNav = buildScrollNav();
+      document.body.appendChild(scrollNav);
+    } else if (!on && scrollNav) {
+      scrollNav.remove();
+      scrollNav = null;
+    }
+  }
+
+  if (scrollToggle) {
+    var scrollOn = store.get(SCROLL_KEY) === "on";
+    scrollToggle.checked = scrollOn;
+    setScrollButtons(scrollOn);
+    scrollToggle.addEventListener("change", function () {
+      setScrollButtons(scrollToggle.checked);
+      if (scrollToggle.checked) store.set(SCROLL_KEY, "on");
+      else store.del(SCROLL_KEY);
+      say("On-screen scroll buttons " + (scrollToggle.checked ? "shown" : "hidden") + ".");
     });
   }
 })();
