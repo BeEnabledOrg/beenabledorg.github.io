@@ -13,6 +13,9 @@
  *                           required by SC 3.3.6 Error Prevention (All).
  *   4. Blue Envelope search — every state is already in the page; this only
  *                           hides the ones that do not match.
+ *   5. Blue Envelope waitlist — the form has no real endpoint yet (see the
+ *                           TODO(content) note beside it), so this explains
+ *                           that honestly instead of pretending to submit.
  *
  * Deliberately absent: carousels, modals, scroll animation, smooth scrolling,
  * tooltips, analytics, and cookie banners. Each of those breaks a Level AAA
@@ -301,6 +304,23 @@
           beCount.hidden = true;
           beCount.textContent = "";
         }
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------ 5 --
+     Blue Envelope waitlist. The form has no real endpoint yet. Rather than
+     let a plain submit silently reload the page with the email address
+     sitting in the URL, this intercepts it and says so honestly. Remove
+     this block once a real mailing-list service is wired up (see the
+     TODO(content) note next to the form in blue-envelope/index.html).    */
+  var wlForm = document.querySelector('[data-form="waitlist"]');
+  if (wlForm) {
+    wlForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var status = wlForm.querySelector("[data-wl-status]");
+      if (status) {
+        status.innerHTML = 'This mailing list is not connected yet. <a href="/contact/">Contact us</a> and we will add you by hand.';
       }
     });
   }
