@@ -994,7 +994,11 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
   background-color: var(--surface);
   border: 2px solid var(--border);
   border-inline-start-width: 0.5rem;
-  border-inline-start-color: var(--brand);
+  /* --accent-ui rather than --brand: an amber accent here reads as the
+     calendar's own color, distinct from the teal used for body text and
+     links everywhere else on the site. Already a verified 3:1 non-text
+     pairing (see tools/contrast.mjs's PAIRS table) — nothing new to check. */
+  border-inline-start-color: var(--accent-ui);
   border-radius: var(--radius-lg);
 }
 .listing-card > * + * { margin-block-start: var(--space-3); }
