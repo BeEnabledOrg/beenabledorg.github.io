@@ -6,6 +6,17 @@ a real 501(c)(3) invented specifics are a liability rather than a placeholder.
 
 Search the repository for `TODO(content)` to find each spot in context.
 
+## What We Do domain pages — unpublished
+
+The five domain pages (`what-we-do/housing/`, `healthcare/`, `education/`,
+`transportation/`, `financial-security/`) are not linked from anywhere on the
+site — not the nav, footer, sitemap, home page, or the `/what-we-do/` hub
+page's own card grid — and are marked `noindex` (`tools/content.mjs`,
+`domainPage`'s `noindex: true`) so search engines skip them too. The files
+still exist and build normally; only their exposure is switched off. Remove
+`noindex: true` and re-add the links (home page and `/what-we-do/`'s
+`domainCards`, the footer) once these are ready to publish.
+
 ## Legal and organizational — blocking
 
 | What | Where it goes |

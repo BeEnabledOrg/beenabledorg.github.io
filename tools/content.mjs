@@ -72,9 +72,12 @@ const DOMAINS = [
   },
 ];
 
+/* The five domain pages (housing/, healthcare/, etc.) are unpublished for
+   now — see CONTENT-TODO.md — so these cards are informational only and do
+   not link out to them. */
 const domainCards = DOMAINS.map(
   (d) => `          <li class="card card--domain card--${d.mod}">
-            <h3><a class="card__link" href="/what-we-do/${d.slug}/">${d.name}</a></h3>
+            <h3>${d.name}</h3>
             <p>${d.short}</p>
           </li>`
 ).join("\n");
@@ -670,7 +673,7 @@ const HUB_LISTINGS = [
     dateText: "1st Sunday of every month, the first 4 hours of operation",
     location: "Columbus Zoo and Aquarium, Powell (Delaware County)",
     description: "A monthly sensory-friendly morning at the Columbus Zoo, with reduced sound and lighting.",
-    accessibility: "Complimentary KultureCity sensory bags, and sensory kits (noise-cancelling headphones, sunglasses, fidgets) for a refundable $10 deposit.",
+    accessibility: "Complimentary KultureCity sensory bags, and sensory kits (noise-canceling headphones, sunglasses, fidgets) for a refundable $10 deposit.",
     sourceText: "More about Quiet Hours on the Columbus Zoo's site",
     sourceHref: "https://columbuszoo.org/accessibility",
   },
@@ -1113,6 +1116,10 @@ const domainPage = ({ slug, title, description, h1, lede, inShort, whatsHappenin
   h1,
   crumb: h1,
   trail: [{ name: "What we do", url: "/what-we-do/" }],
+  /* Not linked from anywhere on the site yet, and left out of sitemap.xml —
+     see CONTENT-TODO.md. The page still exists and works for anyone with the
+     direct URL; noindex just keeps search engines from surfacing it. */
+  noindex: true,
   body: `
     <section class="section">
       <div class="wrap wrap--narrow stack">
@@ -1678,7 +1685,7 @@ const TERMS = [
   ["direct-support-technology", "Direct support technology", `The everyday tools disabled people use to get through the day. Booking apps, communication devices, and the systems care agencies use to schedule support.`],
   ["disability-led", "Disability-led", `An organization where disabled people set the agenda and make the decisions, rather than only being asked for their views.`],
   ["dme", "DME (durable medical equipment)", `Equipment prescribed for use over a long period, such as a wheelchair, a hoist, or a hospital bed.`],
-  ["hcbs", "HCBS (Home and Community-Based Services)", `Funding that pays for support in a person's own home and neighbourhood, instead of in a nursing home or other institution.`],
+  ["hcbs", "HCBS (Home and Community-Based Services)", `Funding that pays for support in a person's own home and neighborhood, instead of in a nursing home or other institution.`],
   ["iep", "IEP (Individualized Education Program)", `A legal document for a disabled student in a United States public school. It sets out the student's goals and the support the school must provide.`],
   ["medicaid-waiver", "Medicaid waiver", `A program that lets a state use Medicaid money in ways the normal rules would not allow. Waivers are often how support at home gets paid for.`],
   ["olmstead", "Olmstead decision", `A United States Supreme Court ruling from 1999. It found that keeping disabled people in institutions when they could live in the community is a form of discrimination.`],
@@ -2115,17 +2122,9 @@ ${glossaryBody}
 
         <h2>Projects</h2>
         <ul class="tick-list tick-list--nav">
+          <li><a href="/blue-envelope/">The Blue Envelope Project</a></li>
           <li><a href="/resources/">Resource Hub &amp; Calendar</a></li>
-          <li><a href="/resources/submit/">Submit a program</a></li>
-        </ul>
-
-        <h2>The five areas we work on</h2>
-        <ul class="tick-list tick-list--nav">
-          <li><a href="/what-we-do/housing/">Housing</a></li>
-          <li><a href="/what-we-do/healthcare/">Healthcare</a></li>
-          <li><a href="/what-we-do/education/">Education</a></li>
-          <li><a href="/what-we-do/transportation/">Transportation</a></li>
-          <li><a href="/what-we-do/financial-security/">Money and benefits</a></li>
+          <li><a href="/resources/submit/">Submit a program to the Resource Hub</a></li>
         </ul>
 
         <h2>Help and site information</h2>

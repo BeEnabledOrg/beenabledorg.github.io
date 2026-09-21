@@ -71,7 +71,7 @@ While testing, confirm:
 
 - [ ] Text over the wheel graphics or any gradient.
 - [ ] Text inside inline SVG.
-- [ ] Grey out or disabled states, if any get added.
+- [ ] Gray out or disabled states, if any get added.
 - [ ] Grayscale the whole page: is any information carried by color alone
       (SC 1.4.1)? Links must still be identifiable — they are underlined.
 - [ ] Windows **High Contrast / forced-colors** mode: borders, focus rings, and

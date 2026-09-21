@@ -44,8 +44,11 @@ const urlFor = (file) => {
   return "/" + rel;
 };
 
+const isNoindex = (file) => readFileSync(file, "utf8").includes('name="robots" content="noindex"');
+
 const files = walk(ROOT)
   .filter((f) => !f.endsWith("404.html"))   // never index the error page
+  .filter((f) => !isNoindex(f))             // unpublished pages stay out of the sitemap too
   .sort();
 
 const urls = files.map((f) => ({ loc: ORIGIN + urlFor(f), lastmod: lastmod(f) }));
