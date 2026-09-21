@@ -945,8 +945,40 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
 
 /* 19. Resource hub ---------------------------------------------------------
    Filters, topic chips, the List/Day/Month toggle, and listing cards for
-   /resources/. Every color used here is one already proven in section 2's
-   PAIRS table — nothing new to add to tools/contrast.mjs. */
+   /resources/ and /resources/submit/. Everything below the palette block
+   reuses the token names other components already read (--text, --brand,
+   --surface, etc.), so overriding the tokens once re-themes every existing
+   component — cards, chips, buttons, focus rings — with no changes to their
+   own CSS. Same technique as .blue-envelope (§21).
+
+   Gold is the focal color here — headings, the active view-toggle state,
+   the card accent border — on warm cream surfaces, rather than the site's
+   teal-tinted ones. Teal stays for body text and links: it's still the
+   site's identity, just not what this page leads with. Scoped to .hub and
+   only in the base light theme; switching to dark, high contrast, or warm
+   falls back to the site's normal tokens, same as every other page. Every
+   pairing below is registered in tools/contrast.mjs's themes list and
+   checked at the ratio AAA requires for its role — see the numbers in the
+   comment on each line. */
+:root:not([data-theme="dark"]):not([data-theme="contrast"]):not([data-theme="warm"]) .hub {
+  --brand:          #7D4B00;  /*  7.30:1 on white, and white reaches 7.30:1 on it */
+  --brand-strong:   #5C3700;  /* 10.49:1 on white */
+  --brand-contrast: #ffffff;
+  --surface:        #ffffff;
+  --surface-raised: #FBF3E4;
+  --surface-sunken: #F8ECD6;
+  --border:         #8A6633;  /*  5.21:1 on white — non-text, needs 3:1 */
+  --border-strong:  #7D4B00;  /* same as --brand */
+  --border-subtle:  #E4CFA0;  /* decorative hairlines only, like the site default */
+  --accent-ui:      #7D4B00;  /* amber that may carry meaning — same as --brand here */
+  --accent-warm:    #A33B12;  /*  6.58:1 on white — non-text ornament ONLY, never a text background */
+  /* --text, --text-muted, --link, --link-visited, --focus-a/b: deliberately
+     NOT overridden — this page keeps the site's teal for those, verified
+     against the new cream --surface-sunken above (was too dark against the
+     site's --text-muted at the first cream picked; lightened until it
+     cleared 7:1 rather than darkening the teal to fit). */
+}
+
 .hub-filters {
   display: grid;
   gap: var(--space-5);
@@ -994,7 +1026,11 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
   background-color: var(--surface);
   border: 2px solid var(--border);
   border-inline-start-width: 0.5rem;
-  border-inline-start-color: var(--brand);
+  /* --accent-ui rather than --brand: an amber accent here reads as the
+     calendar's own color, distinct from the teal used for body text and
+     links everywhere else on the site. Already a verified 3:1 non-text
+     pairing (see tools/contrast.mjs's PAIRS table) — nothing new to check. */
+  border-inline-start-color: var(--accent-ui);
   border-radius: var(--radius-lg);
 }
 .listing-card > * + * { margin-block-start: var(--space-3); }

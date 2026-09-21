@@ -1386,6 +1386,7 @@ PAGES.push(
     crumb: "Resource Hub and Calendar",
     trail: [],
     body: `
+    <div class="hub">
     <section class="section">
       <div class="wrap wrap--narrow stack">
         <h1>Resource Hub &amp; Calendar</h1>
@@ -1511,6 +1512,7 @@ ${hubListingCards}
         </div>
       </div>
     </section>
+    </div>
 ${CTA}`,
   },
 
@@ -1525,6 +1527,7 @@ ${CTA}`,
     crumb: "Submit a program",
     trail: [{ name: "Resource Hub and Calendar", url: "/resources/" }],
     body: `
+    <div class="hub">
     <section class="section">
       <div class="wrap wrap--narrow stack">
         <h1>Submit a program</h1>
@@ -1663,7 +1666,8 @@ ${agencyOptionsRequired}
           <div class="form-status" role="status" data-form-status></div>
         </form>
       </div>
-    </section>`,
+    </section>
+    </div>`,
   },
 );
 
