@@ -4,8 +4,8 @@
    Be Enabled Advocacy Alliance — beenabled.org
    Target: WCAG 2.2 Level AAA
 
-   Every colour pair in the token blocks below is verified by tools/contrast.mjs.
-   Do not add a colour without adding it to that script's PAIRS table.
+   Every color pair in the token blocks below is verified by tools/contrast.mjs.
+   Do not add a color without adding it to that script's PAIRS table.
 
    Contents
      1. Fonts
@@ -26,7 +26,8 @@
     16. Wheel motif + decoration
     17. Utilities
     18. Motion                   (SC 2.3.3)
-    19. Forced colours + print
+    19. Forced colors + print
+    20. Blue Envelope directory
    ========================================================================== */
 
 /* 1. Fonts ---------------------------------------------------------------- */
@@ -333,7 +334,7 @@ blockquote {
    The underline is not decoration. At AAA both body text and link text must
    clear 7:1, which squeezes them into one narrow luminance band: our link is
    only 1.40:1 against body text, far under the 3:1 that SC 1.4.1 demands when
-   colour is the sole differentiator. So links are ALWAYS underlined in prose.
+   color is the sole differentiator. So links are ALWAYS underlined in prose.
    Never write `text-decoration: none` on a prose link. ------------------- */
 a {
   color: var(--link);
@@ -497,7 +498,7 @@ main:focus-visible { outline: var(--ring) solid var(--focus-a); }
 .nav__link:hover { background-color: var(--surface-sunken); text-decoration: underline; }
 
 /* SC 2.4.8 Location — the current page is marked in the markup, and the
-   underline means it is not signalled by colour alone (SC 1.4.1). */
+   underline means it is not signaled by color alone (SC 1.4.1). */
 .nav__link[aria-current="page"] {
   color: var(--brand-strong);
   background-color: var(--surface-sunken);
@@ -635,8 +636,8 @@ main:focus-visible { outline: var(--ring) solid var(--focus-a); }
 .card__link { text-decoration: underline; }
 .card__meta { font-size: var(--step--1); color: var(--text-muted); }
 
-/* Domain cards carry a colour band. The band is decoration; the heading text
-   and an icon always repeat the meaning, so nothing depends on colour alone
+/* Domain cards carry a color band. The band is decoration; the heading text
+   and an icon always repeat the meaning, so nothing depends on color alone
    (SC 1.4.1). */
 .card--domain { border-block-start-width: 0.5rem; }
 .card--housing        { border-block-start-color: var(--brand); }
@@ -849,7 +850,7 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
 
 /* 15. Display settings panel ----------------------------------------------
    This is the mechanism for SC 1.4.8 item 1 (user-selectable foreground and
-   background colours). Built from <details> + radio inputs so it needs no
+   background colors). Built from <details> + radio inputs so it needs no
    JavaScript to open, and no dragging (SC 2.5.7 — never an <input type=range>).
    With JS off the panel is hidden and a <noscript> note points to the
    equivalent browser and OS settings, which satisfy the same criterion by
@@ -941,7 +942,7 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
   scroll-behavior: auto !important;
 }
 
-/* 19. Forced colours + print ----------------------------------------------- */
+/* 19. Forced colors + print ----------------------------------------------- */
 @media (forced-colors: active) {
   .btn, .card, .field input, .field textarea, .field select, .in-short {
     border: 2px solid ButtonBorder;
@@ -953,6 +954,7 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
   }
   .wheel { color: CanvasText; }
   .wheel__arc { stroke: CanvasText; }
+  .status-badge, .state-card { border: 2px solid ButtonBorder; }
 }
 
 @media print {
@@ -961,7 +963,257 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
   a { color: #000; }
   /* Link destinations are lost on paper, so print them. */
   main a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
-  .card, .in-short { border: 1pt solid #000; }
+  .card, .in-short, .state-card, .callout { border: 1pt solid #000; }
   h2, h3 { break-after: avoid; }
   p, li { orphans: 3; widows: 3; }
+}
+
+/* 20. Blue Envelope directory ----------------------------------------------
+   Components for /blue-envelope/. Everything below the palette block reuses
+   the token names other components already read (--text, --brand, --surface,
+   etc.), so overriding the tokens once re-themes every existing component —
+   cards, badges, buttons, focus rings — with no changes to their own CSS.
+
+   Deliberately its own identity: blue, sky, white, and ochre, with a serif
+   display face, rather than the site's teal/amber brand. Scoped to
+   .blue-envelope and only in the base light theme — switching to dark, high
+   contrast, or warm falls back to the site's normal tokens, same as every
+   other page. Every pairing below is verified at the ratio AAA requires for
+   its role; see the numbers in the comment on each line. */
+:root:not([data-theme="dark"]):not([data-theme="contrast"]):not([data-theme="warm"]) .blue-envelope {
+  --text:           #0C2038;  /* 16.41:1 on white */
+  --text-muted:     #2A3E58;  /* 10.89:1 on white · 8.70:1 on --surface-sunken · 9.84:1 on --surface-raised */
+  --link:           #123D6E;  /* 10.95:1 on white */
+  --link-visited:   #4B3562;  /* 10.58:1 on white · 8.46:1 on --surface-sunken */
+  --brand:          #1D4E89;  /*  8.39:1 on white, and white reaches 8.39:1 on it */
+  --brand-strong:   #123D6E;  /* same as --link: 10.95:1 on white */
+  --brand-contrast: #ffffff;
+  --surface:        #ffffff;
+  --surface-raised: #EEF4FB;
+  --surface-sunken: #DBE7F7;
+  --surface-invert: #0C2038;
+  --text-invert:    #ffffff;  /* 16.41:1 on --surface-invert */
+  --border:         #4A6A94;  /*  5.55:1 on white — non-text, needs 3:1 */
+  --border-strong:  #1D4E89;  /* same as --brand */
+  --border-subtle:  #B7CBE6;  /* decorative hairlines only, like the site default */
+  --accent-warm:    #D0812F;  /*  3.06:1 on white — non-text ornament ONLY, never a text background */
+  --focus-a:        #0C2038;
+  --focus-b:        #ffffff;
+  --font-head: "Newsreader", Georgia, "Times New Roman", serif;
+  color: var(--text);
+}
+
+.blue-envelope .kicker {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  border-inline-start: 0.375rem solid var(--accent-warm);
+  padding-inline-start: var(--space-3);
+}
+.blue-envelope h2.accent-line::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 0.375rem;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-warm);
+  margin-block-start: var(--space-3);
+}
+
+/* -- Numbered steps ("How it works") ------------------------------------ */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
+.steps li {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: var(--space-4);
+  align-items: start;
+  background-color: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+.steps li > div > strong { display: block; font-family: var(--font-head); font-size: var(--step-0); margin-block-end: var(--space-1); }
+.steps li > div > p { margin: 0; max-width: none; color: var(--text-muted); }
+.steps__num {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--brand);
+  color: var(--brand-contrast);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--step-1);
+  box-shadow: 0 0 0 4px var(--surface), 0 0 0 7px var(--accent-warm);
+}
+
+/* -- Hero cover graphic. Purely decorative (aria-hidden, see .hero__art
+      elsewhere) and redundant with the real <h1> and lede next to it, so the
+      text inside it is real DOM text — never baked into the image (SC 1.4.9)
+      — just hidden from assistive tech rather than announced twice. ------ */
+.cover {
+  width: min(22rem, 100%);
+  aspect-ratio: 3 / 4;
+  background-color: var(--brand);
+  color: var(--brand-contrast);
+  border-radius: 0.375rem 0.875rem 0.875rem 0.375rem;
+  position: relative;
+  box-shadow: -2px 0 0 rgba(12, 32, 56, 0.35) inset, 14px 22px 0 rgba(12, 32, 56, 0.16);
+  transform: rotate(2.5deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-7);
+}
+.cover::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0.875rem;
+  inset-block: 0;
+  width: 2px;
+  background-color: rgba(255, 255, 255, 0.18);
+}
+.cover__title {
+  font-family: var(--font-head);
+  font-size: var(--step-3);
+  line-height: 1.05;
+  font-weight: 600;
+  margin: 0;
+  max-width: none;
+}
+.cover__sub { font-size: var(--step-0); margin: var(--space-2) 0 0; max-width: none; }
+.cover__art { width: 100%; height: auto; display: block; }
+.cover__art-paper       { fill: var(--surface); }
+.cover__art-lines       { fill: none; stroke: var(--surface-sunken); }
+.cover__art-envelope    { fill: var(--surface-sunken); }
+.cover__art-flap        { stroke: var(--brand); }
+.cover__art-seal        { fill: var(--accent-warm); }
+.cover__art-seal-hole   { fill: var(--surface-sunken); }
+.cover__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--step--1);
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  margin: 0;
+  max-width: none;
+}
+.cover__brand .wheel { width: 2.5rem; height: 2.5rem; flex: none; color: var(--brand-contrast); }
+.cover__brand .wheel__arc { stroke: var(--brand-contrast); }
+
+@media (max-width: 959px) {
+  .cover { order: -1; width: min(16rem, 70%); margin-block-end: var(--space-4); }
+}
+
+.callout {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  border: 2px solid var(--accent-warm);
+  border-inline-start-width: 0.5rem;
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  background-color: var(--surface-raised);
+  margin-block-start: var(--space-6);
+}
+.callout__icon { width: 1.75rem; height: 1.75rem; color: var(--accent-warm); flex: none; }
+.callout p { max-width: none; }
+.callout > p, .callout > div { margin: 0; }
+
+/* -- Jump list. Styled like nav links, not underlined prose links, because
+      this is a navigation aid rather than a sentence (same exception the
+      site already relies on for .nav__link and .footer__list a). --------- */
+.state-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-start: var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+.state-index a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target);
+  padding-inline: var(--space-4);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+  font-size: var(--step--1);
+}
+.state-index a:visited { color: var(--text); }
+.state-index a:hover { background-color: var(--surface-sunken); text-decoration: underline; }
+
+.state-list { display: grid; gap: var(--space-4); margin-block-start: var(--space-6); }
+.state-list[hidden] { display: none; }
+
+.state-card {
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+}
+.state-card[hidden] { display: none; }
+.state-card > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--target);
+  padding: var(--space-4) var(--space-5);
+  cursor: pointer;
+  list-style: none;
+}
+.state-card > summary::-webkit-details-marker { display: none; }
+.state-card > summary::marker { content: ""; }
+.state-card__name { font-family: var(--font-head); font-weight: 700; font-size: var(--step-0); }
+.state-card__abbr { color: var(--text-muted); font-weight: 400; font-size: var(--step--1); }
+.state-card .chevron { margin-inline-start: auto; color: var(--text-muted); flex: none; transition: transform 0.15s; }
+.state-card[open] .chevron { transform: rotate(180deg); }
+.state-card__body {
+  padding: var(--space-4) var(--space-5) var(--space-5);
+  border-block-start: 1px solid var(--border-subtle);
+}
+.state-card__body > p:first-child, .state-card__body > dl:first-child { margin-block-start: 0; }
+
+.chapter-group {
+  margin-block-start: var(--space-6);
+  padding-block-start: var(--space-5);
+  border-block-start: 1px dashed var(--border-subtle);
+}
+.chapter-item { padding-block: var(--space-4); border-block-start: 1px solid var(--border-subtle); }
+.chapter-item:first-of-type { border-block-start: 0; padding-block-start: 0; }
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--step--1);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 2px solid transparent;
+  max-width: 100%;
+}
+/* Color is never the only signal here — the label text always names the
+   status too (SC 1.4.1) — but each kind also gets a distinct fill/border
+   treatment so the difference does not rely on reading the words either. */
+.status-badge--law      { background-color: var(--brand);          color: var(--brand-contrast); }
+.status-badge--agency   { background-color: var(--surface-invert); color: var(--text-invert); }
+.status-badge--local    { background-color: var(--surface-sunken); color: var(--text); border-color: var(--border-strong); }
+.status-badge--proposed { background-color: var(--surface-raised); color: var(--text-muted); border-style: dashed; border-color: var(--border); }
+.status-badge--none     { background-color: var(--surface);        color: var(--text-muted); border-style: dashed; border-color: var(--border-subtle); }
+
+@media (max-width: 480px) {
+  .state-card > summary { flex-direction: column; align-items: flex-start; min-width: 0; }
+  .state-card .chevron { position: absolute; inset-inline-end: var(--space-5); }
+  .state-card > summary { position: relative; }
 }

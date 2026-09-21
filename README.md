@@ -32,7 +32,7 @@ glossary/  privacy/  sitemap/
 
 styles.css                  One stylesheet. Tokens at the top.
 app.js                      Progressive enhancement only.
-assets/fonts/               Self-hosted webfonts (SIL OFL, licences included)
+assets/fonts/               Self-hosted webfonts (SIL OFL, licenses included)
 assets/img/                 Favicon and Open Graph card
 tools/                      Dev scripts. Never served — robots.txt disallows it.
 ```
@@ -59,7 +59,7 @@ mechanically guarantees consistent navigation (SC 3.2.3) and consistent help
 `node tools/scaffold-pages.mjs` (existing pages are skipped), then
 `node tools/sitemap.mjs` and add it to `sitemap/index.html` and the footer.
 
-**Colours** — change them only in the token blocks at the top of `styles.css`,
+**Colors** — change them only in the token blocks at the top of `styles.css`,
 then run `npm run check:contrast`. Every pairing must stay at 7:1. A failing
 pair is fixed in the stylesheet, never waived in the checker.
 
@@ -67,7 +67,7 @@ pair is fixed in the stylesheet, never waived in the checker.
 
 | Command | Proves |
 |---|---|
-| `check:contrast` | 170 colour pairings across 5 themes meet 7:1 (SC 1.4.6) and 3:1 (SC 1.4.11) |
+| `check:contrast` | 170 color pairings across 5 themes meet 7:1 (SC 1.4.6) and 3:1 (SC 1.4.11) |
 | `check:partials` | Nav and footer are identical everywhere (SC 3.2.3, 3.2.6) |
 | `check:read` | Every page reads at grade 9 or below, or carries a plain summary (SC 3.1.5) |
 | `check:links` | No "read more", no `target="_blank"`, no ambiguous link text (SC 2.4.9, 3.2.5) |
@@ -90,7 +90,7 @@ These are not style preferences. Each one is load-bearing for the AAA claim.
   element is never obscured (SC 2.4.12).
 - **Links in prose are always underlined.** At 7:1 both body text and link text
   are squeezed into one narrow luminance band — our link is only 1.40:1 against
-  body text, far below the 3:1 that SC 1.4.1 requires when colour is the only
+  body text, far below the 3:1 that SC 1.4.1 requires when color is the only
   differentiator.
 - **No carousels, modals, tooltips, scroll animation, or cookie banners.** Each
   breaks a Level AAA criterion outright.
@@ -110,7 +110,7 @@ These are not style preferences. Each one is load-bearing for the AAA claim.
 EIN, address, board, phone number, and the donation and mailing-list URLs. None
 of it was filled with placeholder text.
 
-## Licence
+## License
 
 Site content © Be Enabled Advocacy Alliance. Code MIT. Bundled fonts are under
 the SIL Open Font License; see `assets/fonts/`.

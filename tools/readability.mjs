@@ -40,7 +40,7 @@ const syllables = (word) => {
   return groups ? groups.length : 1;
 };
 
-const analyse = (text) => {
+const analyze = (text) => {
   for (const name of PROPER) {
     text = text.split(name).join("Name");
   }
@@ -76,7 +76,7 @@ for (const file of htmlFiles(ROOT)) {
   /* The summary block is measured on its own too: it is the part that MUST be
      plain, so it is held to a stricter bar than the body. */
   const hasSummary = /class="in-short"/.test(main);
-  const stats = analyse(textOf(main));
+  const stats = analyze(textOf(main));
   if (!stats) continue;
   checked++;
 

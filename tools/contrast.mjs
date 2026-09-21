@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Proves every colour pairing in styles.css meets WCAG 2.2 Level AAA.
+ * Proves every color pairing in styles.css meets WCAG 2.2 Level AAA.
  *
  * AAA thresholds:  7:1 normal text · 4.5:1 large text (>=24px, or >=18.66px bold)
  * SC 1.4.11:       3:1 non-text UI components and graphical objects
@@ -62,6 +62,9 @@ const themes = {
   "dark (chosen)": { ...light, ...tokensIn(blockAfter(':root[data-theme="dark"]')) },
   "high contrast": { ...light, ...tokensIn(blockAfter(':root[data-theme="contrast"]')) },
   "warm / low blue": { ...light, ...tokensIn(blockAfter(':root[data-theme="warm"]')) },
+  // .blue-envelope only overrides the base light theme (see styles.css §20) —
+  // dark, high contrast, and warm all fall back to the tokens above.
+  "blue envelope (light)": { ...light, ...tokensIn(blockAfter(".blue-envelope {")) },
 };
 
 /* -- The contract. Every pairing the design is allowed to render. --------
@@ -108,7 +111,7 @@ const PAIRS = [
 /* The focus ring is two-tone: a solid outline in --focus-a wrapped in a halo of
    --focus-b, sitting outside the component. It stays visible as long as AT LEAST
    ONE of the two bands clears 3:1 against whatever it lands on — which is the
-   whole reason for using two bands rather than one brand colour. Checking each
+   whole reason for using two bands rather than one brand color. Checking each
    band separately would be wrong: it would reject rings that are perfectly
    visible. (SC 2.4.13) */
 const FOCUS_SURFACES = [

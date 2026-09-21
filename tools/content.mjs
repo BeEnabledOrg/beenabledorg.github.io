@@ -16,6 +16,7 @@
  *   SC 1.4.9  No text baked into images. Diagrams use inline SVG <text>.
  *   SC 3.2.5  No target="_blank" anywhere.
  */
+import { blueEnvelopePage } from "./content-blue-envelope.mjs";
 
 export const SITE = {
   origin: "https://beenabled.org",
@@ -30,7 +31,7 @@ const CTA = `
     <section class="section section--tint">
       <div class="wrap">
         <h2>Work with us</h2>
-        <p>We are a small organisation. Every hand and every dollar changes what we can take on.</p>
+        <p>We are a small organization. Every hand and every dollar changes what we can take on.</p>
         <p class="btn-row">
           <a class="btn btn--accent" href="/get-involved/">Find a way to get involved</a>
           <a class="btn btn--secondary" href="/contact/">Contact Be Enabled Advocacy Alliance</a>
@@ -182,7 +183,7 @@ ${CTA}`,
         <div class="in-short">
           <h2>In short</h2>
           <p>We are a non-profit led by disabled people.</p>
-          <p>We do three kinds of work: advocacy, programmes, and community building.</p>
+          <p>We do three kinds of work: advocacy, programs, and community building.</p>
           <p>We work on five parts of life at once, because they hold each other up.</p>
           <p>We want disabled people to have both the basics of a good life and the
              power to protect them.</p>
@@ -190,7 +191,7 @@ ${CTA}`,
 
         <h2>Who we are</h2>
         <p>Be Enabled Advocacy Alliance is a disability-led advocacy, programming,
-           and community organisation. Most people use the short name BEAA, said
+           and community organization. Most people use the short name BEAA, said
            as "bee-ay-ay".</p>
         <p>We work to grow autonomy and agency for people who are pushed to the
            edges — and above all for disabled people. <a href="/glossary/#autonomy">Autonomy</a>
@@ -201,7 +202,7 @@ ${CTA}`,
         <p>It means disabled people are not just consulted. We set the agenda, do
            the work, and make the decisions.</p>
         <p>Plenty of groups speak about disabled people. Fewer are run by them.
-           That difference shows up in what gets prioritised, what gets noticed,
+           That difference shows up in what gets prioritized, what gets noticed,
            and what gets left out.</p>
 
         <h2>How we work</h2>
@@ -229,7 +230,7 @@ ${CTA}`,
         <p><a href="/what-we-do/">Read about the five areas we work on</a></p>
 
         <h2>Our legal status</h2>
-        <p>Be Enabled Advocacy Alliance is a non-profit organisation under section
+        <p>Be Enabled Advocacy Alliance is a non-profit organization under section
            <a href="/glossary/#sec-501c3">501(c)(3)</a> of the United States tax code.
            Gifts to us may be tax deductible.</p>
         <!-- TODO(content): EIN, year founded, mailing address, board and staff
@@ -488,7 +489,7 @@ const DOMAIN_PAGES = [
     h1: "Transportation",
     lede: "A way to get where you are going, when you need to go.",
     inShort: [
-      "A broken lift or a missing kerb ramp can end a journey before it starts.",
+      "A broken lift or a missing curb ramp can end a journey before it starts.",
       "Paratransit often has to be booked a day ahead and can still arrive very late.",
       "Outside cities there is frequently no accessible transport at all.",
       "We work for transport that is reliable, not just technically available.",
@@ -538,7 +539,7 @@ const DOMAIN_PAGES = [
       "Some disabled workers are still legally paid less than the minimum wage.",
       "We work for rules that let people earn, save, and still keep their care.",
     ],
-    whatsHappening: `        <p>Two main programmes support disabled adults in the United States.
+    whatsHappening: `        <p>Two main programs support disabled adults in the United States.
            Supplemental Security Income (<a href="/glossary/#ssi">SSI</a>) is based on
            need. Social Security Disability Insurance
            (<a href="/glossary/#ssdi">SSDI</a>) is based on past work. Both come with
@@ -581,21 +582,21 @@ PAGES.push(...DOMAIN_PAGES);
    be reached by keyboard or touch. So every term is spelled out in visible text
    on first use and linked here. */
 const TERMS = [
-  ["sec-501c3", "501(c)(3)", `The part of the United States tax code that covers charities. A 501(c)(3) organisation does not pay federal income tax, and gifts to it may be tax deductible.`],
+  ["sec-501c3", "501(c)(3)", `The part of the United States tax code that covers charities. A 501(c)(3) organization does not pay federal income tax, and gifts to it may be tax deductible.`],
   ["sec-504-plan", "504 plan", `A written plan that sets out the changes a school will make for a disabled student. It comes from Section 504 of the Rehabilitation Act. It is usually shorter and simpler than an Individualized Education Program.`],
-  ["able-account", "ABLE account", `A savings account a disabled person can use without losing benefits. Money in an ABLE account does not count towards the usual savings limit. Only people whose disability began before a set age can open one.`],
+  ["able-account", "ABLE account", `A savings account a disabled person can use without losing benefits. Money in an ABLE account does not count toward the usual savings limit. Only people whose disability began before a set age can open one.`],
   ["ada", "ADA (Americans with Disabilities Act)", `A United States law passed in 1990. It makes it illegal to discriminate against disabled people in work, public services, and public places.`],
   ["agency", "Agency", `Having a real say in what happens to you. Being the one who decides, rather than the one who is decided about.`],
   ["assistive-technology", "Assistive technology", `Any tool that helps a disabled person do something. It covers everything from a walking stick to screen reading software.`],
   ["autonomy", "Autonomy", `Running your own life. Making your own choices about where you live, who supports you, and what you do.`],
   ["benefit-cliff", "Benefit cliff", `The point where earning slightly more money causes benefits to stop suddenly instead of reducing gradually. It can leave someone worse off after a pay rise.`],
-  ["blue-envelope-project", "Blue Envelope Project", `A Be Enabled Advocacy Alliance programme. <!-- TODO(content): describe the programme in two or three plain sentences. See CONTENT-TODO.md -->`],
+  ["blue-envelope-project", "Blue Envelope Project", `A Be Enabled Advocacy Alliance program. A blue envelope holds a driver's license, registration, and insurance, plus short notes for the driver and for the officer, so a traffic stop can go more smoothly for someone who communicates differently. Using one is always voluntary. See the <a href="/blue-envelope/">Blue Envelope Project page</a> to find a program near you.`],
   ["direct-support-technology", "Direct support technology", `The everyday tools disabled people use to get through the day. Booking apps, communication devices, and the systems care agencies use to schedule support.`],
-  ["disability-led", "Disability-led", `An organisation where disabled people set the agenda and make the decisions, rather than only being asked for their views.`],
+  ["disability-led", "Disability-led", `An organization where disabled people set the agenda and make the decisions, rather than only being asked for their views.`],
   ["dme", "DME (durable medical equipment)", `Equipment prescribed for use over a long period, such as a wheelchair, a hoist, or a hospital bed.`],
   ["hcbs", "HCBS (Home and Community-Based Services)", `Funding that pays for support in a person's own home and neighbourhood, instead of in a nursing home or other institution.`],
   ["iep", "IEP (Individualized Education Program)", `A legal document for a disabled student in a United States public school. It sets out the student's goals and the support the school must provide.`],
-  ["medicaid-waiver", "Medicaid waiver", `A programme that lets a state use Medicaid money in ways the normal rules would not allow. Waivers are often how support at home gets paid for.`],
+  ["medicaid-waiver", "Medicaid waiver", `A program that lets a state use Medicaid money in ways the normal rules would not allow. Waivers are often how support at home gets paid for.`],
   ["olmstead", "Olmstead decision", `A United States Supreme Court ruling from 1999. It found that keeping disabled people in institutions when they could live in the community is a form of discrimination.`],
   ["paratransit", "Paratransit", `A door-to-door transport service for people who cannot use regular buses and trains. It usually has to be booked in advance.`],
   ["screen-reader", "Screen reader", `Software that reads what is on a screen out loud, or sends it to a braille display. It is how many blind people use a computer or phone.`],
@@ -613,6 +614,9 @@ const glossaryBody = TERMS.map(
 ).join("\n");
 
 PAGES.push(
+  /* ------------------------------------------------------ Blue Envelope */
+  blueEnvelopePage,
+
   /* -------------------------------------------------------- Get involved */
   {
     file: "get-involved/index.html",
@@ -633,7 +637,7 @@ PAGES.push(
         <div class="in-short">
           <h2>In short</h2>
           <p>You can give money, give time, or share what you know.</p>
-          <p>Organisations can partner with us on a project.</p>
+          <p>Organizations can partner with us on a project.</p>
           <p>You can also just stay in touch and read what we send.</p>
         </div>
       </div>
@@ -805,7 +809,7 @@ PAGES.push(
     <section class="section">
       <div class="wrap wrap--narrow stack">
         <h1>Accessibility statement</h1>
-        <p class="lede">We are a disability-led organisation. This website is the
+        <p class="lede">We are a disability-led organization. This website is the
            first thing we ask you to judge us on.</p>
 
         <div class="in-short">
@@ -827,15 +831,15 @@ PAGES.push(
 
         <h2>What we have done</h2>
         <ul class="tick-list">
-          <li>Every combination of text and background colour on this site meets the
+          <li>Every combination of text and background color on this site meets the
               7:1 contrast ratio Level AAA requires. This is checked by a script on
               every change, not by eye.</li>
-          <li>You can change the colours, the text size, the line spacing, and the
+          <li>You can change the colors, the text size, the line spacing, and the
               amount of movement using <a href="#display-settings">the display settings on this page</a>.
               Your choices are remembered in your browser.</li>
           <li>Every button and link you can tap is at least 44 by 44 pixels.</li>
           <li>Everything works with a keyboard alone, and with a screen reader.</li>
-          <li>Links are always underlined, so you never have to see colour to know
+          <li>Links are always underlined, so you never have to see color to know
               something is a link.</li>
           <li>Lines of text are kept short enough to read comfortably, and text is
               never stretched to both edges.</li>
@@ -961,7 +965,7 @@ ${glossaryBody}
         </div>
 
         <h2>What we store</h2>
-        <p>When you change the colours, text size, line spacing, or movement
+        <p>When you change the colors, text size, line spacing, or movement
            settings, your browser saves those choices on your own device using a
            feature called local storage.</p>
         <p>That information stays on your device. It is never sent to us, and we
