@@ -533,7 +533,7 @@ export const blueEnvelopePage = {
 
         <div class="in-short">
           <h2>In short</h2>
-          <p>This directory lists Blue Envelope programmes by state, and by
+          <p>This directory lists Blue Envelope programs by state, and by
              city or county where one is known. Some are required by state
              law, some are run by a state agency, and some exist only in
              specific places. Some states have none found yet.</p>
@@ -558,7 +558,7 @@ export const blueEnvelopePage = {
         <p>Entries below often use short names for agencies: a Bureau of Motor
            Vehicles is a BMV, a Department of Public Safety is a DPS, a Police
            Department is a PD, and a Sheriff's Office is an SO. A local or
-           county programme is marked "matched to an official source" when
+           county program is marked "matched to an official source" when
            this research found a government or agency page confirming it, or
            "news coverage only" when the only source found so far was a news
            report.</p>
@@ -613,7 +613,7 @@ ${stateList}
           <li class="card">
             <h3>Bring it to your town</h3>
             <p>Police departments, motor vehicle agencies, and community
-               groups can start a Blue Envelope programme.</p>
+               groups can start a Blue Envelope program.</p>
             <p><a class="btn btn--secondary" href="/contact/">Start a program</a></p>
           </li>
         </ul>
@@ -624,7 +624,7 @@ ${stateList}
       <div class="wrap">
         <h2 class="accent-line">Federal and national efforts</h2>
         <p>Two related bills are moving through Congress, and several
-           organisations coordinate programmes above the state level.</p>
+           organizations coordinate programs above the state level.</p>
         <ul class="grid no-bullet">
 ${federalList}
         </ul>
@@ -637,14 +637,14 @@ ${federalList}
         <p>This directory was put together by researching state agency websites,
            legislature and bill-tracking sites, and news coverage, including
            research assisted by AI tools. It has not been confirmed by phone with
-           every programme listed, and it was last checked in September 2026. Laws
-           pass, programmes launch, and contact details change faster than any
+           every program listed, and it was last checked in September 2026. Laws
+           pass, programs launch, and contact details change faster than any
            directory can track on its own.</p>
 
         <h3>What "no program found yet" means</h3>
-        <p>A Blue Envelope programme is often started by a single police
+        <p>A Blue Envelope program is often started by a single police
            department or county, with no state registry recording it. That makes a
-           small local programme easy to miss. If you know of one that is missing
+           small local program easy to miss. If you know of one that is missing
            from this directory, or a detail here that has changed,
            <a href="/contact/">tell us what you found</a>.</p>
       </div>

@@ -1203,7 +1203,7 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
   border: 2px solid transparent;
   max-width: 100%;
 }
-/* Colour is never the only signal here — the label text always names the
+/* Color is never the only signal here — the label text always names the
    status too (SC 1.4.1) — but each kind also gets a distinct fill/border
    treatment so the difference does not rely on reading the words either. */
 .status-badge--law      { background-color: var(--brand);          color: var(--brand-contrast); }
