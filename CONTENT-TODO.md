@@ -6,7 +6,7 @@ a real 501(c)(3) invented specifics are a liability rather than a placeholder.
 
 Search the repository for `TODO(content)` to find each spot in context.
 
-## Legal and organisational — blocking
+## Legal and organizational — blocking
 
 | What | Where it goes |
 |---|---|
@@ -39,11 +39,65 @@ those reliably fail Level AAA and cannot be fixed from the outside.
 Both are `href="#"` right now. Keep them as outbound links rather than embedding
 the provider's form on the page.
 
-## Program detail
+## Resource Hub & Calendar (EnableMe)
+
+`resources/index.html` is live, filterable, and works with JavaScript off. It
+now carries 45 real listings (in `tools/content.mjs`, the `HUB_LISTINGS`
+array), sourced from Jen's own Content Source Inventory workbook — every one
+checked against the organization's own site, with a link back to that site on
+the card. None of these came through the agency submission form; they were
+compiled directly by the team, which is why the page copy on `/resources/`
+says so plainly rather than implying they were all agency-submitted.
+
+Still blocking before this is fully useful:
 
 | What | Where it goes |
 |---|---|
-| Whether EnableMe and other projects should get their own pages | new `projects/` section |
+| More listings, especially from counties with none yet | `tools/content.mjs`, the `HUB_LISTINGS` array |
+| Form endpoint for the submission form `action` | `resources/submit/index.html` — same unresolved question as the contact form above |
+| A pass to re-check the workbook's still-parked tabs (Day Programs & Providers, County Boards, Libraries, and the rest) once resources reopen beyond Calendar-only scope | see the workbook's Read Me sheet |
+
+The workbook flags several real, dated finds that could not be promoted this
+round for reasons worth revisiting rather than re-deciding from scratch:
+past-cycle events waiting on next year's date (e.g. DD Awareness & Advocacy
+Day, the Franklin and Lucas County provider fairs, the Clark DD Rockin' Ball),
+recurring series whose current schedule needs a fresh pull close to drafting
+time (e.g. Autism Society Mahoning Valley and Dayton's family calendars), and
+a couple of good finds outside Ohio or aimed at an employer audience rather
+than individuals and families (the Arc's National Convention, OOD's employer
+webinar series). None of those are in `HUB_LISTINGS` yet.
+
+New listings, whether promoted from the workbook or added by hand, follow the
+same format. Each one needs these `data-*` attributes, read by `app.js`'s Hub
+filtering and its Day/Month views — nothing else needs to change when a
+listing is added:
+
+```html
+<li class="listing-card"
+    data-title="Program or event name"
+    data-county="Franklin"
+    data-category="Housing,Peer Support"
+    data-agency-type="Nonprofit provider"
+    data-disability-type="Developmental disability"
+    data-date="2026-11-04"
+    data-ongoing="false">
+  <div class="listing-card__tags">
+    <span class="tag">Housing</span>
+    <span class="tag">Peer Support</span>
+  </div>
+  <h3>Program or event name</h3>
+  <p class="listing-card__meta">Franklin County · Nonprofit provider · Developmental disability · November 4, 2026, 10:00 am</p>
+  <p>Plain-language description of the program.</p>
+  <p><strong>Location:</strong> Street address, or "Virtual".</p>
+  <p><strong>Accessibility:</strong> Whatever the agency told us — wheelchair accessible, ASL interpretation, and so on.</p>
+</li>
+```
+
+For an ongoing program with no fixed date, drop `data-date` and set
+`data-ongoing="true"` instead; leave `data-category` as a comma-separated
+list when a program covers more than one topic.
+
+## Blue Envelope Project
 
 The Blue Envelope Project now has its own page at `/blue-envelope/`, with a
 directory of state and local programs. That directory was compiled through

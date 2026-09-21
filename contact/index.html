@@ -116,6 +116,7 @@
           <li><a class="nav__link" href="/about/">About</a></li>
           <li><a class="nav__link" href="/what-we-do/">What we do</a></li>
           <li><a class="nav__link" href="/blue-envelope/">Blue Envelope Project</a></li>
+          <li><a class="nav__link" href="/resources/">Resource Hub</a></li>
           <li><a class="nav__link" href="/get-involved/">Get involved</a></li>
           <li><a class="nav__link" href="/contact/" aria-current="page">Contact</a></li>
         </ul>
@@ -230,7 +231,7 @@
              confirmed. With JavaScript off this posts directly and the browser's
              own required-field checks apply.
              TODO(content): set action to the real form endpoint. -->
-        <form class="contact-form" method="post" action="#" data-confirm-before-send novalidate>
+        <form class="contact-form" id="cf" method="post" action="#" data-confirm-before-send novalidate>
           <div class="field">
             <label for="cf-name">Your name <span class="field__req">(optional)</span></label>
             <p class="field__hint" id="cf-name-hint">What should we call you? You can leave this blank.</p>
@@ -261,7 +262,7 @@
           <div class="field">
             <label for="cf-message">Your message <span class="field__req">(required)</span></label>
             <p class="field__hint" id="cf-message-hint">Tell us what is going on. There is no wrong way to write it, and you do not need to use official words.</p>
-            <textarea id="cf-message" name="message" required aria-describedby="cf-message-hint"></textarea>
+            <textarea id="cf-message" name="message" required data-required-message="Please write your message before sending. This is the only box we need." aria-describedby="cf-message-hint"></textarea>
             <p class="field__error" id="cf-message-error"></p>
           </div>
 
@@ -297,11 +298,19 @@
           </ul>
         </nav>
 
+        <nav aria-label="Footer: projects">
+          <h3>Projects</h3>
+          <ul class="footer__list">
+            <li><a href="/blue-envelope/">The Blue Envelope Project</a></li>
+            <li><a href="/resources/">Resource Hub &amp; Calendar</a></li>
+            <li><a href="/resources/submit/">Submit a program</a></li>
+          </ul>
+        </nav>
+
         <nav aria-label="Footer: about this organization">
           <h3>About us</h3>
           <ul class="footer__list">
             <li><a href="/about/">About Be Enabled Advocacy Alliance</a></li>
-            <li><a href="/blue-envelope/">The Blue Envelope Project</a></li>
             <li><a href="/get-involved/">Get involved</a></li>
             <li><a href="/contact/">Contact us</a></li>
           </ul>

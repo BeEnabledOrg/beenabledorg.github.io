@@ -79,6 +79,780 @@ const domainCards = DOMAINS.map(
           </li>`
 ).join("\n");
 
+/* ---------------------------------------------------------- Resource Hub --
+   Shared reference data for the Resource Hub & Calendar and its submission
+   form. All 88 Ohio counties are listed from day one, whether or not a
+   county has an approved listing yet — see tools/content.mjs's own note
+   below and CONTENT-TODO.md. */
+const OHIO_COUNTIES = [
+  "Adams", "Allen", "Ashland", "Ashtabula", "Athens", "Auglaize", "Belmont",
+  "Brown", "Butler", "Carroll", "Champaign", "Clark", "Clermont", "Clinton",
+  "Columbiana", "Coshocton", "Crawford", "Cuyahoga", "Darke", "Defiance",
+  "Delaware", "Erie", "Fairfield", "Fayette", "Franklin", "Fulton", "Gallia",
+  "Geauga", "Greene", "Guernsey", "Hamilton", "Hancock", "Hardin", "Harrison",
+  "Henry", "Highland", "Hocking", "Holmes", "Huron", "Jackson", "Jefferson",
+  "Knox", "Lake", "Lawrence", "Licking", "Logan", "Lorain", "Lucas",
+  "Madison", "Mahoning", "Marion", "Medina", "Meigs", "Mercer", "Miami",
+  "Monroe", "Montgomery", "Morgan", "Morrow", "Muskingum", "Noble", "Ottawa",
+  "Paulding", "Perry", "Pickaway", "Pike", "Portage", "Preble", "Putnam",
+  "Richland", "Ross", "Sandusky", "Scioto", "Seneca", "Shelby", "Stark",
+  "Summit", "Trumbull", "Tuscarawas", "Union", "Van Wert", "Vinton", "Warren",
+  "Washington", "Wayne", "Williams", "Wood", "Wyandot",
+];
+
+const HUB_CATEGORIES = [
+  "Housing", "Employment", "Transportation", "Social and Recreation", "Health",
+  "Peer Support", "Respite",
+];
+
+const HUB_AGENCY_TYPES = [
+  "County board of developmental disabilities",
+  "Nonprofit provider",
+  "State agency",
+  "Self-advocacy group",
+];
+
+const HUB_DISABILITY_TYPES = [
+  "Developmental disability", "Autism", "Physical disability", "Sensory disability",
+];
+
+const countyOptions = ['          <option value="">All counties</option>']
+  .concat(OHIO_COUNTIES.map((c) => `          <option value="${c}">${c}</option>`))
+  .join("\n");
+
+const countyOptionsRequired = ['          <option value="" disabled selected>Choose a county</option>']
+  .concat(OHIO_COUNTIES.map((c) => `          <option value="${c}">${c}</option>`))
+  .join("\n");
+
+const agencyOptions = ['          <option value="">All agency types</option>']
+  .concat(HUB_AGENCY_TYPES.map((a) => `          <option value="${a}">${a}</option>`))
+  .join("\n");
+
+const agencyOptionsRequired = ['          <option value="" disabled selected>Choose one</option>']
+  .concat(HUB_AGENCY_TYPES.map((a) => `          <option value="${a}">${a}</option>`))
+  .join("\n");
+
+const disabilityOptions = ['          <option value="">All disability types</option>']
+  .concat(HUB_DISABILITY_TYPES.map((d) => `          <option value="${d}">${d}</option>`))
+  .join("\n");
+
+const disabilityOptionsRequired = ['          <option value="" disabled selected>Choose one</option>']
+  .concat(HUB_DISABILITY_TYPES.map((d) => `          <option value="${d}">${d}</option>`))
+  .join("\n");
+
+const topicChips = HUB_CATEGORIES.map(
+  (c) => `          <button type="button" class="chip" data-topic="${c}" aria-pressed="false">${c}</button>`
+).join("\n");
+
+const categoryCheckboxes = HUB_CATEGORIES.map(
+  (c) => `            <label><input type="checkbox" name="category[]" value="${c}"> ${c}</label>`
+).join("\n");
+
+const HUB_LISTINGS = [
+  {
+    title: "Synergy Conference",
+    county: "Erie",
+    category: ["Peer Support"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Synergy Ohio",
+    disabilityType: null,
+    date: "2026-09-30",
+    dateText: "Sept 30 to Oct 2, 2026",
+    location: "Kalahari Resort and Conference Center, Sandusky (Erie County) \u2014 draws a statewide audience",
+    description: "An annual statewide conference for Ohio's disability community, hosted by Synergy Ohio.",
+    accessibility: null,
+    sourceText: "More about the Synergy Conference on Synergy Ohio's site",
+    sourceHref: "https://synergyohio.org",
+  },
+  {
+    title: "OACB Annual Convention",
+    county: "Franklin",
+    category: ["Peer Support"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Ohio Association of County Boards of DD (OACB)",
+    disabilityType: null,
+    date: "2026-11-19",
+    dateText: "Nov 19 to 21, 2026",
+    location: "Hilton Columbus at Easton, Columbus \u2014 statewide",
+    description: "OACB's annual convention for county boards of developmental disabilities, held both in person and virtually.",
+    accessibility: null,
+    sourceText: "More about the OACB Annual Convention on OACB's site",
+    sourceHref: "https://oacbdd.org/convention",
+  },
+  {
+    title: "OPRA Fall Conference",
+    county: "Franklin",
+    category: ["Peer Support"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Ohio Provider Resource Association (OPRA)",
+    disabilityType: null,
+    date: "2026-10-21",
+    dateText: "Oct 21 (pre-conference) to Oct 23, 2026",
+    location: "Hilton Columbus Polaris, Columbus \u2014 statewide",
+    description: "OPRA's annual fall conference for Ohio disability service providers.",
+    accessibility: null,
+    sourceText: "More about the OPRA Fall Conference on OPRA's site",
+    sourceHref: "https://opra.org",
+  },
+  {
+    title: "OCALICON",
+    county: "Franklin",
+    category: ["Peer Support", "Health"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Ohio Center for Autism and Low Incidence (OCALI)",
+    disabilityType: null,
+    date: "2026-11-17",
+    dateText: "Nov 17 to 20, 2026",
+    location: "Online \u2014 fully virtual since 2020, statewide and beyond",
+    description: "OCALI's annual conference on autism and low-incidence disabilities, held fully online.",
+    accessibility: null,
+    sourceText: "More about OCALICON on OCALI's site",
+    sourceHref: "https://conference.ocali.org",
+  },
+  {
+    title: "Arc of Ohio Inclusion Summit",
+    county: "Franklin",
+    category: ["Peer Support", "Employment"],
+    agencyType: "Nonprofit provider",
+    agencyName: "The Arc of Ohio",
+    disabilityType: null,
+    date: "2026-11-17",
+    dateText: "Nov 17, 2026, 9:00am to 4:00pm",
+    location: "Ohio State University, Columbus \u2014 statewide",
+    description: "A day-long conference from The Arc of Ohio on independence, technology, employment, and community inclusion.",
+    accessibility: null,
+    sourceText: "More about the Inclusion Summit on The Arc of Ohio's site",
+    sourceHref: "https://thearcofohio.org/events",
+  },
+  {
+    title: "Arc of Ohio: Wonderful World of Waivers",
+    county: "Franklin",
+    category: ["Health"],
+    agencyType: "Nonprofit provider",
+    agencyName: "The Arc of Ohio",
+    disabilityType: null,
+    date: "2026-10-08",
+    dateText: "Oct 8, 2026, 6:30 to 8:00pm",
+    location: "Westerville Community Center, Westerville (Franklin County area)",
+    description: "A free presentation from The Arc of Ohio on how Ohio's Medicaid Waivers program works.",
+    accessibility: null,
+    sourceText: "More about this session on The Arc of Ohio's site",
+    sourceHref: "https://thearcofohio.org/events",
+  },
+  {
+    title: "Arc of Ohio: Day with the Columbus Crew",
+    county: "Franklin",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "The Arc of Ohio",
+    disabilityType: null,
+    date: "2026-10-31",
+    dateText: "Oct 31, 2026",
+    location: "Columbus Crew match, Columbus",
+    description: "A community outing to a Columbus Crew soccer match, hosted by The Arc of Ohio.",
+    accessibility: null,
+    sourceText: "More about this outing on The Arc of Ohio's site",
+    sourceHref: "https://thearcofohio.org/events",
+  },
+  {
+    title: "Bright and Blue Gala and Big Blue Raffle",
+    county: "Portage",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Hattie Larlham",
+    disabilityType: null,
+    date: "2026-11-06",
+    dateText: "Nov 6, 2026, 6:30pm",
+    location: "See hattielarlham.org/events for the venue \u2014 Hattie Larlham is based in Mantua, Portage County, with statewide reach",
+    description: "Hattie Larlham's 25th-anniversary gala, paired with its 6th annual Big Blue Raffle, supporting care and support programs for people with intellectual and developmental disabilities.",
+    accessibility: null,
+    sourceText: "More about the gala on Hattie Larlham's site",
+    sourceHref: "https://hattielarlham.org/events",
+  },
+  {
+    title: "Advocacy Wednesdays",
+    county: "Franklin",
+    category: ["Peer Support"],
+    agencyType: "Self-advocacy group",
+    agencyName: "We Thrive Together, with the Ohio Self Determination Association (OSDA)",
+    disabilityType: null,
+    ongoing: true,
+    dateText: "Every Wednesday, 11:00am",
+    location: "Online (Zoom) \u2014 statewide",
+    description: "A weekly virtual self-advocacy call, open statewide.",
+    accessibility: null,
+    sourceText: "Find the current Zoom link on We Thrive Together's site",
+    sourceHref: "https://wethrivetogether.org/calendar",
+  },
+  {
+    title: "Sharing Solutions",
+    county: "Stark",
+    category: ["Peer Support"],
+    agencyType: "Nonprofit provider",
+    agencyName: "The Arc of Ohio",
+    disabilityType: null,
+    ongoing: true,
+    dateText: "Roughly monthly, 5:00 to 7:00pm (6:00 to 7:00pm in January)",
+    location: "Walther's Twin Tavern, North Canton (Stark County area)",
+    description: "A recurring local discussion series from The Arc of Ohio for people with disabilities and families in the Stark County area.",
+    accessibility: null,
+    sourceText: "More about Sharing Solutions on The Arc of Ohio's site",
+    sourceHref: "https://thearcofohio.org/events",
+  },
+  {
+    title: "Special Olympics Ohio Fall Games: State Flag Football and Cornhole Tournament",
+    county: "Franklin",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Special Olympics Ohio",
+    disabilityType: null,
+    date: "2026-10-24",
+    dateText: "Oct 24, 2026",
+    location: "Sports Ohio Field Sports Complex, Dublin \u2014 statewide athletes",
+    description: "A statewide Special Olympics Ohio competition, part of the Fall Games season.",
+    accessibility: null,
+    sourceText: "More about Fall Games on Special Olympics Ohio's site",
+    sourceHref: "https://sooh.org/state-sporting-events",
+  },
+  {
+    title: "Columbus Buddy Walk",
+    county: "Franklin",
+    category: ["Social and Recreation", "Peer Support"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Down Syndrome Association of Central Ohio (DSACO)",
+    disabilityType: null,
+    date: "2026-10-04",
+    dateText: "Oct 4, 2026, 9:00am to 1:00pm (New Parent Ceremony 10:00 to 10:30am)",
+    location: "Fortress Obetz, Franklin County / Columbus area",
+    description: "DSACO's flagship annual awareness walk for the Down syndrome community.",
+    accessibility: null,
+    sourceText: "More about the Buddy Walk on DSACO's site",
+    sourceHref: "https://dsaco.net/events/buddywalk",
+  },
+  {
+    title: "Northeast Ohio Buddy Walk",
+    county: "Cuyahoga",
+    category: ["Social and Recreation", "Peer Support"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Down Syndrome Association of Northeast Ohio (DSANEO)",
+    disabilityType: null,
+    date: "2026-10-24",
+    dateText: "Oct 24, 2026, 8:00 to 11:00am",
+    location: "Mall C (Strawbridge Plaza), Lakeside Ave E, Cleveland",
+    description: "DSANEO's annual awareness walk for the Down syndrome community in Northeast Ohio.",
+    accessibility: null,
+    sourceText: "More about the Buddy Walk on DSANEO's site",
+    sourceHref: "https://dsaneo.org/buddy-walk/",
+  },
+  {
+    title: "Toledo Buddy Walk",
+    county: "Lucas",
+    category: ["Social and Recreation", "Peer Support"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Lucas County Board of Developmental Disabilities",
+    disabilityType: null,
+    date: "2026-10-04",
+    dateText: "Oct 4, 2026",
+    location: "Lucas County (Toledo area)",
+    description: "An annual Down syndrome awareness walk in the Toledo area, listed on Lucas County Board of DD's community events calendar.",
+    accessibility: null,
+    sourceText: "See the full Lucas County events calendar",
+    sourceHref: "https://lucasdd.org/upcoming-events/grid",
+  },
+  {
+    title: "Step Into Autism",
+    county: "Stark",
+    category: ["Social and Recreation", "Peer Support"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Autism Society Greater Akron",
+    disabilityType: "Autism",
+    date: "2026-09-26",
+    dateText: "Sept 26, 2026",
+    location: "Tam O'Shanter Park, Stark County",
+    description: "The 5th annual Step Into Autism walk, hosted by Autism Society Greater Akron.",
+    accessibility: null,
+    sourceText: "More about Step Into Autism on Autism Society Greater Akron's site",
+    sourceHref: "https://autismakron.org/event-calendar/",
+  },
+  {
+    title: "You Were Made Perfect Gala",
+    county: "Summit",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Autism Society Greater Akron",
+    disabilityType: "Autism",
+    date: "2026-10-24",
+    dateText: "Oct 24, 2026",
+    location: "Akron / Summit County area",
+    description: "A fundraising gala hosted by Autism Society Greater Akron.",
+    accessibility: null,
+    sourceText: "More about this event on Autism Society Greater Akron's site",
+    sourceHref: "https://autismakron.org/event-calendar/",
+  },
+  {
+    title: "Autism in the Black Community",
+    county: "Summit",
+    category: ["Peer Support"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Autism Society Greater Akron",
+    disabilityType: "Autism",
+    date: "2026-10-29",
+    dateText: "Oct 29, 2026",
+    location: "Akron / Summit County area",
+    description: "A community discussion event hosted by Autism Society Greater Akron.",
+    accessibility: null,
+    sourceText: "More about this event on Autism Society Greater Akron's site",
+    sourceHref: "https://autismakron.org/event-calendar/",
+  },
+  {
+    title: "Trunk or Treat",
+    county: "Montgomery",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Autism Society of Dayton",
+    disabilityType: "Autism",
+    date: "2026-10-10",
+    dateText: "Sat, Oct 10, 2026",
+    location: "Dayton / Kettering / Miamisburg / Vandalia area",
+    description: "A Halloween-season family event hosted by Autism Society of Dayton.",
+    accessibility: null,
+    sourceText: "More about this event on Autism Society of Dayton's site",
+    sourceHref: "https://autismsocietyofdayton.org/event-list",
+  },
+  {
+    title: "Haunted Trail",
+    county: "Lucas",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Autism Society Northwest Ohio, co-promoted with Lucas County Board of DD",
+    disabilityType: "Autism",
+    date: "2026-10-09",
+    dateText: "Oct 9 to 10, 2026",
+    location: "Maumee Bay State Park, Toledo / Lucas County area",
+    description: "The 23rd annual Haunted Trail, a sensory-considerate Halloween event from Autism Society Northwest Ohio.",
+    accessibility: null,
+    sourceText: "More about the Haunted Trail on ASNO's site",
+    sourceHref: "https://asno.org",
+  },
+  {
+    title: "Interactive Tech Expo",
+    county: "Medina",
+    category: ["Health"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Medina County Board of Developmental Disabilities",
+    disabilityType: null,
+    date: "2026-09-24",
+    dateText: "Sept 24, 2026, 10:00am to 3:00pm",
+    location: "Medina County",
+    description: "An assistive technology showcase hosted by the Medina County Board of Developmental Disabilities.",
+    accessibility: null,
+    sourceText: "More about this event on Medina County Board of DD's site",
+    sourceHref: "https://mcbdd.org/event-calendar/",
+  },
+  {
+    title: "Medina County Board of DD \u2014 event calendar",
+    county: "Medina",
+    category: ["Social and Recreation", "Peer Support"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Medina County Board of Developmental Disabilities",
+    disabilityType: null,
+    ongoing: true,
+    dateText: "Updated regularly \u2014 see the county's own calendar for current dates",
+    location: "Medina County",
+    description: "Medina County Board of DD runs a genuinely active events calendar, including provider trainings, family events, and its own board meetings.",
+    accessibility: null,
+    sourceText: "See the full Medina County events calendar",
+    sourceHref: "https://mcbdd.org/event-calendar/",
+  },
+  {
+    title: "Stepping Stones Parenting Seminar",
+    county: "Medina",
+    category: ["Peer Support"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Medina County Board of Developmental Disabilities",
+    disabilityType: null,
+    date: "2026-09-23",
+    dateText: "Sept 23, 2026",
+    location: "Medina County",
+    description: "A parenting seminar listed on the Medina County Board of DD's events calendar.",
+    accessibility: null,
+    sourceText: "More about this event on Medina County Board of DD's site",
+    sourceHref: "https://mcbdd.org/event-calendar/",
+  },
+  {
+    title: "Medina Fall Fest",
+    county: "Medina",
+    category: ["Social and Recreation"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Medina County Board of Developmental Disabilities",
+    disabilityType: null,
+    date: "2026-09-26",
+    dateText: "Sept 26, 2026",
+    location: "Medina County",
+    description: "A fall community event listed on the Medina County Board of DD's events calendar.",
+    accessibility: null,
+    sourceText: "More about this event on Medina County Board of DD's site",
+    sourceHref: "https://mcbdd.org/event-calendar/",
+  },
+  {
+    title: "Cuyahoga County Board of DD \u2014 Inclusive Event Calendar",
+    county: "Cuyahoga",
+    category: ["Social and Recreation", "Peer Support"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Cuyahoga County Board of Developmental Disabilities",
+    disabilityType: null,
+    ongoing: true,
+    dateText: "Updated regularly through May 2027 \u2014 see the county's own calendar for current dates",
+    location: "Cuyahoga County",
+    description: "One of the richest county calendars found anywhere in Ohio: sensory-friendly hours and \"Art for Every Body\" at the Cleveland Museum of Art, ASL and sensory-friendly performances at Great Lakes Theatre, a Next Chapter Book Club, inclusive playgroups, music therapy, sensory-friendly movie nights, Rec2Connect kayaking and tennis, and a monthly advocacy meeting with People First of Northeast Ohio.",
+    accessibility: null,
+    sourceText: "See the full Cuyahoga County Inclusive Event Calendar",
+    sourceHref: "https://cuyahogadd.org/resources/individual-family-resources/online-resource-guide/inclusive-event-calendar",
+  },
+  {
+    title: "Lucas County Board of DD \u2014 community events calendar",
+    county: "Lucas",
+    category: ["Social and Recreation", "Peer Support"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Lucas County Board of Developmental Disabilities",
+    disabilityType: null,
+    ongoing: true,
+    dateText: "Updated regularly through December 2026 \u2014 see the county's own calendar for current dates",
+    location: "Lucas County (Toledo area)",
+    description: "Lucas County Board of DD runs an active events calendar, including monthly Sibshops sessions and its own SALUTE program, alongside one-time community events.",
+    accessibility: null,
+    sourceText: "See the full Lucas County events calendar",
+    sourceHref: "https://lucasdd.org/upcoming-events/grid",
+  },
+  {
+    title: "Lucas DD Trunk or Treat",
+    county: "Lucas",
+    category: ["Social and Recreation"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Lucas County Board of Developmental Disabilities",
+    disabilityType: null,
+    date: "2026-10-20",
+    dateText: "Oct 20, 2026",
+    location: "Lucas County (Toledo area)",
+    description: "A Halloween-season community event hosted by the Lucas County Board of Developmental Disabilities.",
+    accessibility: null,
+    sourceText: "More about this event on Lucas County Board of DD's site",
+    sourceHref: "https://lucasdd.org/upcoming-events/grid",
+  },
+  {
+    title: "NW Ohio Special Needs Prom",
+    county: "Lucas",
+    category: ["Social and Recreation"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Lucas County Board of Developmental Disabilities",
+    disabilityType: null,
+    date: "2026-10-24",
+    dateText: "Oct 24, 2026",
+    location: "Lucas County (Toledo area)",
+    description: "An inclusive prom for people with disabilities, run directly by the Lucas County Board of Developmental Disabilities.",
+    accessibility: null,
+    sourceText: "More about this event on Lucas County Board of DD's site",
+    sourceHref: "https://lucasdd.org/upcoming-events/grid",
+  },
+  {
+    title: "Stark County Board of DD \u2014 community events calendar",
+    county: "Stark",
+    category: ["Social and Recreation", "Peer Support"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Stark County Board of Developmental Disabilities",
+    disabilityType: null,
+    ongoing: true,
+    dateText: "Updated regularly through December 2026 \u2014 see the county's own calendar for current dates",
+    location: "Stark County (Canton area)",
+    description: "Stark County Board of DD runs an active events calendar, including a recurring Independent Provider Collaborative social alongside one-time community events. The calendar lives on its own page, not the homepage.",
+    accessibility: null,
+    sourceText: "See the full Stark County events calendar",
+    sourceHref: "https://starkdd.org/news-and-publications/calendar/",
+  },
+  {
+    title: "Tech Expo 2026",
+    county: "Stark",
+    category: ["Health"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Stark County Board of Developmental Disabilities",
+    disabilityType: null,
+    date: "2026-09-24",
+    dateText: "Sept 24, 2026",
+    location: "Stark County (Canton area)",
+    description: "An assistive technology showcase hosted by the Stark County Board of Developmental Disabilities.",
+    accessibility: null,
+    sourceText: "More about this event on Stark County Board of DD's site",
+    sourceHref: "https://starkdd.org/news-and-publications/calendar/",
+  },
+  {
+    title: "Great Pumpkin Race",
+    county: "Stark",
+    category: ["Social and Recreation"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Stark County Board of Developmental Disabilities",
+    disabilityType: null,
+    date: "2026-10-31",
+    dateText: "Oct 31, 2026",
+    location: "Stark County (Canton area)",
+    description: "A Halloween-season community event hosted by the Stark County Board of Developmental Disabilities.",
+    accessibility: null,
+    sourceText: "More about this event on Stark County Board of DD's site",
+    sourceHref: "https://starkdd.org/news-and-publications/calendar/",
+  },
+  {
+    title: "Clermont County Board of DD \u2014 calendar of events",
+    county: "Clermont",
+    category: ["Social and Recreation", "Peer Support"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Clermont County Board of Developmental Disabilities",
+    disabilityType: null,
+    ongoing: true,
+    dateText: "Updated regularly through April 2027 \u2014 see the county's own calendar for current dates",
+    location: "Clermont County",
+    description: "Clermont County Board of DD runs an active events calendar, found on its own dedicated page rather than its homepage.",
+    accessibility: null,
+    sourceText: "See the full Clermont County calendar of events",
+    sourceHref: "https://clermontdd.org/calendar-of-events/",
+  },
+  {
+    title: "SALT Talks",
+    county: "Clermont",
+    category: ["Peer Support", "Health"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Clermont County Board of Developmental Disabilities",
+    disabilityType: null,
+    ongoing: true,
+    dateText: "Monthly, running through April 2027",
+    location: "Clermont County",
+    description: "A recurring monthly educational series from the Clermont County Board of Developmental Disabilities.",
+    accessibility: null,
+    sourceText: "See dates on Clermont County's calendar of events",
+    sourceHref: "https://clermontdd.org/calendar-of-events/",
+  },
+  {
+    title: "Sandusky County Board of DD \u2014 events calendar",
+    county: "Sandusky",
+    category: ["Social and Recreation", "Peer Support"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Sandusky County Board of Developmental Disabilities",
+    disabilityType: null,
+    ongoing: true,
+    dateText: "Updated regularly \u2014 see the county's own calendar for current dates",
+    location: "Sandusky County (Fremont area)",
+    description: "Sandusky County Board of DD runs a densely populated events calendar covering Special Olympics events, fundraisers, and provider trainings.",
+    accessibility: null,
+    sourceText: "See the full Sandusky County events calendar",
+    sourceHref: "https://scbdd.org/events/",
+  },
+  {
+    title: "Special Olympics Flag Football Clinic",
+    county: "Sandusky",
+    category: ["Social and Recreation"],
+    agencyType: "County board of developmental disabilities",
+    agencyName: "Sandusky County Board of Developmental Disabilities",
+    disabilityType: null,
+    date: "2026-09-22",
+    dateText: "Sept 22, 2026",
+    location: "Sandusky County (Fremont area)",
+    description: "A Special Olympics flag football clinic listed on the Sandusky County Board of DD's events calendar.",
+    accessibility: null,
+    sourceText: "More about this event on Sandusky County Board of DD's site",
+    sourceHref: "https://scbdd.org/events/",
+  },
+  {
+    title: "Quiet Hours",
+    county: "Delaware",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Columbus Zoo and Aquarium",
+    disabilityType: null,
+    ongoing: true,
+    dateText: "1st Sunday of every month, the first 4 hours of operation",
+    location: "Columbus Zoo and Aquarium, Powell (Delaware County)",
+    description: "A monthly sensory-friendly morning at the Columbus Zoo, with reduced sound and lighting.",
+    accessibility: "Complimentary KultureCity sensory bags, and sensory kits (noise-cancelling headphones, sunglasses, fidgets) for a refundable $10 deposit.",
+    sourceText: "More about Quiet Hours on the Columbus Zoo's site",
+    sourceHref: "https://columbuszoo.org/accessibility",
+  },
+  {
+    title: "Sensory Saturday",
+    county: "Hamilton",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Cincinnati Art Museum",
+    disabilityType: null,
+    ongoing: true,
+    dateText: "4th Saturday of most months, 9:30 to 11:30am \u2014 free, drop-in, no registration",
+    location: "Cincinnati Art Museum, Cincinnati",
+    description: "A before-public-hours program for families of children with autism or other developmental disabilities, using multisensory tools in a less crowded gallery setting.",
+    accessibility: null,
+    sourceText: "More about Sensory Saturday on the Cincinnati Art Museum's site",
+    sourceHref: "https://cincinnatiartmuseum.org/events-programs/accessibility/sensory-saturday/",
+  },
+  {
+    title: "Adapted Storytime",
+    county: "Cuyahoga",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Cuyahoga County Public Library",
+    disabilityType: null,
+    date: "2026-10-13",
+    dateText: "Tuesday, Oct 13, 2026, 11:00am to 12:00pm",
+    location: "Parma-Snow Branch, Cuyahoga County Public Library",
+    description: "A storytime adapted for children with disabilities, hosted by Cuyahoga County Public Library.",
+    accessibility: null,
+    sourceText: "More about Adapted Storytime on the library's site",
+    sourceHref: "https://cuyahogalibrary.org/services/at-your-local-branch/accessibility-at-ccpl",
+  },
+  {
+    title: "Night to Shine \u2014 Westbrook Park Church",
+    county: "Stark",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Westbrook Park Church",
+    disabilityType: null,
+    date: "2027-02-12",
+    dateText: "Friday, Feb 12, 2027",
+    location: "Westbrook Park Church, Canton",
+    description: "A free, prom-style celebration for people with disabilities ages 14 and up \u2014 red carpet, dinner, dancing, and a crowning ceremony \u2014 held the same night at churches worldwide through the Tim Tebow Foundation.",
+    accessibility: null,
+    sourceText: "Registration details on Westbrook Park Church's site",
+    sourceHref: "https://nighttoshinecanton.com",
+  },
+  {
+    title: "Night to Shine \u2014 Cuyahoga Valley Church",
+    county: "Cuyahoga",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Cuyahoga Valley Church",
+    disabilityType: null,
+    date: "2027-02-12",
+    dateText: "Friday, Feb 12, 2027",
+    location: "Cuyahoga Valley Church, Broadview Heights",
+    description: "A free, prom-style celebration for people with disabilities ages 14 and up \u2014 red carpet, dinner, dancing, and a crowning ceremony \u2014 held the same night at churches worldwide through the Tim Tebow Foundation. Guest registration was full, with a waitlist, for the most recent cycle \u2014 check the church's own page for the current status.",
+    accessibility: null,
+    sourceText: "Registration details on Cuyahoga Valley Church's site",
+    sourceHref: "https://timtebowfoundation.org/night-to-shine",
+  },
+  {
+    title: "Night to Shine \u2014 Church of the Resurrection",
+    county: "Cuyahoga",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Church of the Resurrection",
+    disabilityType: null,
+    date: "2027-02-12",
+    dateText: "Friday, Feb 12, 2027",
+    location: "Church of the Resurrection, Diocese of Cleveland",
+    description: "A free, prom-style celebration for people with disabilities ages 14 and up \u2014 red carpet, dinner, dancing, and a crowning ceremony \u2014 held the same night at churches worldwide through the Tim Tebow Foundation.",
+    accessibility: null,
+    sourceText: "Registration details on Church of the Resurrection's site",
+    sourceHref: "https://timtebowfoundation.org/night-to-shine",
+  },
+  {
+    title: "Night to Shine \u2014 Wooster Grace Church",
+    county: "Wayne",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Wooster Grace Church",
+    disabilityType: null,
+    date: "2027-02-12",
+    dateText: "Friday, Feb 12, 2027",
+    location: "Wooster Grace Church, Wayne County",
+    description: "A free, prom-style celebration for people with disabilities ages 14 and up \u2014 red carpet, dinner, dancing, and a crowning ceremony \u2014 held the same night at churches worldwide through the Tim Tebow Foundation.",
+    accessibility: null,
+    sourceText: "Registration details on Wooster Grace Church's site",
+    sourceHref: "https://nighttoshinewayneco.com",
+  },
+  {
+    title: "Night to Shine \u2014 Adventure Church",
+    county: "Delaware",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Adventure Church",
+    disabilityType: null,
+    date: "2027-02-12",
+    dateText: "Friday, Feb 12, 2027",
+    location: "Adventure Church, Delaware",
+    description: "A free, prom-style celebration for people with disabilities ages 14 and up \u2014 red carpet, dinner, dancing, and a crowning ceremony \u2014 held the same night at churches worldwide through the Tim Tebow Foundation.",
+    accessibility: null,
+    sourceText: "Registration details on Adventure Church's site",
+    sourceHref: "https://timtebowfoundation.org/night-to-shine",
+  },
+  {
+    title: "Night to Shine \u2014 Findlay joint host",
+    county: "Hancock",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "St. Mark's United Methodist Church, Movement Church, and College First Church of God",
+    disabilityType: null,
+    date: "2027-02-12",
+    dateText: "Friday, Feb 12, 2027",
+    location: "St. Mark's United Methodist Church, Movement Church, and College First Church of God (joint host), Findlay",
+    description: "A free, prom-style celebration for people with disabilities ages 14 and up \u2014 red carpet, dinner, dancing, and a crowning ceremony \u2014 held the same night at churches worldwide through the Tim Tebow Foundation.",
+    accessibility: null,
+    sourceText: "Registration details on the Findlay joint host churches' site",
+    sourceHref: "https://findlaynighttoshine.org",
+  },
+  {
+    title: "Night to Shine \u2014 Christ's Church",
+    county: "Warren",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Christ's Church",
+    disabilityType: null,
+    date: "2027-02-12",
+    dateText: "Friday, Feb 12, 2027",
+    location: "Christ's Church, Mason (via the Warren County Educational Service Center)",
+    description: "A free, prom-style celebration for people with disabilities ages 14 and up \u2014 red carpet, dinner, dancing, and a crowning ceremony \u2014 held the same night at churches worldwide through the Tim Tebow Foundation.",
+    accessibility: null,
+    sourceText: "Registration details on Christ's Church's site",
+    sourceHref: "https://timtebowfoundation.org/night-to-shine",
+  },
+  {
+    title: "Night to Shine \u2014 Toledo Christian Church",
+    county: "Lucas",
+    category: ["Social and Recreation"],
+    agencyType: "Nonprofit provider",
+    agencyName: "Toledo Christian Church",
+    disabilityType: null,
+    date: "2027-02-12",
+    dateText: "Friday, Feb 12, 2027",
+    location: "Toledo Christian Church, Toledo",
+    description: "A free, prom-style celebration for people with disabilities ages 14 and up \u2014 red carpet, dinner, dancing, and a crowning ceremony \u2014 held the same night at churches worldwide through the Tim Tebow Foundation.",
+    accessibility: null,
+    sourceText: "Registration details on Toledo Christian Church's site",
+    sourceHref: "https://timtebowfoundation.org/night-to-shine",
+  },
+];
+
+/* Renders one <li class="listing-card"> per real, sourced listing. See
+   CONTENT-TODO.md for the exact markup format this follows, and for how to
+   hand-add another listing the same way once BEAA approves one. */
+const listingCardHtml = (l) => {
+  const tags = l.category.map((c) => `    <span class="tag">${c}</span>`).join("\n");
+  const dateAttr = l.ongoing ? `data-ongoing="true"` : `data-date="${l.date}"`;
+  const disabilityAttr = l.disabilityType ? ` data-disability-type="${l.disabilityType}"` : "";
+  const metaBits = [`${l.county} County`, l.agencyType, l.disabilityType, l.dateText].filter(Boolean);
+  return `          <li class="listing-card"
+              data-title="${l.title}"
+              data-county="${l.county}"
+              data-category="${l.category.join(",")}"
+              data-agency-type="${l.agencyType}"${disabilityAttr}
+              ${dateAttr}>
+            <div class="listing-card__tags">
+${tags}
+            </div>
+            <h3>${l.title}</h3>
+            <p class="listing-card__meta">${metaBits.join(" \u00b7 ")}</p>
+            <p>${l.description}</p>
+            <p><strong>Location:</strong> ${l.location}</p>
+${l.accessibility ? `            <p><strong>Accessibility:</strong> ${l.accessibility}</p>\n` : ""}            <p><a href="${l.sourceHref}">${l.sourceText}</a></p>
+          </li>`;
+};
+
+const hubListingCards = HUB_LISTINGS.map(listingCardHtml).join("\n");
+
 export const PAGES = [
   /* ---------------------------------------------------------------- Home */
   {
@@ -162,6 +936,23 @@ ${domainCards}
            thread, and on the power communities need to defend it.</p>
       </div>
     </section>
+
+    <section class="section section--tint">
+      <div class="wrap stack">
+        <h2>Our projects</h2>
+        <p class="lede">Programs that meet a need directly, alongside our advocacy.</p>
+        <ul class="grid no-bullet">
+          <li class="card">
+            <h3><a class="card__link" href="/blue-envelope/">The Blue Envelope Project</a></h3>
+            <p>Smoother traffic stops for drivers who communicate differently. Find a program near you.</p>
+          </li>
+          <li class="card">
+            <h3><a class="card__link" href="/resources/">Resource Hub &amp; Calendar</a></h3>
+            <p>Disability programs, services, and events from Ohio counties and agencies, in one searchable place.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
 ${CTA}`,
   },
 
@@ -213,8 +1004,8 @@ ${CTA}`,
 
           <dt>Programming</dt>
           <dd>We run projects that meet a need directly, rather than waiting for a
-              policy to change. <a href="/glossary/#blue-envelope-project">The Blue Envelope Project</a>
-              is one of them.</dd>
+              policy to change. <a href="/blue-envelope/">The Blue Envelope Project</a>
+              and our <a href="/resources/">Resource Hub &amp; Calendar</a> are two of them.</dd>
 
           <dt>Community</dt>
           <dd>We build the space many of us needed and never had: somewhere to find
@@ -576,6 +1367,299 @@ const DOMAIN_PAGES = [
 
 PAGES.push(...DOMAIN_PAGES);
 
+/* --------------------------------------------------------- Resource Hub -- */
+PAGES.push(
+  {
+    file: "resources/index.html",
+    url: "/resources/",
+    title: "Resource Hub and Calendar | Be Enabled Advocacy Alliance",
+    description:
+      "Disability programs, services, and events from counties and agencies across Ohio, searchable by county, topic, and disability type.",
+    h1: "Resource Hub and Calendar",
+    crumb: "Resource Hub and Calendar",
+    trail: [],
+    body: `
+    <section class="section">
+      <div class="wrap wrap--narrow stack">
+        <h1>Resource Hub &amp; Calendar</h1>
+        <p class="lede">Disability programs, services, and events from across
+           Ohio, in one place you can search.</p>
+
+        <div class="in-short">
+          <h2>In short</h2>
+          <p>This page lists disability programs, services, and events from Ohio counties and agencies.</p>
+          <p>You can search by county, topic, and disability type.</p>
+          <p>Our team checked and added most of what is here so far from each organization's own website; agencies can also tell us about a program using our form.</p>
+          <p>This page is new and still growing, so most Ohio counties do not have a listing yet.</p>
+        </div>
+
+        <h2>What this is</h2>
+        <p>Finding disability services in Ohio usually means checking one
+           county at a time, or one agency at a time. The Resource Hub brings
+           that information into one searchable place instead.</p>
+        <p>It covers ongoing programs, such as a weekly peer support group, and
+           one-time events, such as a benefits workshop. Each one is tagged
+           with its county, its topic, and the kind of disability it serves,
+           so you can search by whichever of those matters to you.</p>
+        <p>We are building this out gradually. Every one of Ohio's 88 counties
+           is already in the search below, even the ones without a listing
+           yet.</p>
+
+        <h2>How a program gets listed here</h2>
+        <p>Agencies and counties do not post directly to this page.</p>
+        <ol class="tick-list">
+          <li>An agency tells us about their program using the
+              <a href="/resources/submit/">submission form</a> — or our own
+              team finds and checks one directly on the organization's own
+              site, which is how most listings here got added so far.</li>
+          <li>Our team checks it for accuracy and plain language.</li>
+          <li>Once we approve it, it appears here for everyone to find. If we
+              need a change first, we send an agency submission back with a
+              note.</li>
+        </ol>
+        <p>Every listing links back to the organization's own site, so you can
+           always confirm details there before you go. Know a program that
+           should be here?
+           <a href="/resources/submit/">Submit a program</a>, whether or not
+           you run it yourself.</p>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap stack">
+        <h2>Browse programs and events</h2>
+
+        <h3>Browse by topic</h3>
+        <p>Pick a topic to jump straight to programs about it.</p>
+        <div class="chip-group" role="group" aria-label="Browse by topic" id="hubTopics">
+${topicChips}
+        </div>
+
+        <h3>Filter and search</h3>
+        <div class="hub-filters">
+          <div class="field">
+            <label for="hubCounty">County</label>
+            <select id="hubCounty">
+${countyOptions}
+            </select>
+          </div>
+          <div class="field">
+            <label for="hubAgencyType">Agency type</label>
+            <select id="hubAgencyType">
+${agencyOptions}
+            </select>
+          </div>
+          <div class="field">
+            <label for="hubDisability">Disability type</label>
+            <select id="hubDisability">
+${disabilityOptions}
+            </select>
+          </div>
+          <div class="field">
+            <label for="hubSearch">Search by name or description</label>
+            <input type="search" id="hubSearch" autocomplete="off" aria-describedby="hubFilterHint">
+          </div>
+        </div>
+        <p class="field__hint" id="hubFilterHint">Filters apply together. Choose "All" again to clear one.</p>
+
+        <noscript>
+          <p class="field__hint">These filters need JavaScript to work.
+             Without it, this page shows every approved program below. Use
+             your browser's own find function (often Ctrl+F, or Cmd+F on a
+             Mac) to search this page for a county or topic.</p>
+        </noscript>
+
+        <h3>View</h3>
+        <div class="view-toggle" role="group" aria-label="View">
+          <button type="button" data-view="list" aria-pressed="true">List</button>
+          <button type="button" data-view="day" aria-pressed="false">Day</button>
+          <button type="button" data-view="month" aria-pressed="false">Month</button>
+        </div>
+
+        <div id="hubListPanel">
+          <p class="hub-empty" id="hubEmpty" hidden>Nothing matches those
+             filters. <a href="/resources/submit/">Tell us about a program
+             we are missing</a>, or try different filters.</p>
+          <ul class="listing-list" id="hubList">
+${hubListingCards}
+          </ul>
+        </div>
+
+        <div id="hubDayPanel" hidden>
+          <div class="day-nav">
+            <button type="button" class="btn btn--secondary" id="hubDayPrev">Previous day</button>
+            <h4 id="hubDayLabel" tabindex="-1">Today</h4>
+            <button type="button" class="btn btn--secondary" id="hubDayNext">Next day</button>
+          </div>
+          <div id="hubDayAgenda" class="flow"></div>
+        </div>
+
+        <div id="hubMonthPanel" hidden>
+          <div class="day-nav">
+            <button type="button" class="btn btn--secondary" id="hubMonthPrev">Previous month</button>
+            <h4 id="hubMonthLabel" tabindex="-1">This month</h4>
+            <button type="button" class="btn btn--secondary" id="hubMonthNext">Next month</button>
+          </div>
+          <div id="hubMonthAgenda" class="flow"></div>
+        </div>
+      </div>
+    </section>
+${CTA}`,
+  },
+
+  /* -------------------------------------------------- Submit a program -- */
+  {
+    file: "resources/submit/index.html",
+    url: "/resources/submit/",
+    title: "Submit a Program | Be Enabled Advocacy Alliance",
+    description:
+      "Tell us about a disability program, service, or event so our team can review it and add it to the Ohio Resource Hub and Calendar.",
+    h1: "Submit a program",
+    crumb: "Submit a program",
+    trail: [{ name: "Resource Hub and Calendar", url: "/resources/" }],
+    body: `
+    <section class="section">
+      <div class="wrap wrap--narrow stack">
+        <h1>Submit a program</h1>
+        <p class="lede">Tell us about a disability program, service, or event
+           for the <a href="/resources/">Resource Hub &amp; Calendar</a>.</p>
+
+        <div class="in-short">
+          <h2>In short</h2>
+          <p>Use this form to tell us about a program, service, or event.</p>
+          <p>Our team checks every submission before it goes on the public Hub.</p>
+          <p>If we need a change first, we will get back to you using the contact details you give us.</p>
+        </div>
+
+        <h2>Before you start</h2>
+        <p>Anyone can use this form: the agency that runs a program, or
+           someone who just knows about one. It does not post live right
+           away. Our small team reviews it, may follow up with the agency for
+           anything unclear, and only then adds it to the public Hub.</p>
+        <p>Have several programs to add, or a lot of detail to share? Use the
+           <a href="/contact/">contact form</a> instead and we will work out
+           the best way to get it all in.</p>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap wrap--narrow stack">
+        <h2>Tell us about the program</h2>
+
+        <!-- SC 3.3.6 Error Prevention (All): app.js adds the same
+             review-and-confirm step used on the contact form.
+             TODO(content): set action to the real form endpoint, same as
+             the contact form. See CONTENT-TODO.md -->
+        <form class="contact-form" id="sp" method="post" action="#" data-confirm-before-send novalidate>
+          <div class="field">
+            <label for="sp-title">Program or event name <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-title-hint">What is it called?</p>
+            <input type="text" id="sp-title" name="title" required data-required-message="Please give the program or event a name." aria-describedby="sp-title-hint">
+            <p class="field__error" id="sp-title-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-description">Description <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-description-hint">Describe it in plain language, as you would to someone who has never heard of it.</p>
+            <textarea id="sp-description" name="description" required data-required-message="Please add a short description." aria-describedby="sp-description-hint"></textarea>
+            <p class="field__error" id="sp-description-error"></p>
+          </div>
+
+          <fieldset>
+            <legend>Category <span class="field__req">(choose all that apply)</span></legend>
+            <div class="radio-row">
+${categoryCheckboxes}
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="sp-county">County <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-county-hint">Which county is this based in?</p>
+            <select id="sp-county" name="county" required data-required-message="Please choose the county this is based in." aria-describedby="sp-county-hint">
+${countyOptionsRequired}
+            </select>
+            <p class="field__error" id="sp-county-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-other-counties">Other counties or regions this also serves <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="sp-other-counties-hint">Leave this blank if it only serves the county above.</p>
+            <input type="text" id="sp-other-counties" name="otherCounties" aria-describedby="sp-other-counties-hint">
+          </div>
+
+          <div class="field">
+            <label for="sp-disability">Disability type <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-disability-hint">Choose the closest match. Choose "Developmental disability" if it is open to everyone.</p>
+            <select id="sp-disability" name="disabilityType" required data-required-message="Please choose the disability type this program is for." aria-describedby="sp-disability-hint">
+${disabilityOptionsRequired}
+            </select>
+            <p class="field__error" id="sp-disability-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-datetime">Date and time <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="sp-datetime-hint">Leave this blank for an ongoing program. Fill it in for a one-time event.</p>
+            <input type="datetime-local" id="sp-datetime" name="dateTime" aria-describedby="sp-datetime-hint">
+          </div>
+
+          <div class="field">
+            <label for="sp-location">Location <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-location-hint">A street address, or "Virtual" if there is no physical location.</p>
+            <input type="text" id="sp-location" name="location" required data-required-message="Please add a location, or write &quot;Virtual&quot;." aria-describedby="sp-location-hint">
+            <p class="field__error" id="sp-location-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-access">Accessibility notes <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="sp-access-hint">For example: wheelchair accessible, ASL interpretation, sensory-friendly hours.</p>
+            <textarea id="sp-access" name="accessibilityNotes" aria-describedby="sp-access-hint"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="sp-agency-name">Agency name <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-agency-name-hint">The organization running this program.</p>
+            <input type="text" id="sp-agency-name" name="agencyName" required data-required-message="Please add the name of the organization running this." aria-describedby="sp-agency-name-hint">
+            <p class="field__error" id="sp-agency-name-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-agency-type">Agency type <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-agency-type-hint">The kind of organization running this program.</p>
+            <select id="sp-agency-type" name="agencyType" required data-required-message="Please choose the kind of organization this is." aria-describedby="sp-agency-type-hint">
+${agencyOptionsRequired}
+            </select>
+            <p class="field__error" id="sp-agency-type-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-contact-name">Your name <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="sp-contact-name-hint">Who should we contact if we have a question about this submission?</p>
+            <input type="text" id="sp-contact-name" name="contactName" autocomplete="name" aria-describedby="sp-contact-name-hint">
+          </div>
+
+          <div class="field">
+            <label for="sp-contact-email">Your email address <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-contact-email-hint">So we can reach you about this submission or send it back if we need a change.</p>
+            <input type="email" id="sp-contact-email" name="contactEmail" required data-required-message="Please add an email address so we can reach you about this submission." autocomplete="email" aria-describedby="sp-contact-email-hint">
+            <p class="field__error" id="sp-contact-email-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="sp-contact-phone">Your phone number <span class="field__req">(optional)</span></label>
+            <input type="tel" id="sp-contact-phone" name="contactPhone" autocomplete="tel">
+          </div>
+
+          <p class="btn-row" style="margin-block-start: var(--space-6)">
+            <button type="submit" class="btn btn--primary">Send this submission</button>
+          </p>
+
+          <div class="form-status" role="status" data-form-status></div>
+        </form>
+      </div>
+    </section>`,
+  },
+);
+
 /* ----------------------------------------------------------- Glossary --
    Required by SC 3.1.3 Unusual Words and SC 3.1.4 Abbreviations. An
    <abbr title> alone does not satisfy AAA, because the title attribute cannot
@@ -750,7 +1834,7 @@ PAGES.push(
              confirmed. With JavaScript off this posts directly and the browser's
              own required-field checks apply.
              TODO(content): set action to the real form endpoint. -->
-        <form class="contact-form" method="post" action="#" data-confirm-before-send novalidate>
+        <form class="contact-form" id="cf" method="post" action="#" data-confirm-before-send novalidate>
           <div class="field">
             <label for="cf-name">Your name <span class="field__req">(optional)</span></label>
             <p class="field__hint" id="cf-name-hint">What should we call you? You can leave this blank.</p>
@@ -781,7 +1865,7 @@ PAGES.push(
           <div class="field">
             <label for="cf-message">Your message <span class="field__req">(required)</span></label>
             <p class="field__hint" id="cf-message-hint">Tell us what is going on. There is no wrong way to write it, and you do not need to use official words.</p>
-            <textarea id="cf-message" name="message" required aria-describedby="cf-message-hint"></textarea>
+            <textarea id="cf-message" name="message" required data-required-message="Please write your message before sending. This is the only box we need." aria-describedby="cf-message-hint"></textarea>
             <p class="field__error" id="cf-message-error"></p>
           </div>
 
@@ -1027,6 +2111,12 @@ ${glossaryBody}
           <li><a href="/what-we-do/">What we do</a></li>
           <li><a href="/get-involved/">Get involved</a></li>
           <li><a href="/contact/">Contact us</a></li>
+        </ul>
+
+        <h2>Projects</h2>
+        <ul class="tick-list tick-list--nav">
+          <li><a href="/resources/">Resource Hub &amp; Calendar</a></li>
+          <li><a href="/resources/submit/">Submit a program</a></li>
         </ul>
 
         <h2>The five areas we work on</h2>
