@@ -73,11 +73,15 @@ for (const file of files) {
   else if (!canonical.startsWith("https://beenabled.org"))
     fail(where, `canonical is not absolute on the live origin: ${canonical}`);
 
-  /* -- Social cards ------------------------------------------------------ */
-  for (const prop of ["og:title", "og:description", "og:url", "og:image", "og:image:alt", "og:type"]) {
+  /* -- Social cards --------------------------------------------------------
+     No og:image/twitter:image on purpose: the only artwork that existed was
+     the placeholder wheel mark, and no logo has been settled yet (see
+     CONTENT-TODO.md, "Logo — not yet settled"). Add those two back here once
+     there is a real image to point at. */
+  for (const prop of ["og:title", "og:description", "og:url", "og:type"]) {
     if (!new RegExp(`property=["']${prop}["']`).test(html)) fail(where, `missing ${prop}`);
   }
-  for (const name of ["twitter:card", "twitter:title", "twitter:description", "twitter:image", "twitter:image:alt"]) {
+  for (const name of ["twitter:card", "twitter:title", "twitter:description"]) {
     if (!new RegExp(`name=["']${name}["']`).test(html)) fail(where, `missing ${name}`);
   }
 

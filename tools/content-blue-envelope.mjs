@@ -467,21 +467,7 @@ export const blueEnvelopePage = {
             <circle class="cover__art-seal" cx="120" cy="116" r="15"/>
             <circle class="cover__art-seal-hole" cx="120" cy="116" r="6"/>
           </svg>
-          <p class="cover__brand">
-            <svg class="wheel" viewBox="0 0 64 64" focusable="false">
-              <circle class="wheel__tire" cx="32" cy="32" r="26" stroke-width="4"/>
-              <g class="wheel__spoke" stroke-width="2.5" stroke-linecap="round">
-                <line x1="32" y1="32" x2="32" y2="8"/>
-                <line x1="32" y1="32" x2="15" y2="15"/>
-                <line x1="32" y1="32" x2="8"  y2="32"/>
-                <line x1="32" y1="32" x2="15" y2="49"/>
-                <line x1="32" y1="32" x2="32" y2="56"/>
-              </g>
-              <path class="wheel__arc" d="M32 6 a26 26 0 0 1 0 52" stroke-width="7" stroke-linecap="round"/>
-              <circle class="wheel__hub" cx="32" cy="32" r="6"/>
-            </svg>
-            BEAA
-          </p>
+          <p class="cover__brand">BEAA</p>
         </div>
       </div>
     </section>

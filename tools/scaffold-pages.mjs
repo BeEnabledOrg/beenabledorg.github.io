@@ -21,7 +21,6 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const force = process.argv.includes("--force");
 const read = (p) => readFileSync(join(ROOT, p), "utf8").trimEnd();
 
-const wheel = read("tools/partials/wheel.svg");
 const headerTpl = read("tools/partials/header.html");
 const footerTpl = read("tools/partials/footer.html");
 
@@ -30,7 +29,7 @@ const managed = (name, html) =>
   `  <!-- @partial:${name} — managed by tools/sync-partials.mjs. Do not hand-edit. -->\n${html}\n  <!-- /@partial:${name} -->`;
 
 const headerFor = (page) => {
-  let h = headerTpl.replace("__WHEEL__", wheel.split("\n").map((l, i) => (i ? "        " + l : l)).join("\n"));
+  let h = headerTpl;
   // SC 2.4.8 Location — mark the current top-level section.
   for (const [token, prefix] of [
     ["__CUR_ABOUT__", "/about/"],
@@ -124,7 +123,6 @@ const jsonld = (page) => {
 
 const render = (page) => {
   const canonical = `${SITE.origin}${page.url}`;
-  const og = `${SITE.origin}/assets/img/og-default.png`;
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,15 +143,10 @@ ${page.noindex ? '  <meta name="robots" content="noindex">\n' : ""}
   <meta property="og:title" content="${page.title}">
   <meta property="og:description" content="${page.description}">
   <meta property="og:url" content="${canonical}">
-  <meta property="og:image" content="${og}">
-  <meta property="og:image:alt" content="${SITE.name}. ${SITE.slogan}.">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${page.title}">
   <meta name="twitter:description" content="${page.description}">
-  <meta name="twitter:image" content="${og}">
-  <meta name="twitter:image:alt" content="${SITE.name}. ${SITE.slogan}.">
 
-  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/fonts/atkinson-hyperlegible-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
 
