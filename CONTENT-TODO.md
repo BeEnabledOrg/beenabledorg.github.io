@@ -46,10 +46,11 @@ whether the homepage hero and Blue Envelope's `cover__brand` want a mark too.
 
 ## Contact — blocking
 
+Real contact email confirmed: `info@beenabled.org`, used on `contact/index.html`.
+No phone or mailing address on the contact page — deliberate, not a gap to fill.
+
 | What | Where it goes |
 |---|---|
-| Real contact email (currently `hello@beenabled.org`, unverified) | `contact/index.html`, footer |
-| Phone number, and whether relay and video relay calls are accepted | `contact/index.html` |
 | Form endpoint for the contact form `action` | `contact/index.html` |
 
 The contact form currently posts to `#`. Until an endpoint is set, the email
@@ -64,8 +65,10 @@ those reliably fail Level AAA and cannot be fixed from the outside.
 | Donation URL (Givebutter, Stripe, PayPal…) | `get-involved/index.html` |
 | Mailing list signup URL | `get-involved/index.html` |
 
-Both are `href="#"` right now. Keep them as outbound links rather than embedding
-the provider's form on the page.
+Both currently point to `mailto:info@beenabled.org` with "coming soon" wording
+as an interim measure, so the buttons are not dead links while no processor or
+list service is chosen. Once one is, point them at it and put the outbound-link
+wording back rather than embedding the provider's form on the page.
 
 ## Resource Hub & Calendar (EnableMe)
 
@@ -144,6 +147,16 @@ own confirmed source, and upgraded Colorado's Jefferson County chapter from
 unconfirmed to confirmed. As of this pass, 8 more chapters still need
 verification and more calls are in progress; check back for updates before
 treating the directory as final.
+
+Be Enabled Advocacy Alliance is taking over coordination of part of Ohio's
+program (the Summit/Portage/Franklin/Upper Arlington chapter) from the
+Southern Ohio Council of Governments (SOCOG). The page's waitlist section
+and the Ohio chapter entry both mention this now. Once the transition is
+complete, update `tools/content-blue-envelope.mjs`'s Ohio chapter (sponsor
+field) and the waitlist copy (`id="waitlist"` in the same file) to describe
+the finished state rather than a transition in progress, and wire the
+waitlist form up to a real service (see the TODO(content) comment next to
+the form).
 
 **What counts as a Blue Envelope program, for this directory:** something a
 person keeps and hands to an officer at a stop — the envelope itself, in

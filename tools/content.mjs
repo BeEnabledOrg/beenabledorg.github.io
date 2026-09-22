@@ -1735,10 +1735,11 @@ PAGES.push(
             <h3>Give money</h3>
             <p>We are a 501(c)(3) non-profit, so gifts may be tax deductible.
                Regular monthly gifts help most, because they let us plan.</p>
-            <!-- TODO(content): replace # with the real donation URL once the
-                 processor is chosen. See CONTENT-TODO.md -->
-            <p><a class="btn btn--accent" href="#">Donate to Be Enabled Advocacy Alliance</a></p>
-            <p class="card__meta">Donations are handled on a separate secure site.</p>
+            <!-- TODO(content): replace with the real donation URL once the
+                 processor is chosen, and restore the outbound-link wording.
+                 See CONTENT-TODO.md -->
+            <p><a class="btn btn--accent" href="mailto:info@beenabled.org">Email us to donate</a></p>
+            <p class="card__meta">Online giving is coming soon. Email us in the meantime and we will help you give.</p>
           </li>
 
           <li class="card">
@@ -1765,11 +1766,13 @@ PAGES.push(
         <p>We send occasional updates about our work and about changes to rules
            that affect disabled people. We do not send often, and we do not share
            your address with anyone.</p>
-        <!-- TODO(content): replace # with the real mailing list URL. We link out
-             rather than embed a signup widget, because embedded third-party forms
-             reliably fail Level AAA and we cannot fix code we do not control. -->
-        <p><a class="btn btn--primary" href="#">Join the Be Enabled mailing list</a></p>
-        <p class="card__meta">The mailing list is run on a separate site.</p>
+        <!-- TODO(content): replace with the real mailing list URL once a
+             service is chosen, and restore the outbound-link wording. We
+             will link out rather than embed a signup widget, because
+             embedded third-party forms reliably fail Level AAA and we
+             cannot fix code we do not control. -->
+        <p><a class="btn btn--primary" href="mailto:info@beenabled.org">Email us to join the mailing list</a></p>
+        <p class="card__meta">Online sign-up is coming soon. Email us in the meantime and we will add you by hand.</p>
       </div>
     </section>`,
   },
@@ -1793,7 +1796,7 @@ PAGES.push(
 
         <div class="in-short">
           <h2>In short</h2>
-          <p>You can email us, write to us, or use the form on this page.</p>
+          <p>You can email us or use the form on this page.</p>
           <p>We aim to reply within five working days.</p>
           <p>If you need a reply in a particular format, say so and we will use it.</p>
         </div>
@@ -1801,12 +1804,7 @@ PAGES.push(
         <h2>Ways to reach us</h2>
         <dl class="def-list">
           <dt>Email</dt>
-          <!-- TODO(content): replace with the real address. See CONTENT-TODO.md -->
-          <dd><a href="mailto:hello@beenabled.org">hello@beenabled.org</a></dd>
-
-          <dt>Post</dt>
-          <!-- TODO(content): add the mailing address. -->
-          <dd>Coming soon.</dd>
+          <dd><a href="mailto:info@beenabled.org">info@beenabled.org</a></dd>
         </dl>
       </div>
     </section>
