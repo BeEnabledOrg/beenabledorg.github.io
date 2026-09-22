@@ -9,9 +9,11 @@
  *
  * Sourcing note: every entry below was compiled by researching state agency
  * sites, legislature and bill-tracking sites, and news coverage, including
- * research assisted by AI tools. None of it has been confirmed by phone.
- * Treat it as a lead, not a verified fact — the page itself says so, in the
- * callout near the top of the directory section.
+ * research assisted by AI tools. A human validator has since phone-confirmed
+ * most of it directly with each program; a handful of entries are still
+ * being verified (see CONTENT-TODO.md for where that stands). Treat anything
+ * not yet confirmed as a lead, not a verified fact — the page itself says
+ * so, in the callout near the top of the directory section.
  *
  * We never link a bare source domain (e.g. "abc3340.com") as a clickable
  * link, because we do not have the specific article URL, only the domain
@@ -261,7 +263,7 @@ const STATES = [
   { name: "North Dakota", abbr: "ND", status: "none",
     summary: "No Blue Envelope or similar program has been identified in North Dakota." },
   { name: "Ohio", abbr: "OH", status: "agency",
-    summary: "Ohio's program runs through the state's county boards of developmental disabilities, and is live in 84 of the state's 88 counties. Each kit includes an envelope, a decal, a wallet card, and a brochure. The envelope design was licensed from the San Diego County Sheriff's Department. Be Enabled Advocacy Alliance is taking over coordination of the program statewide from the Southern Ohio Council of Governments (SOCOG) — see the waitlist on this page for updates.",
+    summary: "Ohio's program runs through the state's county boards of developmental disabilities, and is live in 84 of the state's 88 counties. Each kit includes an envelope, a decal, a wallet card, and a brochure. The envelope design was licensed from the San Diego County Sheriff's Department. The Ohio State Highway Patrol, part of the Ohio Department of Public Safety, joined the same statewide program in 2025 — it is not a separate program, just another agency recognizing the same county-board-issued envelope. A few cities, including Solon, also run their own separate program instead of using the county board's. Be Enabled Advocacy Alliance is taking over coordination of the program statewide from the Southern Ohio Council of Governments (SOCOG) — see the waitlist on this page for updates.",
     legalBasis: "State-supported, with no specific statute.",
     launched: "Introduced in 2024, statewide by 2025–2026.",
     populations: "Developmental disabilities, including autism, anxiety, dementia, physical disability, and mental health conditions",
@@ -271,6 +273,7 @@ const STATES = [
       { where: "Summit, Portage, and Franklin Counties (and Upper Arlington)", sponsor: "County boards of developmental disabilities, with the Southern Ohio Council of Governments", launched: "2025–2026", populations: "Developmental disabilities, including autism, anxiety, and dementia", contact: "County board of developmental disabilities, free packet", confirmed: true, sourceText: "summitdd.org" },
       { where: "Richland County / Mansfield", sponsor: "Mansfield Police Department, with the Northeast Ohio Autism Association", launched: "2025–2026", populations: "Autism", contact: "Any Richland County law enforcement agency, or driver-education sites", confirmed: true, sourceText: "fox8.com" },
       { where: "Franklin, Lakewood, Beavercreek, Springboro, Vandalia, and Tipp City", sponsor: "Local police departments", launched: "2025", populations: "Autism, dementia, anxiety", contact: "Nearest police department, free", confirmed: false, sourceText: "acils.com" },
+      { where: "Solon", sponsor: "Solon Police Department, with the Solon Fire Department and Solon Senior Center — an independent program, not distributed through the county Board of Developmental Disabilities", launched: "April 13, 2026", populations: "Disabilities or communication barriers affecting interactions with police, fire, or EMS", contact: "Solon Police Department, Solon Fire Department, Solon Senior Center, or City Hall", confirmed: true, sourceText: "solonohio.gov" },
     ] },
   { name: "Oklahoma", abbr: "OK", status: "local",
     summary: "The Autism Foundation of Oklahoma coordinates the program across the Oklahoma City metro area, including Edmond, Oklahoma City, Oklahoma County, Choctaw, Midwest City, Moore, Norman, and The Village.",
@@ -585,12 +588,14 @@ export const blueEnvelopePage = {
         <div class="callout" role="note">
           <svg class="callout__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M12 9v4M12 16.5h.01M10.29 3.86l-8.5 14.72A1.5 1.5 0 0 0 3.06 21h17.88a1.5 1.5 0 0 0 1.27-2.42l-8.5-14.72a1.5 1.5 0 0 0-2.42 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
-            <p><strong>Treat every entry here as a lead, not a confirmed fact.</strong>
-               This directory was put together through research — state agency
-               pages, legislature and bill-tracking sites, and news coverage — and
-               most entries have not been confirmed by phone. A state marked
-               "no program found yet" means nothing turned up in that research, not
-               that no program exists. Call ahead before you rely on any address,
+            <p><strong>Treat any entry not yet confirmed as a lead, not a
+               verified fact.</strong> This directory started as research —
+               state agency pages, legislature and bill-tracking sites, and
+               news coverage — and a human validator has since phone-confirmed
+               most of what is listed here directly with each program; a
+               handful are still being verified. A state marked "no program
+               found yet" means nothing turned up in that research, not that
+               no program exists. Call ahead before you rely on any address,
                phone number, or hours listed here, and
                <a href="/contact/">tell us what you find</a> if something has
                changed.</p>
@@ -649,8 +654,10 @@ ${federalList}
         <h2 class="accent-line">Where this directory comes from</h2>
         <p>This directory was put together by researching state agency websites,
            legislature and bill-tracking sites, and news coverage, including
-           research assisted by AI tools. It has not been confirmed by phone with
-           every program listed, and it was last checked in September 2026. Laws
+           research assisted by AI tools. A human validator has since
+           phone-confirmed most of it directly with each program, with a
+           handful still being verified, and it was last checked in September
+           2026. Laws
            pass, programs launch, and contact details change faster than any
            directory can track on its own.</p>
 
