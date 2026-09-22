@@ -614,12 +614,6 @@ ${stateList}
                  (search "Blue Envelope waitlist") that currently explains it
                  is not connected yet. See CONTENT-TODO.md. -->
           </li>
-          <li class="card">
-            <h3>Bring it to your town</h3>
-            <p>Police departments, motor vehicle agencies, and community
-               groups can start a Blue Envelope program.</p>
-            <p><a class="btn btn--secondary" href="/contact/">Start a program</a></p>
-          </li>
         </ul>
       </div>
     </section>
