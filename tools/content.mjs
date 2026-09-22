@@ -1783,7 +1783,7 @@ PAGES.push(
     url: "/contact/",
     title: "Contact Us | Be Enabled Advocacy Alliance",
     description:
-      "Get in touch with Be Enabled Advocacy Alliance by email, phone, or post, or send us a message using the form on this page. We reply within five working days.",
+      "Get in touch with Be Enabled Advocacy Alliance by email, or send us a message using the form on this page. We reply within five working days.",
     h1: "Contact us",
     crumb: "Contact",
     trail: [],
