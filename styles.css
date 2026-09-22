@@ -23,7 +23,7 @@
     13. Forms                    (SC 3.3.1-3.3.6)
     14. Footer
     15. Display settings panel   (SC 1.4.8)
-    16. Wheel motif + decoration
+    16. Decoration
     17. Utilities
     18. Motion                   (SC 2.3.3)
     19. Resource hub
@@ -463,7 +463,6 @@ main:focus-visible { outline: var(--ring) solid var(--focus-a); }
 }
 .brand:visited { color: var(--brand); }
 .brand:hover .brand__name { text-decoration: underline; }
-.brand__mark { width: 2.75rem; height: 2.75rem; flex: none; }
 .brand__name { font-size: var(--step-0); max-width: 16ch; }
 /* Each line is its own element. A bare text node sitting next to a
    display:block sibling is ambiguous markup, and contrast tools sample it
@@ -595,6 +594,9 @@ main:focus-visible { outline: var(--ring) solid var(--focus-a); }
 }
 @media (min-width: 60rem) {
   .hero__inner { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
+  /* A hero with no second column's worth of content (no decorative art)
+     should not leave half its width empty. */
+  .hero__inner > .stack:only-child { grid-column: 1 / -1; }
 }
 .hero h1 { color: var(--brand-strong); max-width: 18ch; }
 .hero .lede { font-size: var(--step-2); color: var(--text); max-width: 46ch; }
@@ -894,17 +896,7 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
   margin-block-end: var(--space-3);
 }
 
-/* 16. Wheel motif + decoration --------------------------------------------
-   The brand mark is a wheel in motion: half modern tire, half wagon wheel.
-   It is drawn as inline SVG rather than an image file so it inherits
-   currentColor, stays sharp at 400% zoom, survives forced-colors mode, and
-   never becomes an image of text (SC 1.4.9). */
-.wheel { color: var(--brand); }
-.wheel__tire { fill: none; stroke: currentColor; }
-.wheel__spoke { stroke: currentColor; }
-.wheel__hub { fill: currentColor; }
-.wheel__arc { fill: none; stroke: var(--accent); }
-
+/* 16. Decoration ------------------------------------------------------------ */
 .rule {
   border: 0;
   block-size: 0.25rem;
@@ -1067,8 +1059,6 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
     outline: 3px solid Highlight;
     box-shadow: none;
   }
-  .wheel { color: CanvasText; }
-  .wheel__arc { stroke: CanvasText; }
   .status-badge, .state-card { border: 2px solid ButtonBorder; }
   .scroll-nav__btn { border: 2px solid ButtonBorder; }
 }
@@ -1213,17 +1203,12 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
 .cover__art-seal        { fill: var(--accent-warm); }
 .cover__art-seal-hole   { fill: var(--surface-sunken); }
 .cover__brand {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
   font-size: var(--step--1);
   letter-spacing: 0.2em;
   font-weight: 700;
   margin: 0;
   max-width: none;
 }
-.cover__brand .wheel { width: 2.5rem; height: 2.5rem; flex: none; color: var(--brand-contrast); }
-.cover__brand .wheel__arc { stroke: var(--brand-contrast); }
 
 @media (max-width: 959px) {
   .cover { order: -1; width: min(16rem, 70%); margin-block-end: var(--space-4); }

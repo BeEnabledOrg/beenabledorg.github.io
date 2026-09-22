@@ -17,6 +17,23 @@ still exist and build normally; only their exposure is switched off. Remove
 `noindex: true` and re-add the links (home page and `/what-we-do/`'s
 `domainCards`, the footer) once these are ready to publish.
 
+## Logo — not yet settled
+
+No logo has been chosen yet, so every place the site was standing in a
+placeholder mark ("wheel in motion", half wagon wheel/half tire) has had that
+reference pulled: the header next to the wordmark, the homepage hero, the
+Blue Envelope page's small `cover__brand` lockup (now just the text "BEAA"),
+the favicon link, and the `og:image`/`twitter:image` social-preview meta tags
+(the card style dropped to `summary` since there is no image to show).
+
+The wheel artwork itself is untouched at `assets/img/favicon.svg` and
+`assets/img/og-default.svg`/`.png`, just unreferenced — nothing currently
+links to them. Once a real logo is chosen: re-add `<link rel="icon">` and the
+`og:image`/`twitter:image` tags in `tools/scaffold-pages.mjs`'s `render()`,
+restore `__WHEEL__` (or its replacement) in `tools/partials/header.html` and
+the wheel injection in `scaffold-pages.mjs`'s `headerFor()`, and decide
+whether the homepage hero and Blue Envelope's `cover__brand` want a mark too.
+
 ## Legal and organizational — blocking
 
 | What | Where it goes |
@@ -56,9 +73,9 @@ the provider's form on the page.
 now carries 45 real listings (in `tools/content.mjs`, the `HUB_LISTINGS`
 array), sourced from Jen's own Content Source Inventory workbook — every one
 checked against the organization's own site, with a link back to that site on
-the card. None of these came through the agency submission form; they were
+the card. None of these came through the submission form; they were
 compiled directly by the team, which is why the page copy on `/resources/`
-says so plainly rather than implying they were all agency-submitted.
+says so plainly rather than implying they were all submitted by someone else.
 
 Still blocking before this is fully useful:
 

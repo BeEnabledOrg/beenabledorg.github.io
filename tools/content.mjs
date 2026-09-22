@@ -113,6 +113,7 @@ const HUB_AGENCY_TYPES = [
   "Nonprofit provider",
   "State agency",
   "Self-advocacy group",
+  "Individual or family",
 ];
 
 const HUB_DISABILITY_TYPES = [
@@ -877,20 +878,6 @@ export const PAGES = [
             <a class="btn btn--secondary" href="/about/">About Be Enabled Advocacy Alliance</a>
           </p>
         </div>
-        <div class="hero__art" aria-hidden="true">
-          <svg class="wheel" viewBox="0 0 200 200" focusable="false">
-            <circle class="wheel__tire" cx="100" cy="100" r="84" stroke-width="10"/>
-            <g class="wheel__spoke" stroke-width="5" stroke-linecap="round">
-              <line x1="100" y1="100" x2="100" y2="22"/>
-              <line x1="100" y1="100" x2="45"  y2="45"/>
-              <line x1="100" y1="100" x2="22"  y2="100"/>
-              <line x1="100" y1="100" x2="45"  y2="155"/>
-              <line x1="100" y1="100" x2="100" y2="178"/>
-            </g>
-            <path class="wheel__arc" d="M100 16 a84 84 0 0 1 0 168" stroke-width="22" stroke-linecap="round"/>
-            <circle class="wheel__hub" cx="100" cy="100" r="19"/>
-          </svg>
-        </div>
       </div>
     </section>
 
@@ -1397,7 +1384,7 @@ PAGES.push(
           <h2>In short</h2>
           <p>This page lists disability programs, services, and events from Ohio counties and agencies.</p>
           <p>You can search by county, topic, and disability type.</p>
-          <p>Our team checked and added most of what is here so far from each organization's own website; agencies can also tell us about a program using our form.</p>
+          <p>Our team checked and added most of what is here so far from each organization's own website; anyone can also tell us about a program using our form.</p>
           <p>This page is new and still growing, so most Ohio counties do not have a listing yet.</p>
         </div>
 
@@ -1414,15 +1401,17 @@ PAGES.push(
            yet.</p>
 
         <h2>How a program gets listed here</h2>
-        <p>Agencies and counties do not post directly to this page.</p>
+        <p>Nothing posts directly to this page.</p>
         <ol class="tick-list">
-          <li>An agency tells us about their program using the
-              <a href="/resources/submit/">submission form</a> — or our own
-              team finds and checks one directly on the organization's own
-              site, which is how most listings here got added so far.</li>
+          <li>Someone tells us about a program using the
+              <a href="/resources/submit/">submission form</a> — the
+              organization that runs it, or someone who just knows about it
+              — or our own team finds and checks one directly on the
+              organization's own site, which is how most listings here got
+              added so far.</li>
           <li>Our team checks it for accuracy and plain language.</li>
           <li>Once we approve it, it appears here for everyone to find. If we
-              need a change first, we send an agency submission back with a
+              need a change first, we send the submission back with a
               note.</li>
         </ol>
         <p>Every listing links back to the organization's own site, so you can
@@ -1542,9 +1531,9 @@ ${CTA}`,
         </div>
 
         <h2>Before you start</h2>
-        <p>Anyone can use this form: the agency that runs a program, or
-           someone who just knows about one. It does not post live right
-           away. Our small team reviews it, may follow up with the agency for
+        <p>Anyone can use this form: the person, family, or organization that
+           runs a program, or someone who just knows about one. It does not
+           post live right away. Our small team reviews it, may follow up for
            anything unclear, and only then adds it to the public Hub.</p>
         <p>Have several programs to add, or a lot of detail to share? Use the
            <a href="/contact/">contact form</a> instead and we will work out
@@ -1626,15 +1615,15 @@ ${disabilityOptionsRequired}
           </div>
 
           <div class="field">
-            <label for="sp-agency-name">Agency name <span class="field__req">(required)</span></label>
-            <p class="field__hint" id="sp-agency-name-hint">The organization running this program.</p>
-            <input type="text" id="sp-agency-name" name="agencyName" required data-required-message="Please add the name of the organization running this." aria-describedby="sp-agency-name-hint">
+            <label for="sp-agency-name">Organizer name <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-agency-name-hint">The person, family, or organization running this program.</p>
+            <input type="text" id="sp-agency-name" name="agencyName" required data-required-message="Please add the name of the person or organization running this." aria-describedby="sp-agency-name-hint">
             <p class="field__error" id="sp-agency-name-error"></p>
           </div>
 
           <div class="field">
-            <label for="sp-agency-type">Agency type <span class="field__req">(required)</span></label>
-            <p class="field__hint" id="sp-agency-type-hint">The kind of organization running this program.</p>
+            <label for="sp-agency-type">Organizer type <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="sp-agency-type-hint">The kind of organization running this program, or "Individual or family" if it is not run by a formal organization.</p>
             <select id="sp-agency-type" name="agencyType" required data-required-message="Please choose the kind of organization this is." aria-describedby="sp-agency-type-hint">
 ${agencyOptionsRequired}
             </select>
