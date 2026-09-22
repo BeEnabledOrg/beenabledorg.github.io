@@ -139,14 +139,26 @@ from" section on that page. Treat it as a living document: correct it as
 programs launch, change, or close. `glossary/index.html`
 (`#blue-envelope-project`) now has real copy too.
 
-A human validator has started confirming entries by phone and by checking
-agency sites directly (not just AI-assisted research). Their first pass
-found several new county chapters (mostly in New York), split one merged
-five-county New York entry into individual counties now that each has its
-own confirmed source, and upgraded Colorado's Jefferson County chapter from
-unconfirmed to confirmed. As of this pass, 8 more chapters still need
-verification and more calls are in progress; check back for updates before
-treating the directory as final.
+A human validator has been confirming entries by phone and by checking
+agency sites directly (not just AI-assisted research). Most entries in the
+directory have now been confirmed by phone directly with the program;
+a handful are still being verified and calls are ongoing. Their first pass
+also found several new county chapters (mostly in New York), split one
+merged five-county New York entry into individual counties now that each
+has its own confirmed source, and upgraded Colorado's Jefferson County
+chapter from unconfirmed to confirmed. Check back for updates before
+treating the directory as fully final.
+
+The Ohio entry's `summary` field now also notes that the Ohio State Highway
+Patrol (part of the Ohio Department of Public Safety) joined the existing
+county-board-coordinated statewide program in 2025 — it is the same
+program, not a separate one, so this isn't a new directory entry. Solon is
+now listed as its own Ohio chapter: unlike most Ohio cities, it runs an
+independent program distributed through its own police department, fire
+department, and senior center rather than through the county Board of
+Developmental Disabilities. A few other Ohio municipalities may run
+similarly independent programs — worth checking for during the next
+research pass; none besides Solon are confirmed yet.
 
 Be Enabled Advocacy Alliance is taking over Ohio's Blue Envelope Program,
 statewide, from the Southern Ohio Council of Governments (SOCOG). The
