@@ -1793,7 +1793,7 @@ PAGES.push(
 
         <div class="in-short">
           <h2>In short</h2>
-          <p>You can email us, phone us, write to us, or use the form on this page.</p>
+          <p>You can email us, write to us, or use the form on this page.</p>
           <p>We aim to reply within five working days.</p>
           <p>If you need a reply in a particular format, say so and we will use it.</p>
         </div>
@@ -1803,11 +1803,6 @@ PAGES.push(
           <dt>Email</dt>
           <!-- TODO(content): replace with the real address. See CONTENT-TODO.md -->
           <dd><a href="mailto:hello@beenabled.org">hello@beenabled.org</a></dd>
-
-          <dt>Phone</dt>
-          <!-- TODO(content): add the real phone number, and confirm whether you
-               accept relay and video relay calls. -->
-          <dd>Coming soon. Until then, please use email or the form below.</dd>
 
           <dt>Post</dt>
           <!-- TODO(content): add the mailing address. -->
