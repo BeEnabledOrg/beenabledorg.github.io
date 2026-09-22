@@ -952,8 +952,16 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
    falls back to the site's normal tokens, same as every other page. Every
    pairing below is registered in tools/contrast.mjs's themes list and
    checked at the ratio AAA requires for its role — see the numbers in the
-   comment on each line. */
-:root:not([data-theme="dark"]):not([data-theme="contrast"]):not([data-theme="warm"]) .hub {
+   comment on each line.
+
+   "Base light theme" has two spellings in the markup: Light chosen in the
+   panel (data-theme="light"), or nothing chosen (no data-theme) on a device
+   that is not asking for dark. The second block below handles the third
+   case — nothing chosen on a device that IS dark — by handing every token
+   back to the site's dark theme. Without it, this palette would paint
+   white cards under the dark theme's near-white text. */
+:root:not([data-theme]) .hub,
+:root[data-theme="light"] .hub {
   --brand:          #7D4B00;  /*  7.30:1 on white, and white reaches 7.30:1 on it */
   --brand-strong:   #5C3700;  /* 10.49:1 on white */
   --brand-contrast: #ffffff;
@@ -970,6 +978,26 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
      against the new cream --surface-sunken above (was too dark against the
      site's --text-muted at the first cream picked; lightened until it
      cleared 7:1 rather than darkening the teal to fit). */
+}
+/* "Match my device" on a dark device: every token the block above sets goes
+   back to the site's dark theme. `inherit` re-reads each one from the
+   ancestor, so no color is repeated here — this list only has to name the
+   same tokens. Chosen Dark, High contrast, and Warm never reach the light
+   block at all, because they set data-theme. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .hub {
+    --brand:          inherit;
+    --brand-strong:   inherit;
+    --brand-contrast: inherit;
+    --surface:        inherit;
+    --surface-raised: inherit;
+    --surface-sunken: inherit;
+    --border:         inherit;
+    --border-strong:  inherit;
+    --border-subtle:  inherit;
+    --accent-ui:      inherit;
+    --accent-warm:    inherit;
+  }
 }
 
 .hub-filters {
@@ -1085,8 +1113,14 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
    .blue-envelope and only in the base light theme — switching to dark, high
    contrast, or warm falls back to the site's normal tokens, same as every
    other page. Every pairing below is verified at the ratio AAA requires for
-   its role; see the numbers in the comment on each line. */
-:root:not([data-theme="dark"]):not([data-theme="contrast"]):not([data-theme="warm"]) .blue-envelope {
+   its role; see the numbers in the comment on each line.
+
+   Same two-part scoping as .hub (§19): the block below is the base light
+   theme — Light chosen, or nothing chosen on a light device — and the
+   @media block after it hands "nothing chosen on a dark device" back to the
+   site's dark theme. */
+:root:not([data-theme]) .blue-envelope,
+:root[data-theme="light"] .blue-envelope {
   --text:           #0C2038;  /* 16.41:1 on white */
   --text-muted:     #2A3E58;  /* 10.89:1 on white · 8.70:1 on --surface-sunken · 9.84:1 on --surface-raised */
   --link:           #123D6E;  /* 10.95:1 on white */
@@ -1107,6 +1141,29 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
   --focus-b:        #ffffff;
   --font-head: "Newsreader", Georgia, "Times New Roman", serif;
   color: var(--text);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .blue-envelope {
+    --text:           inherit;
+    --text-muted:     inherit;
+    --link:           inherit;
+    --link-visited:   inherit;
+    --brand:          inherit;
+    --brand-strong:   inherit;
+    --brand-contrast: inherit;
+    --surface:        inherit;
+    --surface-raised: inherit;
+    --surface-sunken: inherit;
+    --surface-invert: inherit;
+    --text-invert:    inherit;
+    --border:         inherit;
+    --border-strong:  inherit;
+    --border-subtle:  inherit;
+    --accent-warm:    inherit;
+    --focus-a:        inherit;
+    --focus-b:        inherit;
+    --font-head:      inherit;
+  }
 }
 
 .blue-envelope .kicker {
@@ -1178,13 +1235,18 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
   justify-content: space-between;
   padding: var(--space-6) var(--space-6) var(--space-6) var(--space-7);
 }
+/* The spine is drawn with a border rather than a background on purpose. A
+   pseudo-element that carries a background stops axe from resolving the
+   background behind .cover__title, and the site's own AAA scan then fails
+   the cover text as "undeterminable". A border draws the same 2px line and
+   is not a background. */
 .cover::before {
   content: "";
   position: absolute;
   inset-inline-start: 0.875rem;
   inset-block: 0;
-  width: 2px;
-  background-color: rgba(255, 255, 255, 0.18);
+  width: 0;
+  border-inline-start: 2px solid rgba(255, 255, 255, 0.18);
 }
 .cover__title {
   font-family: var(--font-head);
@@ -1348,3 +1410,8 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
 }
 .scroll-nav__btn:hover { background-color: var(--surface); }
 .scroll-nav__btn svg { width: 22px; height: 22px; }
+/* The buttons are position:fixed, which is exactly what SC 2.4.12 (Focus Not
+   Obscured, Enhanced) warns about. While they are shown, anything scrolled
+   into view by focus stops short of the strip they occupy. app.js sets the
+   attribute together with the buttons. */
+:root[data-scroll-buttons="on"] { scroll-padding-block-end: 9rem; }

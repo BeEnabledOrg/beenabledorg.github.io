@@ -68,7 +68,7 @@ pair is fixed in the stylesheet, never waived in the checker.
 
 | Command | Proves |
 |---|---|
-| `check:contrast` | 170 color pairings across 5 themes meet 7:1 (SC 1.4.6) and 3:1 (SC 1.4.11) |
+| `check:contrast` | 238 color pairings across 7 palettes meet 7:1 (SC 1.4.6) and 3:1 (SC 1.4.11), and each page palette names the same tokens in its dark-device reset |
 | `check:partials` | Nav and footer are identical everywhere (SC 3.2.3, 3.2.6) |
 | `check:read` | Every page reads at grade 9 or below, or carries a plain summary (SC 3.1.5) |
 | `check:links` | No "read more", no `target="_blank"`, no ambiguous link text (SC 2.4.9, 3.2.5) |
@@ -76,7 +76,7 @@ pair is fixed in the stylesheet, never waived in the checker.
 | `check:sitemap` | `sitemap.xml` matches the pages on disk, both ways |
 | `check:html` | Markup validity plus the html-validate accessibility rules |
 | `check:a11y` | pa11y on the **WCAG2AAA** ruleset, both the htmlcs and axe engines |
-| `check:themes` | The same AAA scan re-run in all four themes |
+| `check:themes` | The same AAA scan re-run in all six color conditions: the four chosen themes, plus "Match my device" on a light device and on a dark device |
 | `check:targets` | Every target is at least 44x44 CSS px at three widths (SC 2.5.5) |
 | `check:interaction` | The menu, display settings, and form confirm flow actually work |
 
@@ -104,6 +104,19 @@ These are not style preferences. Each one is load-bearing for the AAA claim.
 - **Amber `#f09901` can never carry body text.** It is 2.27:1 on white. Use
   `--accent-ui` where amber must carry meaning, and keep the amber button at
   large text only.
+- **A page palette (`.hub`, `.blue-envelope`) is light-theme only, in both
+  spellings of "light".** Light can be chosen in the panel (`data-theme="light"`)
+  or be the device's own preference with nothing chosen (no `data-theme`). A
+  selector that only excludes the chosen themes still matches the second case
+  on a dark device, and paints the light palette's white cards under the dark
+  theme's near-white text. Each palette therefore has a `@media
+  (prefers-color-scheme: dark)` reset that hands every token back with
+  `inherit`; `check:contrast` fails if the two lists ever differ.
+- **The browser-based checks use the Chromium that pa11y bundles**, not the
+  system Chrome. pa11y's axe build misreads closed `<details>` content in
+  newer Chromes and reports hundreds of false contrast errors. Headless system
+  Chrome also inherits the Mac's dark appearance, which is why `check:themes`
+  emulates the OS preference explicitly for every condition.
 
 ## Still to do
 

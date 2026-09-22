@@ -62,12 +62,37 @@ const themes = {
   "dark (chosen)": { ...light, ...tokensIn(blockAfter(':root[data-theme="dark"]')) },
   "high contrast": { ...light, ...tokensIn(blockAfter(':root[data-theme="contrast"]')) },
   "warm / low blue": { ...light, ...tokensIn(blockAfter(':root[data-theme="warm"]')) },
-  // .blue-envelope only overrides the base light theme (see styles.css §21) —
-  // dark, high contrast, and warm all fall back to the tokens above.
-  "blue envelope (light)": { ...light, ...tokensIn(blockAfter(".blue-envelope {")) },
+  // .blue-envelope only overrides the base light theme (see styles.css §21).
+  // Chosen dark, high contrast, and warm, AND "match my device" on a dark
+  // device, all fall back to the tokens above — the @media block after each
+  // palette hands every token back with `inherit`, so there is nothing new
+  // to measure there. What matters is that it stays that way: if a token is
+  // ever added to the light block without also being added to its @media
+  // reset, the light value leaks into the dark theme. tools/theme-scan.mjs
+  // catches that in the browser; this file checks the declared pairs.
+  "blue envelope (light)": { ...light, ...tokensIn(blockAfter(':root[data-theme="light"] .blue-envelope {')) },
   // .hub (the Resource Hub, §19) follows the same pattern.
-  "resource hub (light)": { ...light, ...tokensIn(blockAfter(".hub {")) },
+  "resource hub (light)": { ...light, ...tokensIn(blockAfter(':root[data-theme="light"] .hub {')) },
 };
+
+/* -- Page palettes must hand every token back under "match my device" on a
+      dark device. The light block and its @media reset have to name the same
+      tokens; a token added to one and not the other leaks a light color into
+      the dark theme. Names only — the reset carries `inherit`, not values. */
+const namesIn = (text) => [...text.matchAll(/--([\w-]+)\s*:/g)].map((m) => m[1]).sort();
+const PAGE_PALETTES = [
+  ["Resource Hub",  ':root[data-theme="light"] .hub {',           ':root:not([data-theme]) .hub {'],
+  ["Blue Envelope", ':root[data-theme="light"] .blue-envelope {', ':root:not([data-theme]) .blue-envelope {'],
+];
+const paletteResetProblems = [];
+for (const [name, lightMarker, resetMarker] of PAGE_PALETTES) {
+  const declared = namesIn(blockAfter(lightMarker));
+  const reset = namesIn(blockAfter(resetMarker));
+  const missing = declared.filter((t) => !reset.includes(t));
+  const extra = reset.filter((t) => !declared.includes(t));
+  if (missing.length) paletteResetProblems.push(`${name}: set in the light palette but never reset for dark devices: --${missing.join(", --")}`);
+  if (extra.length) paletteResetProblems.push(`${name}: reset for dark devices but not set in the light palette: --${extra.join(", --")}`);
+}
 
 /* -- The contract. Every pairing the design is allowed to render. --------
    need: 7 = body text · 4.5 = large text only · 3 = non-text (SC 1.4.11)   */
@@ -188,6 +213,13 @@ for (const [name, tokens] of Object.entries(themes)) {
     if (rows.length) { console.log(`\nTheme: ${name} — focus ring visibility`); rows.forEach((r) => console.log(r)); }
   }
   run(`Theme: ${name} — restricted roles`, RESTRICTED, tokens);
+}
+
+if (paletteResetProblems.length) {
+  console.log("\nPage palettes vs. their dark-device resets");
+  paletteResetProblems.forEach((p) => { console.log(`  FAIL  ${p}`); failures++; });
+} else {
+  checked += PAGE_PALETTES.length;
 }
 
 console.log("\n" + "=".repeat(72));

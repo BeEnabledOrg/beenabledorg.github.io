@@ -322,6 +322,8 @@
 
   if (hubList) {
     var hubEmpty = document.getElementById("hubEmpty");
+    var hubCount = document.getElementById("hubCount");
+    var hubCountTimer;
     var allCards = Array.prototype.slice.call(hubList.querySelectorAll(".listing-card"));
 
     var hubFilters = { topic: "", county: "", agencyType: "", disabilityType: "", search: "" };
@@ -366,6 +368,10 @@
       return clone.outerHTML;
     }
 
+    function filtersActive() {
+      return Object.keys(hubFilters).some(function (k) { return hubFilters[k] !== ""; });
+    }
+
     function renderList() {
       var visible = 0;
       allCards.forEach(function (card) {
@@ -373,6 +379,18 @@
         card.hidden = !show;
         if (show) visible++;
       });
+      /* Sighted users watch the list change; this is the same news for a
+         screen reader (SC 4.1.3). Silent until a filter is in play, so the
+         page does not announce itself on load, and held back a moment so
+         typing in the search box does not announce once per keystroke. */
+      if (hubCount) {
+        clearTimeout(hubCountTimer);
+        hubCountTimer = setTimeout(function () {
+          hubCount.textContent = filtersActive() && allCards.length
+            ? "Showing " + visible + " of " + allCards.length + " programs."
+            : "";
+        }, 400);
+      }
       if (!hubEmpty) return;
       if (!allCards.length) {
         hubEmpty.innerHTML = 'No programs are listed here yet. <a href="/resources/submit/">Submit a program</a> to help us start filling this in.';
@@ -581,6 +599,10 @@
       scrollNav.remove();
       scrollNav = null;
     }
+    /* The stylesheet reads this to keep focus-scrolled elements clear of the
+       fixed buttons (SC 2.4.12). */
+    if (on) root.setAttribute("data-scroll-buttons", "on");
+    else root.removeAttribute("data-scroll-buttons");
   }
 
   if (scrollToggle) {

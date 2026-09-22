@@ -77,6 +77,9 @@ While testing, confirm:
 - [ ] Windows **High Contrast / forced-colors** mode: borders, focus rings, and
       the wheel remain visible.
 - [ ] Each of the four themes, by eye, on a real display.
+- [ ] "Match my device" with the OS set to dark, and again set to light. The
+      Resource Hub and Blue Envelope pages carry their own light palettes, and
+      those must give way to the site's dark theme without a choice being made.
 
 ## Content judgement
 

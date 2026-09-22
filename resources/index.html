@@ -381,6 +381,11 @@
           <button type="button" data-view="month" aria-pressed="false">Month</button>
         </div>
 
+        <!-- Announces the result of a filter or search to screen readers, the
+             way the visible list change does for everyone else (SC 4.1.3).
+             Filled by app.js; empty until a filter is applied. -->
+        <p class="visually-hidden" id="hubCount" role="status"></p>
+
         <div id="hubListPanel">
           <p class="hub-empty" id="hubEmpty" hidden>Nothing matches those
              filters. <a href="/resources/submit/">Tell us about a program
