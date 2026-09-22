@@ -136,6 +136,20 @@ from" section on that page. Treat it as a living document: correct it as
 programs launch, change, or close. `glossary/index.html`
 (`#blue-envelope-project`) now has real copy too.
 
+A human validator has started confirming entries by phone and by checking
+agency sites directly (not just AI-assisted research). Their first pass
+found several new county chapters (mostly in New York), split one merged
+five-county New York entry into individual counties now that each has its
+own confirmed source, and upgraded Colorado's Jefferson County chapter from
+unconfirmed to confirmed. It also flagged two New York county entries —
+Orange County (Chester's "Wandering/Vulnerable Person Registry", Woodbury's
+"Safe Me Program") and Westchester County (New Castle's and New Rochelle's
+"Special Needs Registry" programs) — that turned out to be a different kind
+of program (a pre-registration safety database, not a Blue Envelope), so
+those were deliberately left out of this directory rather than added. As of
+this pass, 8 more chapters still need verification and more calls are in
+progress; check back for updates before treating the directory as final.
+
 ## Accessibility statement
 
 | What | Where it goes |
