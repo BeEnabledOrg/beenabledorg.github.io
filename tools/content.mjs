@@ -934,7 +934,7 @@ ${domainCards}
         <ul class="grid no-bullet">
           <li class="card">
             <h3><a class="card__link" href="/blue-envelope/">The Blue Envelope Project</a></h3>
-            <p>Smoother traffic stops for drivers who communicate differently. Find a program near you.</p>
+            <p>Smoother traffic stops when a driver or passenger communicates differently. Find a program near you.</p>
           </li>
           <li class="card">
             <h3><a class="card__link" href="/resources/">Resource Hub &amp; Calendar</a></h3>
@@ -1674,7 +1674,7 @@ const TERMS = [
   ["assistive-technology", "Assistive technology", `Any tool that helps a disabled person do something. It covers everything from a walking stick to screen reading software.`],
   ["autonomy", "Autonomy", `Running your own life. Making your own choices about where you live, who supports you, and what you do.`],
   ["benefit-cliff", "Benefit cliff", `The point where earning slightly more money causes benefits to stop suddenly instead of reducing gradually. It can leave someone worse off after a pay rise.`],
-  ["blue-envelope-project", "Blue Envelope Project", `A Be Enabled Advocacy Alliance program. A blue envelope holds a driver's license, registration, and insurance, plus short notes for the driver and for the officer, so a traffic stop can go more smoothly for someone who communicates differently. Using one is always voluntary. See the <a href="/blue-envelope/">Blue Envelope Project page</a> to find a program near you.`],
+  ["blue-envelope-project", "Blue Envelope Project", `A Be Enabled Advocacy Alliance program. A blue envelope holds a driver's license, registration, and insurance, plus short notes for the officer, so a traffic stop can go more smoothly when the driver or a passenger communicates differently. Using one is always voluntary. See the <a href="/blue-envelope/">Blue Envelope Project page</a> to find a program near you.`],
   ["direct-support-technology", "Direct support technology", `The everyday tools disabled people use to get through the day. Booking apps, communication devices, and the systems care agencies use to schedule support.`],
   ["disability-led", "Disability-led", `An organization where disabled people set the agenda and make the decisions, rather than only being asked for their views.`],
   ["dme", "DME (durable medical equipment)", `Equipment prescribed for use over a long period, such as a wheelchair, a hoist, or a hospital bed.`],
