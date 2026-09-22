@@ -261,14 +261,14 @@ const STATES = [
   { name: "North Dakota", abbr: "ND", status: "none",
     summary: "No Blue Envelope or similar program has been identified in North Dakota." },
   { name: "Ohio", abbr: "OH", status: "agency",
-    summary: "Ohio's program runs through the state's county boards of developmental disabilities, and is live in 84 of the state's 88 counties. Each kit includes an envelope, a decal, a wallet card, and a brochure. The envelope design was licensed from the San Diego County Sheriff's Department.",
+    summary: "Ohio's program runs through the state's county boards of developmental disabilities, and is live in 84 of the state's 88 counties. Each kit includes an envelope, a decal, a wallet card, and a brochure. The envelope design was licensed from the San Diego County Sheriff's Department. Be Enabled Advocacy Alliance is taking over coordination of the program statewide from the Southern Ohio Council of Governments (SOCOG) — see the waitlist on this page for updates.",
     legalBasis: "State-supported, with no specific statute.",
     launched: "Introduced in 2024, statewide by 2025–2026.",
     populations: "Developmental disabilities, including autism, anxiety, dementia, physical disability, and mental health conditions",
     howToGet: "Your county Board of Developmental Disabilities, free packet.",
     chapters: [
       { where: "Shaker Heights, Kettering, Beachwood, and Bay Village", sponsor: "City police departments, through county boards of developmental disabilities", launched: "2025–2026", populations: "Developmental disabilities, including autism and anxiety", contact: "County board of developmental disabilities or city police department", confirmed: true, sourceText: "shakerheightsoh.gov" },
-      { where: "Summit, Portage, and Franklin Counties (and Upper Arlington)", sponsor: "County boards of developmental disabilities. Coordination is transitioning from the Southern Ohio Council of Governments (SOCOG) to Be Enabled Advocacy Alliance — join the waitlist below for updates.", launched: "2025–2026", populations: "Developmental disabilities, including autism, anxiety, and dementia", contact: "County board of developmental disabilities, free packet", confirmed: true, sourceText: "summitdd.org" },
+      { where: "Summit, Portage, and Franklin Counties (and Upper Arlington)", sponsor: "County boards of developmental disabilities, with the Southern Ohio Council of Governments", launched: "2025–2026", populations: "Developmental disabilities, including autism, anxiety, and dementia", contact: "County board of developmental disabilities, free packet", confirmed: true, sourceText: "summitdd.org" },
       { where: "Richland County / Mansfield", sponsor: "Mansfield Police Department, with the Northeast Ohio Autism Association", launched: "2025–2026", populations: "Autism", contact: "Any Richland County law enforcement agency, or driver-education sites", confirmed: true, sourceText: "fox8.com" },
       { where: "Franklin, Lakewood, Beavercreek, Springboro, Vandalia, and Tipp City", sponsor: "Local police departments", launched: "2025", populations: "Autism, dementia, anxiety", contact: "Nearest police department, free", confirmed: false, sourceText: "acils.com" },
     ] },
@@ -597,11 +597,11 @@ ${stateList}
     <section class="section section--tint" id="waitlist">
       <div class="wrap">
         <h2 class="accent-line">Get the Blue Envelope</h2>
-        <p class="lede">Be Enabled Advocacy Alliance is taking over coordination
-           of part of Ohio's Blue Envelope Program from the Southern Ohio
-           Council of Governments (SOCOG). If you are in Ohio, join the
-           waitlist below to hear when it is ready. If you are in another
-           state, search the directory above for a program near you.</p>
+        <p class="lede">Be Enabled Advocacy Alliance is taking over Ohio's Blue
+           Envelope Program from the Southern Ohio Council of Governments
+           (SOCOG). If you are in Ohio, join the waitlist below to hear when
+           it is ready. If you are in another state, search the directory
+           above for a program near you.</p>
         <ul class="grid no-bullet">
           <li class="card">
             <h3>Join the waitlist</h3>

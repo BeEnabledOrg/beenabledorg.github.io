@@ -148,15 +148,14 @@ unconfirmed to confirmed. As of this pass, 8 more chapters still need
 verification and more calls are in progress; check back for updates before
 treating the directory as final.
 
-Be Enabled Advocacy Alliance is taking over coordination of part of Ohio's
-program (the Summit/Portage/Franklin/Upper Arlington chapter) from the
-Southern Ohio Council of Governments (SOCOG). The page's waitlist section
-and the Ohio chapter entry both mention this now. Once the transition is
-complete, update `tools/content-blue-envelope.mjs`'s Ohio chapter (sponsor
-field) and the waitlist copy (`id="waitlist"` in the same file) to describe
-the finished state rather than a transition in progress, and wire the
-waitlist form up to a real service (see the TODO(content) comment next to
-the form).
+Be Enabled Advocacy Alliance is taking over Ohio's Blue Envelope Program,
+statewide, from the Southern Ohio Council of Governments (SOCOG). The
+page's waitlist section and the Ohio entry's `summary` field both mention
+this now. Once the transition is complete, update
+`tools/content-blue-envelope.mjs`'s Ohio entry and the waitlist copy
+(`id="waitlist"` in the same file) to describe the finished state rather
+than a transition in progress, and wire the waitlist form up to a real
+service (see the TODO(content) comment next to the form).
 
 **What counts as a Blue Envelope program, for this directory:** something a
 person keeps and hands to an officer at a stop — the envelope itself, in
