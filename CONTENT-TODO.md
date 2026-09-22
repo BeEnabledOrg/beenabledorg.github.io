@@ -136,6 +136,39 @@ from" section on that page. Treat it as a living document: correct it as
 programs launch, change, or close. `glossary/index.html`
 (`#blue-envelope-project`) now has real copy too.
 
+A human validator has started confirming entries by phone and by checking
+agency sites directly (not just AI-assisted research). Their first pass
+found several new county chapters (mostly in New York), split one merged
+five-county New York entry into individual counties now that each has its
+own confirmed source, and upgraded Colorado's Jefferson County chapter from
+unconfirmed to confirmed. As of this pass, 8 more chapters still need
+verification and more calls are in progress; check back for updates before
+treating the directory as final.
+
+**What counts as a Blue Envelope program, for this directory:** something a
+person keeps and hands to an officer at a stop — the envelope itself, in
+whatever color(s) a state uses for whatever condition(s) (Louisiana's green
+envelope for a mental, physical, or developmental disability alongside its
+blue envelope for autism is still one qualifying program; Arkansas's Act 16
+blue / Act 531 green split is the same idea). A program shaped differently
+— a pre-registration database, a disclosure card, a sensory kit — is a
+different kind of thing even when it serves the same population or comes
+from the same agency, and does not belong in this directory even if it
+turns up during Blue Envelope research.
+
+**Differently-shaped programs found during research, not included here.**
+Not a to-do to add them to this directory — a running note so they're not
+lost, in case the org wants to track, link to, or feature them separately
+someday.
+
+| Where | Program | What it actually is | Source |
+|---|---|---|---|
+| Town of Chester, Orange County, NY | Wandering/Vulnerable Person Registry | A pre-registration safety database for search-and-rescue, not an envelope | chester-ny.gov |
+| Town of Woodbury, Orange County, NY | Safe Me Program | Same idea as Chester's registry, different name | woodburypolice.com |
+| Town of New Castle, Westchester County, NY | Special Needs Registry | Pre-registration safety database | mynewcastleny.gov |
+| New Rochelle, Westchester County, NY | Special Needs Registry Program | Pre-registration safety database | newrochelleny.gov |
+| Louisiana (statewide) | Developmental Disability Disclosure Card | A card, separate from Louisiana's own green/blue envelope law | See the Louisiana entry in `tools/content-blue-envelope.mjs` |
+
 ## Accessibility statement
 
 | What | Where it goes |
