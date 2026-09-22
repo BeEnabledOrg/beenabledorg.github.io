@@ -530,6 +530,35 @@ export const blueEnvelopePage = {
       </div>
     </section>
 
+    <section class="section section--tint" id="waitlist">
+      <div class="wrap">
+        <h2 class="accent-line">Get the Blue Envelope</h2>
+        <p class="lede">Be Enabled Advocacy Alliance is taking over Ohio's Blue
+           Envelope Program from the Southern Ohio Council of Governments
+           (SOCOG). If you are in Ohio, join the waitlist below to hear when
+           it is ready. If you are in another state, search the directory
+           below for a program near you.</p>
+        <ul class="grid no-bullet">
+          <li class="card">
+            <h3>Join the waitlist</h3>
+            <p>Get one email when it's ready. Nothing else.</p>
+            <form class="stack" data-form="waitlist">
+              <div class="field">
+                <label for="wl-email">Email address</label>
+                <input id="wl-email" type="email" required placeholder="you@example.com" autocomplete="email">
+              </div>
+              <p><button class="btn btn--primary" type="submit">Join the waitlist</button></p>
+              <p class="form-status" role="status" data-wl-status></p>
+            </form>
+            <!-- TODO(content): wire this up to a real mailing-list service
+                 once one is chosen, then remove the JS intercept in app.js
+                 (search "Blue Envelope waitlist") that currently explains it
+                 is not connected yet. See CONTENT-TODO.md. -->
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <section class="section section--tint" id="directory">
       <div class="wrap">
         <h2 class="accent-line">Find a Blue Envelope program</h2>
@@ -591,35 +620,6 @@ ${stateIndex}
         <div class="state-list" id="be-state-list">
 ${stateList}
         </div>
-      </div>
-    </section>
-
-    <section class="section section--tint" id="waitlist">
-      <div class="wrap">
-        <h2 class="accent-line">Get the Blue Envelope</h2>
-        <p class="lede">Be Enabled Advocacy Alliance is taking over Ohio's Blue
-           Envelope Program from the Southern Ohio Council of Governments
-           (SOCOG). If you are in Ohio, join the waitlist below to hear when
-           it is ready. If you are in another state, search the directory
-           above for a program near you.</p>
-        <ul class="grid no-bullet">
-          <li class="card">
-            <h3>Join the waitlist</h3>
-            <p>Get one email when it's ready. Nothing else.</p>
-            <form class="stack" data-form="waitlist">
-              <div class="field">
-                <label for="wl-email">Email address</label>
-                <input id="wl-email" type="email" required placeholder="you@example.com" autocomplete="email">
-              </div>
-              <p><button class="btn btn--primary" type="submit">Join the waitlist</button></p>
-              <p class="form-status" role="status" data-wl-status></p>
-            </form>
-            <!-- TODO(content): wire this up to a real mailing-list service
-                 once one is chosen, then remove the JS intercept in app.js
-                 (search "Blue Envelope waitlist") that currently explains it
-                 is not connected yet. See CONTENT-TODO.md. -->
-          </li>
-        </ul>
       </div>
     </section>
 
