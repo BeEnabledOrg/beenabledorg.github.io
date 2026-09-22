@@ -467,7 +467,7 @@ export const blueEnvelopePage = {
              smoothly when a driver or passenger communicates differently.</p>
           <p class="btn-row">
             <a class="btn btn--primary" href="#directory">Find a program</a>
-            <a class="btn btn--secondary" href="#waitlist">Join the waitlist</a>
+            <a class="btn btn--secondary" href="#waitlist">Join the Ohio waitlist</a>
           </p>
           <p class="field__hint">Free directory of programs across the United States.</p>
         </div>
@@ -540,14 +540,14 @@ export const blueEnvelopePage = {
            below for a program near you.</p>
         <ul class="grid no-bullet">
           <li class="card">
-            <h3>Join the waitlist</h3>
+            <h3>Join the Ohio waitlist</h3>
             <p>Get one email when it's ready. Nothing else.</p>
             <form class="stack" data-form="waitlist">
               <div class="field">
                 <label for="wl-email">Email address</label>
                 <input id="wl-email" type="email" required placeholder="you@example.com" autocomplete="email">
               </div>
-              <p><button class="btn btn--primary" type="submit">Join the waitlist</button></p>
+              <p><button class="btn btn--primary" type="submit">Join the Ohio waitlist</button></p>
               <p class="form-status" role="status" data-wl-status></p>
             </form>
             <!-- TODO(content): wire this up to a real mailing-list service
