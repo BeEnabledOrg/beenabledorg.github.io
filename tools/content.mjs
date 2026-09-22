@@ -1546,10 +1546,22 @@ ${CTA}`,
         <h2>Tell us about the program</h2>
 
         <!-- SC 3.3.6 Error Prevention (All): app.js adds the same
-             review-and-confirm step used on the contact form.
-             TODO(content): set action to the real form endpoint, same as
-             the contact form. See CONTENT-TODO.md -->
-        <form class="contact-form" id="sp" method="post" action="#" data-confirm-before-send novalidate>
+             review-and-confirm step used on the contact form. Posts to
+             FormSubmit, same as the contact form. -->
+        <form class="contact-form" id="sp" method="post" action="https://formsubmit.co/info@beenabled.org" data-confirm-before-send>
+          <!-- FormSubmit (formsubmit.co) turns this plain POST into an email to
+               info@beenabled.org. Nothing of theirs is embedded or scripted on
+               this page, which is the only way a third-party form service can sit
+               inside the AAA claim. The underscore fields are its settings; the
+               address must be activated once — see CONTENT-TODO.md. -->
+          <input type="hidden" name="_subject" value="Resource Hub program submission">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://beenabled.org/resources/submit/sent/">
+          <input type="hidden" name="_captcha" value="false">
+          <!-- Honeypot in place of a CAPTCHA, which would be their widget on
+               their page and a barrier in its own right. Hidden from everyone,
+               assistive technology included, so no person ever fills it in. -->
+          <label hidden>Leave this box empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
           <div class="field">
             <label for="sp-title">Program or event name <span class="field__req">(required)</span></label>
             <p class="field__hint" id="sp-title-hint">What is it called?</p>
@@ -1639,7 +1651,7 @@ ${agencyOptionsRequired}
           <div class="field">
             <label for="sp-contact-email">Your email address <span class="field__req">(required)</span></label>
             <p class="field__hint" id="sp-contact-email-hint">So we can reach you about this submission or send it back if we need a change.</p>
-            <input type="email" id="sp-contact-email" name="contactEmail" required data-required-message="Please add an email address so we can reach you about this submission." autocomplete="email" aria-describedby="sp-contact-email-hint">
+            <input type="email" id="sp-contact-email" name="email" required data-required-message="Please add an email address so we can reach you about this submission." autocomplete="email" aria-describedby="sp-contact-email-hint">
             <p class="field__error" id="sp-contact-email-error"></p>
           </div>
 
@@ -1818,9 +1830,22 @@ PAGES.push(
         <!-- SC 3.3.6 Error Prevention (All): with JavaScript on, app.js adds a
              review step so nothing is sent until it has been read back and
              confirmed. With JavaScript off this posts directly and the browser's
-             own required-field checks apply.
-             TODO(content): set action to the real form endpoint. -->
-        <form class="contact-form" id="cf" method="post" action="#" data-confirm-before-send novalidate>
+             own required-field checks apply (app.js adds novalidate only once it
+             has taken validation over). -->
+        <form class="contact-form" id="cf" method="post" action="https://formsubmit.co/info@beenabled.org" data-confirm-before-send>
+          <!-- FormSubmit (formsubmit.co) turns this plain POST into an email to
+               info@beenabled.org. Nothing of theirs is embedded or scripted on
+               this page, which is the only way a third-party form service can sit
+               inside the AAA claim. The underscore fields are its settings; the
+               address must be activated once — see CONTENT-TODO.md. -->
+          <input type="hidden" name="_subject" value="Website contact form">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://beenabled.org/contact/sent/">
+          <input type="hidden" name="_captcha" value="false">
+          <!-- Honeypot in place of a CAPTCHA, which would be their widget on
+               their page and a barrier in its own right. Hidden from everyone,
+               assistive technology included, so no person ever fills it in. -->
+          <label hidden>Leave this box empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
           <div class="field">
             <label for="cf-name">Your name <span class="field__req">(optional)</span></label>
             <p class="field__hint" id="cf-name-hint">What should we call you? You can leave this blank.</p>
@@ -2054,9 +2079,13 @@ ${glossaryBody}
         </ul>
 
         <h2>If you contact us</h2>
-        <p>If you email us or send the form on our contact page, we receive whatever
-           you chose to put in it. We use it to reply to you and nothing else. We do
+        <p>If you email us or send a form on this site, we receive whatever you
+           chose to put in it. We use it to reply to you and nothing else. We do
            not sell it, and we do not add you to a mailing list without being asked.</p>
+        <p>The forms are delivered to us as email by a company called FormSubmit.
+           They carry the message from the form to our inbox and see it on the way.
+           Nothing of theirs runs on this site while you read or type; they only
+           receive what you choose to send.</p>
 
         <h2>Other sites we link to</h2>
         <p>Donations and our mailing list are handled by other companies on their own
@@ -2114,6 +2143,108 @@ ${glossaryBody}
         </ul>
       </div>
     </section>`,
+  },
+
+  /* --------------------------------------------- Form confirmation pages --
+     Where FormSubmit sends people after a successful post (its _next field).
+     Not linked from anywhere and noindex — nobody should arrive by search.
+     Each says what was sent and what happens next, in plain words. */
+  {
+    file: "contact/sent/index.html",
+    url: "/contact/sent/",
+    title: "Message sent | Be Enabled Advocacy Alliance",
+    description:
+      "Your message to Be Enabled Advocacy Alliance has been sent. We aim to reply within five working days.",
+    h1: "Your message has been sent",
+    crumb: "Message sent",
+    trail: [{ name: "Contact", url: "/contact/" }],
+    noindex: true,
+    body: `
+    <section class="section">
+      <div class="wrap wrap--narrow stack">
+        <h1>Your message has been sent</h1>
+        <p class="lede">Thank you. It has reached our small team.</p>
+
+        <h2>What happens next</h2>
+        <p>We aim to reply within five working days.</p>
+        <p>If you gave us an email address, the reply will go there. If you did
+           not, we cannot write back, but we will still read every word.</p>
+        <p>If you need the reply in a particular format and did not say so,
+           <a href="mailto:info@beenabled.org">email us at info@beenabled.org</a>
+           and tell us.</p>
+
+        <p class="btn-row">
+          <a class="btn btn--primary" href="/">Go back to the home page</a>
+          <a class="btn btn--secondary" href="/contact/">Send another message</a>
+        </p>
+      </div>
+    </section>`,
+  },
+  {
+    file: "resources/submit/sent/index.html",
+    url: "/resources/submit/sent/",
+    title: "Submission received | Be Enabled Advocacy Alliance",
+    description:
+      "Your program or event has reached the Resource Hub and Calendar team. A person checks every submission before it is listed.",
+    h1: "We have your submission",
+    crumb: "Submission received",
+    trail: [
+      { name: "Resource Hub and Calendar", url: "/resources/" },
+      { name: "Submit a program", url: "/resources/submit/" },
+    ],
+    noindex: true,
+    body: `
+    <div class="hub">
+    <section class="section">
+      <div class="wrap wrap--narrow stack">
+        <h1>We have your submission</h1>
+        <p class="lede">Thank you for adding to what people in Ohio can find.</p>
+
+        <h2>What happens next</h2>
+        <p>A person on our team reads every submission. We check the program's
+           own website, or call them, before anything is listed.</p>
+        <p>If it fits, we add it to the Resource Hub and Calendar. This can take
+           a few weeks.</p>
+        <p>If we have a question, we will email you at the address you gave.</p>
+
+        <p class="btn-row">
+          <a class="btn btn--primary" href="/resources/">Go to the Resource Hub and Calendar</a>
+          <a class="btn btn--secondary" href="/resources/submit/">Submit another program</a>
+        </p>
+      </div>
+    </section>
+    </div>`,
+  },
+  {
+    file: "blue-envelope/joined/index.html",
+    url: "/blue-envelope/joined/",
+    title: "You are on the Ohio waitlist | Be Enabled Advocacy Alliance",
+    description:
+      "You are on the waitlist for the Ohio Blue Envelope Program. We will send one email when it is ready.",
+    h1: "You are on the Ohio waitlist",
+    crumb: "Ohio waitlist",
+    trail: [{ name: "Blue Envelope Project", url: "/blue-envelope/" }],
+    noindex: true,
+    body: `
+    <div class="blue-envelope">
+    <section class="section">
+      <div class="wrap wrap--narrow stack">
+        <h1>You are on the Ohio waitlist</h1>
+        <p class="lede">We will send one email when Ohio's Blue Envelope Program
+           is ready. Nothing else.</p>
+
+        <h2>What happens next</h2>
+        <p>A short confirmation email is on its way to the address you gave. If
+           it has not arrived in a few minutes, check your spam folder.</p>
+        <p>To leave the list, reply to any email from us and say so.</p>
+
+        <p class="btn-row">
+          <a class="btn btn--primary" href="/blue-envelope/">Go back to the Blue Envelope Project</a>
+          <a class="btn btn--secondary" href="/blue-envelope/#directory">Find a program in another state</a>
+        </p>
+      </div>
+    </section>
+    </div>`,
   },
 
   /* ------------------------------------------------------------------ 404 */

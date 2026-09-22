@@ -263,18 +263,28 @@
           <li class="card">
             <h3>Join the Ohio waitlist</h3>
             <p>Get one email when it's ready. Nothing else.</p>
-            <form class="stack" data-form="waitlist">
+            <form class="stack" method="post" action="https://formsubmit.co/info@beenabled.org">
+              <!-- FormSubmit (formsubmit.co) turns this plain POST into an email to
+                   info@beenabled.org. Nothing of theirs is embedded or scripted on
+                   this page, which is the only way a third-party form service can sit
+                   inside the AAA claim. The underscore fields are its settings; the
+                   address must be activated once — see CONTENT-TODO.md. -->
+              <input type="hidden" name="_subject" value="Ohio Blue Envelope waitlist signup">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_next" value="https://beenabled.org/blue-envelope/joined/">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_autoresponse" value="Thank you. You are on the waitlist for Ohio's Blue Envelope Program. We will send one email when it is ready, and nothing else. To leave the list, reply to this email and say so.">
+              <!-- Honeypot in place of a CAPTCHA, which would be their widget on
+                   their page and a barrier in its own right. Hidden from everyone,
+                   assistive technology included, so no person ever fills it in. -->
+              <label hidden>Leave this box empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
               <div class="field">
                 <label for="wl-email">Email address</label>
-                <input id="wl-email" type="email" required autocomplete="email">
+                <input id="wl-email" type="email" name="email" required autocomplete="email">
               </div>
               <p><button class="btn btn--primary" type="submit">Join the Ohio waitlist</button></p>
               <p class="form-status" role="status" data-wl-status></p>
             </form>
-            <!-- TODO(content): wire this up to a real mailing-list service
-                 once one is chosen, then remove the JS intercept in app.js
-                 (search "Blue Envelope waitlist") that currently explains it
-                 is not connected yet. See CONTENT-TODO.md. -->
           </li>
         </ul>
       </div>

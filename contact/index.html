@@ -208,9 +208,22 @@
         <!-- SC 3.3.6 Error Prevention (All): with JavaScript on, app.js adds a
              review step so nothing is sent until it has been read back and
              confirmed. With JavaScript off this posts directly and the browser's
-             own required-field checks apply.
-             TODO(content): set action to the real form endpoint. -->
-        <form class="contact-form" id="cf" method="post" action="#" data-confirm-before-send novalidate>
+             own required-field checks apply (app.js adds novalidate only once it
+             has taken validation over). -->
+        <form class="contact-form" id="cf" method="post" action="https://formsubmit.co/info@beenabled.org" data-confirm-before-send>
+          <!-- FormSubmit (formsubmit.co) turns this plain POST into an email to
+               info@beenabled.org. Nothing of theirs is embedded or scripted on
+               this page, which is the only way a third-party form service can sit
+               inside the AAA claim. The underscore fields are its settings; the
+               address must be activated once — see CONTENT-TODO.md. -->
+          <input type="hidden" name="_subject" value="Website contact form">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://beenabled.org/contact/sent/">
+          <input type="hidden" name="_captcha" value="false">
+          <!-- Honeypot in place of a CAPTCHA, which would be their widget on
+               their page and a barrier in its own right. Hidden from everyone,
+               assistive technology included, so no person ever fills it in. -->
+          <label hidden>Leave this box empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
           <div class="field">
             <label for="cf-name">Your name <span class="field__req">(optional)</span></label>
             <p class="field__hint" id="cf-name-hint">What should we call you? You can leave this blank.</p>

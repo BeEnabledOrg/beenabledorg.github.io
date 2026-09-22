@@ -33,6 +33,9 @@
     "http://localhost:8080/glossary/",
     "http://localhost:8080/privacy/",
     "http://localhost:8080/sitemap/",
+    "http://localhost:8080/contact/sent/",
+    "http://localhost:8080/resources/submit/sent/",
+    "http://localhost:8080/blue-envelope/joined/",
     "http://localhost:8080/404.html"
   ]
 }

@@ -49,14 +49,27 @@ whether the homepage hero and Blue Envelope's `cover__brand` want a mark too.
 Real contact email confirmed: `info@beenabled.org`, used on `contact/index.html`.
 No phone or mailing address on the contact page — deliberate, not a gap to fill.
 
-| What | Where it goes |
-|---|---|
-| Form endpoint for the contact form `action` | `contact/index.html` |
+All three forms (contact, Resource Hub submission, Blue Envelope waitlist)
+post to FormSubmit (`https://formsubmit.co/info@beenabled.org`), which
+forwards each submission as an email to `info@beenabled.org` and then sends
+the visitor to a confirmation page on this site (`/contact/sent/`,
+`/resources/submit/sent/`, `/blue-envelope/joined/`). Plain `POST`, nothing
+embedded: that is the only shape a third-party form service can take inside
+the AAA claim, so do not swap in a provider's widget or script.
 
-The contact form currently posts to `#`. Until an endpoint is set, the email
-link is the working path. Whatever endpoint you choose must accept a plain
-`POST` of form fields; do not swap in an embedded third-party widget, because
-those reliably fail Level AAA and cannot be fixed from the outside.
+**One step still needed before launch:**
+
+| What | How |
+|---|---|
+| Activate the address with FormSubmit | Send one real submission from any of the forms on the live site. FormSubmit emails `info@beenabled.org` an activation link. Nothing is delivered until it is clicked. Do this from the live domain, not localhost. |
+| Optional: hide the address | After activation, FormSubmit offers a random-string alias to use in place of the email in each form's `action`. The address is already public on the contact page, so this is tidiness, not privacy. |
+
+Things to know about the setup: reCAPTCHA is turned off (`_captcha`), because
+it would be their widget on their page and a barrier in its own right; a
+hidden honeypot field (`_honey`) stands in for it. Reply-To on the email is
+taken from the field named `email`. The waitlist form also sends the visitor a
+short auto-reply (`_autoresponse`). If spam becomes a problem, FormSubmit's
+`_blacklist` field takes a comma-separated list of phrases to reject.
 
 ## Fundraising — blocking before launch
 
@@ -85,7 +98,7 @@ Still blocking before this is fully useful:
 | What | Where it goes |
 |---|---|
 | More listings, especially from counties with none yet | `tools/content.mjs`, the `HUB_LISTINGS` array |
-| Form endpoint for the submission form `action` | `resources/submit/index.html` — same unresolved question as the contact form above |
+| Activate FormSubmit (see the Contact section above) | the submission form posts there already |
 | A pass to re-check the workbook's still-parked tabs (Day Programs & Providers, County Boards, Libraries, and the rest) once resources reopen beyond Calendar-only scope | see the workbook's Read Me sheet |
 
 The workbook flags several real, dated finds that could not be promoted this
@@ -154,8 +167,10 @@ page's waitlist section and the Ohio entry's `summary` field both mention
 this now. Once the transition is complete, update
 `tools/content-blue-envelope.mjs`'s Ohio entry and the waitlist copy
 (`id="waitlist"` in the same file) to describe the finished state rather
-than a transition in progress, and wire the waitlist form up to a real
-service (see the TODO(content) comment next to the form).
+than a transition in progress. The waitlist form posts to FormSubmit (see
+the Contact section above), so each signup arrives as an email and the list
+is kept by hand; if the org later adopts a real mailing-list service, point
+the form's `action` at it and drop the FormSubmit `_` fields.
 
 **What counts as a Blue Envelope program, for this directory:** something a
 person keeps and hands to an officer at a stop — the envelope itself, in
