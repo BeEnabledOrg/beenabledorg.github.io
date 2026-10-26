@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Your Medical 911 Story | Be Enabled Advocacy Alliance</title>
-  <meta name="description" content="Have you called 911 for a medical emergency, or had someone call for you? Tell us what happened. You do not need to give your name.">
+  <meta name="description" content="Have you called 911 for a medical emergency, or had someone call for you? Tell us what happened and what helped. You do not need to give your name.">
   <link rel="canonical" href="https://beenabled.org/stories/medical-911/">
   <meta name="robots" content="noindex">
 
@@ -17,11 +17,11 @@
   <meta property="og:site_name" content="Be Enabled Advocacy Alliance">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Your Medical 911 Story | Be Enabled Advocacy Alliance">
-  <meta property="og:description" content="Have you called 911 for a medical emergency, or had someone call for you? Tell us what happened. You do not need to give your name.">
+  <meta property="og:description" content="Have you called 911 for a medical emergency, or had someone call for you? Tell us what happened and what helped. You do not need to give your name.">
   <meta property="og:url" content="https://beenabled.org/stories/medical-911/">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Your Medical 911 Story | Be Enabled Advocacy Alliance">
-  <meta name="twitter:description" content="Have you called 911 for a medical emergency, or had someone call for you? Tell us what happened. You do not need to give your name.">
+  <meta name="twitter:description" content="Have you called 911 for a medical emergency, or had someone call for you? Tell us what happened and what helped. You do not need to give your name.">
 
   <link rel="preload" href="/assets/fonts/atkinson-hyperlegible-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
@@ -55,7 +55,7 @@
           "@id": "https://beenabled.org/stories/medical-911/#page",
           "url": "https://beenabled.org/stories/medical-911/",
           "name": "Your Medical 911 Story | Be Enabled Advocacy Alliance",
-          "description": "Have you called 911 for a medical emergency, or had someone call for you? Tell us what happened. You do not need to give your name.",
+          "description": "Have you called 911 for a medical emergency, or had someone call for you? Tell us what happened and what helped. You do not need to give your name.",
           "isPartOf": {
             "@id": "https://beenabled.org/#website"
           },
@@ -214,14 +214,15 @@
       <div class="wrap wrap--narrow stack">
         <h1>Tell us your medical 911 story</h1>
         <p class="lede">You called 911, or someone called for you. What happened
-           next?</p>
+           next, and what helped?</p>
 
         <div class="in-short">
           <h2>In short</h2>
           <p>Tell us about one time 911 was called for a medical emergency.</p>
           <p>It can be good, bad, or mixed. Every story counts.</p>
+          <p>We also ask what helped, so we can share what works.</p>
           <p>You do not need to give your name.</p>
-          <p>It takes about 10 minutes. Only the story is required.</p>
+          <p>The story alone takes about 5 minutes. All of it takes about 15.</p>
         </div>
 
         <div class="callout" role="note">
@@ -250,8 +251,10 @@
           <li>A service animal is kept away.</li>
           <li>Medicine or a device does not come to the hospital.</li>
         </ul>
-        <p>We hear these stories all the time. But almost nobody counts them.
-           We want to.</p>
+        <p>We hear these stories all the time. But almost nobody counts them.</p>
+        <p>We also want to know what helps. Many people keep a medical file at
+           home, or sign up with their local 911 ahead of time. Nobody has asked
+           whether these things actually work. You can tell us.</p>
         <p>This connects to our
            <a href="/blue-envelope/">Blue Envelope Project</a>, which helps
            drivers share their needs during a traffic stop.</p>
@@ -261,10 +264,8 @@
     <section class="section">
       <div class="wrap wrap--narrow stack">
         <h2 id="tell-it">Your story</h2>
-        <p>Every box tells you what it is for. Only the first one is required.
-           Skip anything you do not want to answer.</p>
-        <p>Please leave out names of people, hospitals, and streets. We remove
-           them anyway, but it is safer not to send them.</p>
+        <p>Every box tells you what it is for. There are 8 short parts.
+           Only the story in part 2 is required.</p>
 
         <!-- DRAFT: this is deliberately not a <form> and sends nothing. Where
              health stories are stored, who can read them, and how long they
@@ -273,25 +274,48 @@
              data-confirm-before-send> like contact/index.html, and make the
              button type="submit". -->
         <div class="story-form" id="story-911">
-          <div class="field">
-            <label for="s9-story">What happened? <span class="field__req">(required)</span></label>
-            <p class="field__hint" id="s9-story-hint">Start wherever you like. What
-               was going on, who came, how they treated you, and how it ended.
-               There is no wrong way to write it.</p>
-            <textarea id="s9-story" name="story" rows="10" aria-describedby="s9-story-hint"></textarea>
+
+          <div class="in-short">
+            <h3>Before you start</h3>
+            <p>You must be 18 or older. A parent or caregiver can tell a child's
+               story.</p>
+            <p>Only the story is required. Skip any question you like.</p>
+            <p>Please leave out names of people, hospitals, and streets.</p>
+            <p>A person on our team reads every story and removes anything that
+               could point to you. Then we count it with everyone else's.</p>
+            <p>We never sell what you tell us.</p>
           </div>
 
-          <h3>A few short questions</h3>
-          <p>These are what let us count stories and spot patterns. Each one
-             is optional.</p>
+          <h3>Part 1 of 8: About the call</h3>
 
-          <fieldset aria-describedby="s9-caller-hint">
+          <fieldset aria-describedby="s9-whose-hint">
+            <legend>Whose story is this? <span class="field__req">(optional)</span></legend>
+            <p class="field__hint" id="s9-whose-hint">If it is someone else's story, answer every question about them.</p>
+            <div class="radio-row">
+              <label><input type="radio" name="whose" value="My own"> My own</label>
+              <label><input type="radio" name="whose" value="Someone I support or care for"> Someone I support or care for</label>
+              <label><input type="radio" name="whose" value="I am a 911 call-taker, responder, or health worker"> I am a 911 call-taker, responder, or health worker</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
             <legend>Who called 911? <span class="field__req">(optional)</span></legend>
-            <p class="field__hint" id="s9-caller-hint">Pick the one closest to what happened.</p>
             <div class="radio-row">
               <label><input type="radio" name="caller" value="I called for myself"> I called for myself</label>
               <label><input type="radio" name="caller" value="Someone called for me"> Someone called for me</label>
               <label><input type="radio" name="caller" value="I called for someone else"> I called for someone else</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>How did the call reach 911? <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="how" value="A voice call"> A voice call</label>
+              <label><input type="radio" name="how" value="A text to 911"> A text to 911</label>
+              <label><input type="radio" name="how" value="A relay service or TTY"> A relay service or TTY</label>
+              <label><input type="radio" name="how" value="A medical alert button or device"> A medical alert button or device</label>
+              <label><input type="radio" name="how" value="Someone else spoke for me"> Someone else spoke for me</label>
+              <label><input type="radio" name="how" value="Not sure"> Not sure</label>
             </div>
           </fieldset>
 
@@ -305,18 +329,73 @@
             </div>
           </fieldset>
 
+          <fieldset aria-describedby="s9-count-hint">
+            <legend>How many times has 911 been called for you in the past year? <span class="field__req">(optional)</span></legend>
+            <p class="field__hint" id="s9-count-hint">Count every medical call, not just this one.</p>
+            <div class="radio-row">
+              <label><input type="radio" name="count" value="None"> None</label>
+              <label><input type="radio" name="count" value="Once"> Once</label>
+              <label><input type="radio" name="count" value="2 or 3 times"> 2 or 3 times</label>
+              <label><input type="radio" name="count" value="4 or more times"> 4 or more times</label>
+              <label><input type="radio" name="count" value="Not sure"> Not sure</label>
+            </div>
+          </fieldset>
+
+          <h3>Part 2 of 8: What happened</h3>
           <div class="field">
-            <label for="s9-state">Which state was it in? <span class="field__req">(optional)</span></label>
-            <p class="field__hint" id="s9-state-hint">So we can compare places.</p>
+            <label for="s9-story">Tell us what happened <span class="field__req">(required)</span></label>
+            <p class="field__hint" id="s9-story-hint">Start wherever you like.
+               What was going on, who came, how they treated you, and how it
+               ended. There is no wrong way to write it.</p>
+            <textarea id="s9-story" name="story" rows="10" aria-describedby="s9-story-hint"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="s9-line">Sum it up in one line <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="s9-line-hint">If someone only read one sentence of your story, what should it be?</p>
+            <input type="text" id="s9-line" name="oneLine" aria-describedby="s9-line-hint">
+          </div>
+          <p><a href="#s9-send">Short on time? Skip to the end and send just your story</a></p>
+
+          <h3>Part 3 of 8: Where it happened</h3>
+
+
+          <div class="field">
+            <label for="s9-state">Which state did it happen in? <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="s9-state-hint">So we can compare states.</p>
             <input type="text" id="s9-state" name="state" autocomplete="address-level1" aria-describedby="s9-state-hint">
           </div>
 
           <div class="field">
-            <label for="s9-county">Which county or city? <span class="field__req">(optional)</span></label>
-            <p class="field__hint" id="s9-county-hint">Leave this blank if it is a
-               small place where people might know who you are.</p>
-            <input type="text" id="s9-county" name="county" aria-describedby="s9-county-hint">
+            <label for="s9-zip">What was the ZIP code? <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="s9-zip-hint">We use it only to group stories by area and to compare them with public data, like income and how far the nearest hospital is. We never use it to find you. Leave it blank if you would rather.</p>
+            <input type="text" id="s9-zip" name="zip" inputmode="numeric" aria-describedby="s9-zip-hint">
           </div>
+
+          <fieldset>
+            <legend>What kind of place is it? <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="area" value="Big city"> Big city</label>
+              <label><input type="radio" name="area" value="Small city or town"> Small city or town</label>
+              <label><input type="radio" name="area" value="Suburb"> Suburb</label>
+              <label><input type="radio" name="area" value="Rural"> Rural</label>
+              <label><input type="radio" name="area" value="Not sure"> Not sure</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Where were you? <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="place" value="At home"> At home</label>
+              <label><input type="radio" name="place" value="In a group home or care home"> In a group home or care home</label>
+              <label><input type="radio" name="place" value="At work or school"> At work or school</label>
+              <label><input type="radio" name="place" value="Out in public"> Out in public</label>
+              <label><input type="radio" name="place" value="In a car or on the road"> In a car or on the road</label>
+              <label><input type="radio" name="place" value="Somewhere else"> Somewhere else</label>
+            </div>
+          </fieldset>
+
+          <h3>Part 4 of 8: How it went</h3>
 
           <fieldset aria-describedby="s9-who-hint">
             <legend>Who came? <span class="field__req">(optional, choose all that apply)</span></legend>
@@ -331,42 +410,223 @@
             </div>
           </fieldset>
 
+          <fieldset>
+            <legend>How well did the 911 call-taker understand you? <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="dispatchUnderstood" value="Very badly"> Very badly</label>
+              <label><input type="radio" name="dispatchUnderstood" value="Badly"> Badly</label>
+              <label><input type="radio" name="dispatchUnderstood" value="Okay"> Okay</label>
+              <label><input type="radio" name="dispatchUnderstood" value="Well"> Well</label>
+              <label><input type="radio" name="dispatchUnderstood" value="Very well"> Very well</label>
+              <label><input type="radio" name="dispatchUnderstood" value="Not sure"> Not sure</label>
+            </div>
+          </fieldset>
+
           <fieldset aria-describedby="s9-understood-hint">
-            <legend>Did they understand your disability and what you needed? <span class="field__req">(optional)</span></legend>
+            <legend>How well did the responders understand your disability and needs? <span class="field__req">(optional)</span></legend>
             <p class="field__hint" id="s9-understood-hint">Think about how they spoke to you, moved you, and listened.</p>
             <div class="radio-row">
-              <label><input type="radio" name="understood" value="Yes"> Yes</label>
-              <label><input type="radio" name="understood" value="Partly"> Partly</label>
-              <label><input type="radio" name="understood" value="No"> No</label>
-              <label><input type="radio" name="understood" value="Not sure"> Not sure</label>
+              <label><input type="radio" name="respondersUnderstood" value="Very badly"> Very badly</label>
+              <label><input type="radio" name="respondersUnderstood" value="Badly"> Badly</label>
+              <label><input type="radio" name="respondersUnderstood" value="Okay"> Okay</label>
+              <label><input type="radio" name="respondersUnderstood" value="Well"> Well</label>
+              <label><input type="radio" name="respondersUnderstood" value="Very well"> Very well</label>
+              <label><input type="radio" name="respondersUnderstood" value="Not sure"> Not sure</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>How much did they include you in decisions about your care? <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="included" value="Not at all"> Not at all</label>
+              <label><input type="radio" name="included" value="A little"> A little</label>
+              <label><input type="radio" name="included" value="Some"> Some</label>
+              <label><input type="radio" name="included" value="Mostly"> Mostly</label>
+              <label><input type="radio" name="included" value="Fully"> Fully</label>
+              <label><input type="radio" name="included" value="Not sure"> Not sure</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>How safe did you feel with the responders? <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="safe" value="Very unsafe"> Very unsafe</label>
+              <label><input type="radio" name="safe" value="Unsafe"> Unsafe</label>
+              <label><input type="radio" name="safe" value="Okay"> Okay</label>
+              <label><input type="radio" name="safe" value="Safe"> Safe</label>
+              <label><input type="radio" name="safe" value="Very safe"> Very safe</label>
             </div>
           </fieldset>
 
           <fieldset aria-describedby="s9-issues-hint">
             <legend>Did any of these happen? <span class="field__req">(optional, choose all that apply)</span></legend>
-            <p class="field__hint" id="s9-issues-hint">These are things we hear about often. Choose any that fit.</p>
+            <p class="field__hint" id="s9-issues-hint">These are things we hear about often.</p>
             <div class="radio-row">
               <label><input type="checkbox" name="issues[]" value="It was hard to communicate"> It was hard to communicate</label>
+              <label><input type="checkbox" name="issues[]" value="They did not believe me, or thought I was drunk or on drugs"> They did not believe me, or thought I was drunk or on drugs</label>
+              <label><input type="checkbox" name="issues[]" value="They spoke to someone else instead of me"> They spoke to someone else instead of me</label>
               <label><input type="checkbox" name="issues[]" value="My wheelchair or other equipment was left behind"> My wheelchair or other equipment was left behind</label>
+              <label><input type="checkbox" name="issues[]" value="My equipment was damaged"> My equipment was damaged</label>
               <label><input type="checkbox" name="issues[]" value="My service animal was kept away"> My service animal was kept away</label>
               <label><input type="checkbox" name="issues[]" value="My medicine or a device was left behind"> My medicine or a device was left behind</label>
               <label><input type="checkbox" name="issues[]" value="I was held down or restrained"> I was held down or restrained</label>
+              <label><input type="checkbox" name="issues[]" value="I was handcuffed or arrested"> I was handcuffed or arrested</label>
               <label><input type="checkbox" name="issues[]" value="I was taken somewhere I did not want to go"> I was taken somewhere I did not want to go</label>
               <label><input type="checkbox" name="issues[]" value="They would not take me to the hospital"> They would not take me to the hospital</label>
-              <label><input type="checkbox" name="issues[]" value="I got a large bill afterward"> I got a large bill afterward</label>
               <label><input type="checkbox" name="issues[]" value="I was treated well"> I was treated well</label>
             </div>
           </fieldset>
 
           <div class="field">
-            <label for="s9-better">What would have made it better? <span class="field__req">(optional)</span></label>
-            <p class="field__hint" id="s9-better-hint">If you could change one
-               thing about how it went, what would it be?</p>
+            <label for="s9-better">What is the ONE thing that would have made it better? <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="s9-better-hint">If you could change one thing about how it went, what would it be?</p>
             <textarea id="s9-better" name="better" aria-describedby="s9-better-hint"></textarea>
           </div>
 
-          <h3>About you</h3>
-          <p>Only if you want to share. This helps us see who is affected most.</p>
+          <h3>Part 5 of 8: What helped</h3>
+          <p>Many people prepare for emergencies ahead of time. Tell us what you
+             had, and whether it helped. This is how we learn what works.</p>
+
+          <fieldset>
+            <legend>A medical information file at home, like a File of Life <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="helped[file]" value="Did not have it"> Did not have it</label>
+              <label><input type="radio" name="helped[file]" value="Helped a lot"> Helped a lot</label>
+              <label><input type="radio" name="helped[file]" value="Helped a little"> Helped a little</label>
+              <label><input type="radio" name="helped[file]" value="Did not help"> Did not help</label>
+              <label><input type="radio" name="helped[file]" value="Nobody looked at it"> Nobody looked at it</label>
+              <label><input type="radio" name="helped[file]" value="Made it worse"> Made it worse</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>A profile registered with 911 ahead of time, like Smart911 <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="helped[registry]" value="Did not have it"> Did not have it</label>
+              <label><input type="radio" name="helped[registry]" value="Helped a lot"> Helped a lot</label>
+              <label><input type="radio" name="helped[registry]" value="Helped a little"> Helped a little</label>
+              <label><input type="radio" name="helped[registry]" value="Did not help"> Did not help</label>
+              <label><input type="radio" name="helped[registry]" value="Nobody looked at it"> Nobody looked at it</label>
+              <label><input type="radio" name="helped[registry]" value="Made it worse"> Made it worse</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>A medical ID bracelet, wallet card, or phone medical ID <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="helped[id]" value="Did not have it"> Did not have it</label>
+              <label><input type="radio" name="helped[id]" value="Helped a lot"> Helped a lot</label>
+              <label><input type="radio" name="helped[id]" value="Helped a little"> Helped a little</label>
+              <label><input type="radio" name="helped[id]" value="Did not help"> Did not help</label>
+              <label><input type="radio" name="helped[id]" value="Nobody looked at it"> Nobody looked at it</label>
+              <label><input type="radio" name="helped[id]" value="Made it worse"> Made it worse</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>A communication card, board, or speech device <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="helped[card]" value="Did not have it"> Did not have it</label>
+              <label><input type="radio" name="helped[card]" value="Helped a lot"> Helped a lot</label>
+              <label><input type="radio" name="helped[card]" value="Helped a little"> Helped a little</label>
+              <label><input type="radio" name="helped[card]" value="Did not help"> Did not help</label>
+              <label><input type="radio" name="helped[card]" value="Nobody looked at it"> Nobody looked at it</label>
+              <label><input type="radio" name="helped[card]" value="Made it worse"> Made it worse</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Someone with me who knew my needs <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="helped[person]" value="Did not have it"> Did not have it</label>
+              <label><input type="radio" name="helped[person]" value="Helped a lot"> Helped a lot</label>
+              <label><input type="radio" name="helped[person]" value="Helped a little"> Helped a little</label>
+              <label><input type="radio" name="helped[person]" value="Did not help"> Did not help</label>
+              <label><input type="radio" name="helped[person]" value="Nobody looked at it"> Nobody looked at it</label>
+              <label><input type="radio" name="helped[person]" value="Made it worse"> Made it worse</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Telling the 911 call-taker about my disability <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="helped[told]" value="Did not have it"> Did not have it</label>
+              <label><input type="radio" name="helped[told]" value="Helped a lot"> Helped a lot</label>
+              <label><input type="radio" name="helped[told]" value="Helped a little"> Helped a little</label>
+              <label><input type="radio" name="helped[told]" value="Did not help"> Did not help</label>
+              <label><input type="radio" name="helped[told]" value="Nobody looked at it"> Nobody looked at it</label>
+              <label><input type="radio" name="helped[told]" value="Made it worse"> Made it worse</label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="s9-tip">Anything else that helped? <span class="field__req">(optional)</span></label>
+            <p class="field__hint" id="s9-tip-hint">A tip for someone in your shoes. Something you did, said, or kept ready.</p>
+            <textarea id="s9-tip" name="tip" aria-describedby="s9-tip-hint"></textarea>
+          </div>
+
+          <h3>Part 6 of 8: Afterward</h3>
+
+          <fieldset>
+            <legend>Did you go to the hospital? <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="hospital" value="Yes, by ambulance"> Yes, by ambulance</label>
+              <label><input type="radio" name="hospital" value="Yes, another way"> Yes, another way</label>
+              <label><input type="radio" name="hospital" value="No, I chose not to go"> No, I chose not to go</label>
+              <label><input type="radio" name="hospital" value="No, they would not take me"> No, they would not take me</label>
+              <label><input type="radio" name="hospital" value="Not sure"> Not sure</label>
+            </div>
+          </fieldset>
+
+          <fieldset aria-describedby="s9-bill-hint">
+            <legend>Did you get a bill for the ambulance? <span class="field__req">(optional)</span></legend>
+            <p class="field__hint" id="s9-bill-hint">Count what you had to pay yourself, after insurance.</p>
+            <div class="radio-row">
+              <label><input type="radio" name="bill" value="No bill, or it was covered"> No bill, or it was covered</label>
+              <label><input type="radio" name="bill" value="Under $500"> Under $500</label>
+              <label><input type="radio" name="bill" value="$500 to $1,999"> $500 to $1,999</label>
+              <label><input type="radio" name="bill" value="$2,000 or more"> $2,000 or more</label>
+              <label><input type="radio" name="bill" value="Not sure yet"> Not sure yet</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Before this happened, how did you feel about calling 911? <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="trustBefore" value="I would not call"> I would not call</label>
+              <label><input type="radio" name="trustBefore" value="Only if I had no choice"> Only if I had no choice</label>
+              <label><input type="radio" name="trustBefore" value="Unsure"> Unsure</label>
+              <label><input type="radio" name="trustBefore" value="I would call, with some worry"> I would call, with some worry</label>
+              <label><input type="radio" name="trustBefore" value="I would call without worry"> I would call without worry</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>And now? <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="trustAfter" value="I would not call"> I would not call</label>
+              <label><input type="radio" name="trustAfter" value="Only if I had no choice"> Only if I had no choice</label>
+              <label><input type="radio" name="trustAfter" value="Unsure"> Unsure</label>
+              <label><input type="radio" name="trustAfter" value="I would call, with some worry"> I would call, with some worry</label>
+              <label><input type="radio" name="trustAfter" value="I would call without worry"> I would call without worry</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Overall, how did it go? <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="overall" value="Very badly"> Very badly</label>
+              <label><input type="radio" name="overall" value="Badly"> Badly</label>
+              <label><input type="radio" name="overall" value="Mixed"> Mixed</label>
+              <label><input type="radio" name="overall" value="Well"> Well</label>
+              <label><input type="radio" name="overall" value="Very well"> Very well</label>
+            </div>
+          </fieldset>
+
+
+          <h3>Part 7 of 8: About you</h3>
+          <p>Only if you want to share. This shows us who is affected most, and
+             whether some people are treated worse than others.</p>
 
           <fieldset aria-describedby="s9-dis-hint">
             <legend>Which of these describe you? <span class="field__req">(optional, choose all that apply)</span></legend>
@@ -375,20 +635,70 @@
               <label><input type="checkbox" name="disability[]" value="Physical disability"> Physical disability</label>
               <label><input type="checkbox" name="disability[]" value="Blind or low vision"> Blind or low vision</label>
               <label><input type="checkbox" name="disability[]" value="Deaf or hard of hearing"> Deaf or hard of hearing</label>
-              <label><input type="checkbox" name="disability[]" value="Developmental disability"> Developmental disability</label>
+              <label><input type="checkbox" name="disability[]" value="Developmental or intellectual disability"> Developmental or intellectual disability</label>
               <label><input type="checkbox" name="disability[]" value="Autistic"> Autistic</label>
               <label><input type="checkbox" name="disability[]" value="Mental health disability"> Mental health disability</label>
               <label><input type="checkbox" name="disability[]" value="Chronic illness"> Chronic illness</label>
-              <label><input type="checkbox" name="disability[]" value="I do not speak, or speak in another way"> I do not speak, or speak in another way</label>
+              <label><input type="checkbox" name="disability[]" value="Brain injury"> Brain injury</label>
             </div>
           </fieldset>
 
           <div class="field">
-            <label for="s9-dis-other">In your own words <span class="field__req">(optional)</span></label>
+            <label for="s9-dis-other">Your disability, in your own words <span class="field__req">(optional)</span></label>
             <input type="text" id="s9-dis-other" name="disabilityOther">
           </div>
 
-          <h3>How we may use your story</h3>
+          <fieldset>
+            <legend>How do you communicate? <span class="field__req">(optional, choose all that apply)</span></legend>
+            <div class="radio-row">
+              <label><input type="checkbox" name="communication[]" value="Speaking"> Speaking</label>
+              <label><input type="checkbox" name="communication[]" value="Sign language"> Sign language</label>
+              <label><input type="checkbox" name="communication[]" value="Writing or typing"> Writing or typing</label>
+              <label><input type="checkbox" name="communication[]" value="A speech device, app, or letter board"> A speech device, app, or letter board</label>
+              <label><input type="checkbox" name="communication[]" value="Gestures or sounds"> Gestures or sounds</label>
+              <label><input type="checkbox" name="communication[]" value="Someone who knows me helps"> Someone who knows me helps</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>How old are you? <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="age" value="18 to 29"> 18 to 29</label>
+              <label><input type="radio" name="age" value="30 to 44"> 30 to 44</label>
+              <label><input type="radio" name="age" value="45 to 64"> 45 to 64</label>
+              <label><input type="radio" name="age" value="65 or older"> 65 or older</label>
+              <label><input type="radio" name="age" value="I would rather not say"> I would rather not say</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>What is your race or ethnicity? <span class="field__req">(optional, choose all that apply)</span></legend>
+            <div class="radio-row">
+              <label><input type="checkbox" name="race[]" value="American Indian or Alaska Native"> American Indian or Alaska Native</label>
+              <label><input type="checkbox" name="race[]" value="Asian"> Asian</label>
+              <label><input type="checkbox" name="race[]" value="Black or African American"> Black or African American</label>
+              <label><input type="checkbox" name="race[]" value="Hispanic or Latino"> Hispanic or Latino</label>
+              <label><input type="checkbox" name="race[]" value="Middle Eastern or North African"> Middle Eastern or North African</label>
+              <label><input type="checkbox" name="race[]" value="Native Hawaiian or Pacific Islander"> Native Hawaiian or Pacific Islander</label>
+              <label><input type="checkbox" name="race[]" value="White"> White</label>
+              <label><input type="checkbox" name="race[]" value="Another race or ethnicity"> Another race or ethnicity</label>
+              <label><input type="checkbox" name="race[]" value="I would rather not say"> I would rather not say</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>What is your gender? <span class="field__req">(optional)</span></legend>
+            <div class="radio-row">
+              <label><input type="radio" name="gender" value="Woman"> Woman</label>
+              <label><input type="radio" name="gender" value="Man"> Man</label>
+              <label><input type="radio" name="gender" value="Non-binary"> Non-binary</label>
+              <label><input type="radio" name="gender" value="Another gender"> Another gender</label>
+              <label><input type="radio" name="gender" value="I would rather not say"> I would rather not say</label>
+            </div>
+          </fieldset>
+
+
+          <h3>Part 8 of 8: How we may use your story</h3>
 
           <fieldset aria-describedby="s9-share-hint">
             <legend>Can we share some of your words? <span class="field__req">(optional)</span></legend>
@@ -399,15 +709,24 @@
             </div>
           </fieldset>
 
+          <fieldset aria-describedby="s9-involve-hint">
+            <legend>Would you like to stay involved? <span class="field__req">(optional, choose all that apply)</span></legend>
+            <p class="field__hint" id="s9-involve-hint">Each of these needs an email address, so we can reach you.</p>
+            <div class="radio-row">
+              <label><input type="checkbox" name="involve[]" value="Send me what you learn"> Send me what you learn</label>
+              <label><input type="checkbox" name="involve[]" value="Ask me about another topic later"> Ask me about another topic later</label>
+              <label><input type="checkbox" name="involve[]" value="I would like to help check what the stories show"> I would like to help check what the stories show</label>
+              <label><input type="checkbox" name="involve[]" value="I would speak to lawmakers or officials"> I would speak to lawmakers or officials</label>
+            </div>
+          </fieldset>
+
           <div class="field">
             <label for="s9-email">Email address <span class="field__req">(optional)</span></label>
-            <p class="field__hint" id="s9-email-hint">Only if you would like us to
-               follow up, or to hear what we learn. We keep it apart from your
-               story.</p>
+            <p class="field__hint" id="s9-email-hint">Only if you ticked something above. We keep it apart from your story.</p>
             <input type="email" id="s9-email" name="email" autocomplete="email" aria-describedby="s9-email-hint">
           </div>
 
-          <p class="btn-row" style="margin-block-start: var(--space-6)">
+          <p class="btn-row" id="s9-send" style="margin-block-start: var(--space-6)">
             <button type="button" class="btn btn--primary" disabled aria-describedby="s9-draft-note">Send my story</button>
           </p>
           <p class="field__hint" id="s9-draft-note">This is a preview. Sending is

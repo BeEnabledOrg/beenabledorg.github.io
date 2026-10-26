@@ -1421,3 +1421,4 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
 .story-form > * + * { margin-block-start: var(--space-6); }
 .story-form > h3 { margin-block-start: var(--space-8); }
 .story-form fieldset > .field__hint { margin-block-end: var(--space-3); }
+.story-form .in-short > h3 { margin-block-start: 0; }

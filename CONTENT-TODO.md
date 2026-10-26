@@ -37,7 +37,8 @@ Decisions needed before launch:
 | Where stories are stored | Health stories are sensitive. FormSubmit would put them in an email inbox — not a good home for a data set. Needs a store with access control, export to a spreadsheet, and a retention period. |
 | Consent wording | The two-option "may we quote you" question, and whether to add a research-use consent if a partner will analyse the data. |
 | Privacy promises | The page promises: no name needed, a person de-identifies every story, email kept apart from the story, deletion on request if an email was given. Each must be true in the chosen tool. Add a matching section to `privacy/index.html`. |
-| Question set | Medical 911 questions are a first pass. Review with community members, and keep the core questions (who called, when, state, who came, understood?) the same across future topics so they can be compared. |
+| Question set | Medical 911 form is modeled on the StuffThatWorks sign-up survey (see the comment block in `tools/content-stories.mjs`). Review with community members. The CORE parts (whose story, where, about you, how we may use it) must keep the same wording on every topic so topics can be compared; only the middle parts change. Check the "What helped" tool list with Ohio 911 centers (which registries they actually use). |
+| Findings milestones | The hub promises findings at 100, 500 and 1,000 stories. Confirm or change before launch. |
 | Topic order | Housing, Healthcare, Education, Transportation, Benefits and safety are shown as "coming later". |
 | "What we have heard so far" | Empty until real stories exist. Never fill with made-up examples. |
 
