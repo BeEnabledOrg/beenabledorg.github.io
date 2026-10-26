@@ -1415,3 +1415,9 @@ legend { font-family: var(--font-head); font-weight: 700; padding-inline: var(--
    into view by focus stops short of the strip they occupy. app.js sets the
    attribute together with the buttons. */
 :root[data-scroll-buttons="on"] { scroll-padding-block-end: 9rem; }
+
+/* -- Story campaign form (/stories/, draft). Fields and question groups
+      alternate, so space every child rather than only .field + .field. --- */
+.story-form > * + * { margin-block-start: var(--space-6); }
+.story-form > h3 { margin-block-start: var(--space-8); }
+.story-form fieldset > .field__hint { margin-block-end: var(--space-3); }

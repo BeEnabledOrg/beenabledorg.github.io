@@ -17,6 +17,35 @@ still exist and build normally; only their exposure is switched off. Remove
 `noindex: true` and re-add the links (home page and `/what-we-do/`'s
 `domainCards`, the footer) once these are ready to publish.
 
+## Story campaign — draft, unpublished
+
+`/stories/` (campaign hub) and `/stories/medical-911/` (first topic) are a
+working draft of the community story campaign: one true story per topic, in
+the person's own words and anonymous if they like, plus a few short optional
+questions so the stories add up to a data set we can count and share back.
+Built from `tools/content-stories.mjs`.
+
+Like the domain pages, both are `noindex`, left out of `sitemap.xml`, and
+linked from nowhere. The story form **sends nothing** on purpose (it is not
+a `<form>`, and its button is disabled with a "this is a preview" note).
+
+Decisions needed before launch:
+
+| What | Notes |
+|---|---|
+| Campaign name | "Your stories" is a stand-in (page title, h1, breadcrumb). |
+| Where stories are stored | Health stories are sensitive. FormSubmit would put them in an email inbox — not a good home for a data set. Needs a store with access control, export to a spreadsheet, and a retention period. |
+| Consent wording | The two-option "may we quote you" question, and whether to add a research-use consent if a partner will analyse the data. |
+| Privacy promises | The page promises: no name needed, a person de-identifies every story, email kept apart from the story, deletion on request if an email was given. Each must be true in the chosen tool. Add a matching section to `privacy/index.html`. |
+| Question set | Medical 911 questions are a first pass. Review with community members, and keep the core questions (who called, when, state, who came, understood?) the same across future topics so they can be compared. |
+| Topic order | Housing, Healthcare, Education, Transportation, Benefits and safety are shown as "coming later". |
+| "What we have heard so far" | Empty until real stories exist. Never fill with made-up examples. |
+
+To publish: remove `noindex: true` from both pages in
+`tools/content-stories.mjs` (and the hand-edited HTML), run
+`node tools/sitemap.mjs`, and add a link from the home page, Get involved,
+the footer partial, and `sitemap/index.html`.
+
 ## Logo — not yet settled
 
 No logo has been chosen yet, so every place the site was standing in a

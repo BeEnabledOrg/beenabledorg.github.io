@@ -17,6 +17,7 @@
  *   SC 3.2.5  No target="_blank" anywhere.
  */
 import { blueEnvelopePage } from "./content-blue-envelope.mjs";
+import { STORY_PAGES } from "./content-stories.mjs";
 
 export const SITE = {
   origin: "https://beenabled.org",
@@ -1360,6 +1361,9 @@ const DOMAIN_PAGES = [
 ];
 
 PAGES.push(...DOMAIN_PAGES);
+
+/* Story campaign — draft, unpublished. See tools/content-stories.mjs. */
+PAGES.push(...STORY_PAGES);
 
 /* --------------------------------------------------------- Resource Hub -- */
 PAGES.push(

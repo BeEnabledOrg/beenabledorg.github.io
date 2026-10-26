@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- No maximum-scale and no user-scalable=no: those break SC 1.4.4 Resize Text. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Your Stories | Be Enabled Advocacy Alliance</title>
+  <meta name="description" content="Tell us one true story about your life with a disability. Together, your stories show what is really happening and help us push for change.">
+  <link rel="canonical" href="https://beenabled.org/stories/">
+  <meta name="robots" content="noindex">
+
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1817" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Be Enabled Advocacy Alliance">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Your Stories | Be Enabled Advocacy Alliance">
+  <meta property="og:description" content="Tell us one true story about your life with a disability. Together, your stories show what is really happening and help us push for change.">
+  <meta property="og:url" content="https://beenabled.org/stories/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Your Stories | Be Enabled Advocacy Alliance">
+  <meta name="twitter:description" content="Tell us one true story about your life with a disability. Together, your stories show what is really happening and help us push for change.">
+
+  <link rel="preload" href="/assets/fonts/atkinson-hyperlegible-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Applies saved display settings before first paint. This has to be inline
+       and synchronous: without it the page flashes the default theme, which for
+       a light-sensitive or migraine-affected reader is a real harm, not a
+       cosmetic one. Fails silently where storage is blocked. -->
+  <script>
+    (function () {
+      try {
+        var d = document.documentElement, s = localStorage;
+        var t = s.getItem("beaa-theme");
+        if (t && t !== "auto") d.setAttribute("data-theme", t);
+        var z = s.getItem("beaa-text-size");
+        if (z && z !== "100") d.setAttribute("data-text-size", z);
+        var l = s.getItem("beaa-line-height");
+        if (l && l !== "160") d.setAttribute("data-line-height", l);
+        var m = s.getItem("beaa-motion");
+        if (m && m !== "auto") d.setAttribute("data-motion", m);
+      } catch (e) {}
+    })();
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://beenabled.org/stories/#page",
+          "url": "https://beenabled.org/stories/",
+          "name": "Your Stories | Be Enabled Advocacy Alliance",
+          "description": "Tell us one true story about your life with a disability. Together, your stories show what is really happening and help us push for change.",
+          "isPartOf": {
+            "@id": "https://beenabled.org/#website"
+          },
+          "about": {
+            "@id": "https://beenabled.org/#org"
+          },
+          "inLanguage": "en-US"
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <!-- @partial:header — managed by tools/sync-partials.mjs. Do not hand-edit. -->
+  <div class="skip-links">
+    <a href="#main">Skip to main content</a>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="/">
+        <span class="brand__name"><b>Be Enabled</b><span>Advocacy Alliance</span></span>
+      </a>
+
+      <details class="nav-toggle">
+        <summary aria-label="Menu">
+          <svg class="nav-toggle__icon nav-toggle__icon--menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <svg class="nav-toggle__icon nav-toggle__icon--close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span>Menu</span>
+        </summary>
+      </details>
+
+      <nav class="site-nav" aria-label="Main">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="/about/">About</a></li>
+          <li><a class="nav__link" href="/what-we-do/">What we do</a></li>
+          <li><a class="nav__link" href="/blue-envelope/">Blue Envelope Project</a></li>
+          <li><a class="nav__link" href="/resources/">Resource Hub</a></li>
+          <li><a class="nav__link" href="/get-involved/">Get involved</a></li>
+          <li><a class="nav__link" href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+
+      <details class="settings" id="display-settings">
+        <summary>
+          <svg class="settings__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 7h10M18 7h2M4 17h6M14 17h6M16 4v6M10 14v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <span>Display settings</span>
+        </summary>
+
+        <div class="settings__panel">
+          <fieldset>
+            <legend>Color theme</legend>
+            <div class="radio-row" role="none">
+              <label><input type="radio" name="theme" value="auto" checked> Match my device</label>
+              <label><input type="radio" name="theme" value="light"> Light</label>
+              <label><input type="radio" name="theme" value="dark"> Dark</label>
+              <label><input type="radio" name="theme" value="contrast"> High contrast</label>
+              <label><input type="radio" name="theme" value="warm"> Warm (less blue light)</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Text size</legend>
+            <div class="radio-row">
+              <label><input type="radio" name="text-size" value="100" checked> Normal</label>
+              <label><input type="radio" name="text-size" value="125"> Large</label>
+              <label><input type="radio" name="text-size" value="150"> Larger</label>
+              <label><input type="radio" name="text-size" value="200"> Largest</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Space between lines</legend>
+            <div class="radio-row">
+              <label><input type="radio" name="line-height" value="160" checked> Normal</label>
+              <label><input type="radio" name="line-height" value="175"> Roomy</label>
+              <label><input type="radio" name="line-height" value="200"> Roomiest</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Movement</legend>
+            <div class="radio-row">
+              <label><input type="radio" name="motion" value="auto" checked> Match my device</label>
+              <label><input type="radio" name="motion" value="reduce"> Reduce movement</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Navigation</legend>
+            <div class="radio-row" role="none">
+              <label><input type="checkbox" id="scroll-buttons-toggle"> Show on-screen scroll buttons</label>
+            </div>
+            <p class="field__hint">Large Up and Down buttons in the corner of the
+            screen, for moving through a page without a scroll gesture.</p>
+          </fieldset>
+
+          <div>
+            <button type="button" class="btn btn--secondary" data-settings-reset>Reset display settings</button>
+            <p class="field__hint" id="settings-help">Your choices are saved in this browser only. We never send them anywhere.</p>
+            <p class="form-status" role="status" data-settings-status></p>
+          </div>
+
+          <noscript>
+            <p class="field__hint">These controls need JavaScript. Your browser and
+            operating system offer the same options: use your browser zoom for text
+            size, and your system appearance settings for light, dark, or
+            high-contrast colors. This site follows all of them.</p>
+          </noscript>
+        </div>
+      </details>
+    </div>
+  </header>
+  <!-- /@partial:header -->
+
+  <main id="main" tabindex="-1">
+
+    <section class="section">
+      <div class="wrap wrap--narrow stack">
+        <!-- TODO(content): campaign name. "Your stories" is a stand-in. -->
+        <h1>Your stories</h1>
+        <p class="lede">One true story, in your own words. Together, they show
+           what is really happening.</p>
+
+        <div class="in-short">
+          <h2>In short</h2>
+          <p>We ask about one topic at a time. The first one is calling 911 for
+             a medical emergency.</p>
+          <p>You can tell your story without giving your name.</p>
+          <p>We count what people tell us and share what we learn with everyone.</p>
+          <p>We use it to push for change, with facts that come from you.</p>
+        </div>
+
+        <div class="callout" role="note">
+          <svg class="callout__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 7v6M12 16.5v.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <p><strong>This is not a way to get help in an emergency.</strong></p>
+            <p>If you need help right now, call 911. If you are in crisis or
+               thinking about suicide, call or text 988.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap wrap--narrow stack">
+        <h2>Why we are asking</h2>
+        <p>Officials often say they have no data on how disabled people are
+           treated. Without numbers, our problems are easy to wave away as
+           one-off stories.</p>
+        <p>One story is easy to ignore. Hundreds of stories that say the same
+           thing are not.</p>
+        <p>So we ask the same short questions next to every story. That way we
+           can count how often something happens, where it happens, and who it
+           happens to.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>Pick a topic</h2>
+        <p>We open one topic at a time, so each one gets enough stories to mean
+           something.</p>
+        <ul class="grid no-bullet">
+          <li class="card card--domain card--healthcare">
+            <h3><a class="card__link" href="/stories/medical-911/">Tell us your medical 911 story</a></h3>
+            <p>Tell us about a time you, or someone with you, called 911 for a medical emergency.</p>
+            <p class="card__meta">Open now</p>
+          </li>
+          <li class="card card--domain card--housing">
+            <h3>Housing</h3>
+            <p>Finding, keeping, or getting into a home.</p>
+            <p class="card__meta">Coming later</p>
+          </li>
+          <li class="card card--domain card--healthcare">
+            <h3>Healthcare</h3>
+            <p>Getting care, equipment, or an appointment that works for you.</p>
+            <p class="card__meta">Coming later</p>
+          </li>
+          <li class="card card--domain card--education">
+            <h3>Education</h3>
+            <p>School, college, or training, and the support that came with it — or did not.</p>
+            <p class="card__meta">Coming later</p>
+          </li>
+          <li class="card card--domain card--transportation">
+            <h3>Transportation</h3>
+            <p>Getting where you need to go: buses, paratransit, rides, and roads.</p>
+            <p class="card__meta">Coming later</p>
+          </li>
+          <li class="card card--domain card--money">
+            <h3>Benefits and safety</h3>
+            <p>Keeping your benefits, and feeling safe at home and out in the world.</p>
+            <p class="card__meta">Coming later</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap wrap--narrow stack">
+        <h2>What happens to your story</h2>
+        <ol class="steps">
+          <li>
+            <span class="steps__num" aria-hidden="true">1</span>
+            <div>
+              <strong>You tell it</strong>
+              <p>Write as much or as little as you like. Only the story itself is
+                 required. Every other question can be skipped.</p>
+            </div>
+          </li>
+          <li>
+            <span class="steps__num" aria-hidden="true">2</span>
+            <div>
+              <strong>A person reads it</strong>
+              <p>Someone on our team reads every story. We remove names, places,
+                 and anything else that could point to you.</p>
+            </div>
+          </li>
+          <li>
+            <span class="steps__num" aria-hidden="true">3</span>
+            <div>
+              <strong>We count it</strong>
+              <p>Your short answers join everyone else's. That is how we find
+                 the patterns: what keeps going wrong, and where.</p>
+            </div>
+          </li>
+          <li>
+            <span class="steps__num" aria-hidden="true">4</span>
+            <div>
+              <strong>We share what we learn</strong>
+              <p>We post what the stories show, here, for everyone. Only if you
+                 say yes, we may also share a few of your words, with nothing
+                 that names you.</p>
+            </div>
+          </li>
+          <li>
+            <span class="steps__num" aria-hidden="true">5</span>
+            <div>
+              <strong>We take it to people who can fix it</strong>
+              <p>Lawmakers, agencies, hospitals, and emergency services. Facts
+                 from you carry more weight than anything we could say alone.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap wrap--narrow stack">
+        <h2>What we have heard so far</h2>
+        <!-- TODO(content): once stories come in, this becomes the "share it
+             back" section: a few counts per topic, and, only with consent, a
+             handful of short anonymous quotes, each on its own card. Never a
+             made-up example. -->
+        <p>Nothing yet. When the first topic has enough stories, what we learn
+           will be posted here.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- @partial:footer — managed by tools/sync-partials.mjs. Do not hand-edit. -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <h2 class="visually-hidden">Site footer</h2>
+      <div class="footer__grid">
+        <div>
+          <h3>Be Enabled Advocacy Alliance</h3>
+          <p>A disability-led non-profit working for housing, healthcare,
+             education, transportation, and money security.</p>
+        </div>
+
+        <nav aria-label="Footer: projects">
+          <h3>Projects</h3>
+          <ul class="footer__list">
+            <li><a href="/blue-envelope/">The Blue Envelope Project</a></li>
+            <li><a href="/resources/">Resource Hub &amp; Calendar</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Footer: about this organization">
+          <h3>About us</h3>
+          <ul class="footer__list">
+            <li><a href="/about/">About Be Enabled Advocacy Alliance</a></li>
+            <li><a href="/what-we-do/">What we do</a></li>
+            <li><a href="/get-involved/">Get involved</a></li>
+            <li><a href="/contact/">Contact us</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Footer: help and site information">
+          <h3>Help</h3>
+          <ul class="footer__list">
+            <li><a href="/accessibility/">Accessibility statement</a></li>
+            <li><a href="/glossary/">Word list</a></li>
+            <li><a href="/privacy/">Privacy</a></li>
+            <li><a href="/sitemap/">All pages on this site</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer__legal">
+        <p>Be Enabled Advocacy Alliance is a non-profit organization under
+           section 501(c)(3) of the United States tax code.
+           <!-- TODO(content): EIN, mailing address, and year founded. See CONTENT-TODO.md -->
+        </p>
+        <p>Something on this site hard to use? <a href="/accessibility/#report">Tell us about an access barrier</a> and we will reply within five working days.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- /@partial:footer -->
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
